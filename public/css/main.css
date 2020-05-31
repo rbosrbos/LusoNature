@@ -1,0 +1,108 @@
+@import url(https://fonts.googleapis.com/css2?family=Lobster&display=swap);html {
+  font-size: 16px;
+}
+
+html body {
+  font-family: "Open Sans", "Helvetica Neue", "Helvetica", sans-serif;
+}
+
+html body h1,
+html body h2,
+html body h3,
+html body h4,
+html body h5,
+html body h6 {
+  font-weight: 700;
+}
+
+html body h1 {
+  font-size: 4rem;
+}
+
+html body h2 {
+  font-size: 3.5rem;
+}
+
+html body h3 {
+  font-size: 2rem;
+}
+
+html body #main_slider_container .main_slide {
+  background-image: url("https://picsum.photos/1920/780?random=1");
+  height: 780px;
+  background-size: cover;
+  opacity: 0;
+  transition: opacity 1s linear;
+}
+
+html body #main_slider_container .main_slide.active {
+  opacity: 1;
+}
+
+html body #main_slider_container .main_slide:nth-child(2) {
+  background-image: url("https://picsum.photos/1920/780?random=2");
+}
+
+html body #main_slider_container .main_slide:nth-child(3) {
+  background-image: url("https://picsum.photos/1920/780?random=3");
+}
+
+html body #main_slider_container #main_slider_pager {
+  height: 780px;
+}
+
+html body #main_slider_container #main_slider_pager .page {
+  transition: background-color 0.5s linear;
+}
+
+html body #nav_container {
+  transition: all 0.2s linear;
+}
+
+html body #nav_container #blackboard {
+  transition: margin-top 0.5s ease-in-out;
+}
+
+html body #nav_container nav #logo {
+  font-family: "Lobster";
+  font-size: 1.2em;
+  transition: all 0.2s linear;
+}
+
+html body #nav_container nav #logo.scrolled {
+  transform: scale(0.7) translate(0, 10px);
+}
+
+html body #nav_container ul li {
+  color: #e0d9cb;
+  transition: color 0.1s, border-bottom 0.1s;
+}
+
+html body #nav_container ul li a {
+  position: relative;
+}
+
+html body #nav_container ul li a:after {
+  content: "";
+  position: absolute;
+  height: 4px;
+  bottom: -5px;
+  width: 120%;
+  left: -10%;
+  right: 0;
+  background: #cfc37b;
+  transform: scale(0);
+  transition: transform 0.2s linear;
+}
+
+html body #nav_container ul li:hover a:after {
+  transform: scale(1);
+}
+
+html body #nav_container.scrolled {
+  margin-top: -1.3em;
+}
+
+html body #sections .card {
+  width: 300px;
+}

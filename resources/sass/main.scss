@@ -1,0 +1,124 @@
+@import url('https://fonts.googleapis.com/css2?family=Lobster&display=swap');
+
+html {
+    font-size: 16px;
+
+    body {
+        font-family: "Open Sans", "Helvetica Neue", "Helvetica", sans-serif;
+
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
+            font-weight: 700;
+        }
+
+        h1 {
+            font-size: 4rem;
+        }
+
+        h2 {
+            font-size: 3.5rem;
+        }
+
+        h3 {
+            font-size: 2rem;
+        }
+
+        #main_slider_container {
+            .main_slide {
+                background-image: url('https://picsum.photos/1920/780?random=1');
+                height: 780px;
+                background-size: cover;
+                opacity: 0;
+                transition: opacity 1s linear;
+
+                &.active {
+                    opacity: 1;
+                }
+            }
+
+            .main_slide:nth-child(2) {
+                background-image: url('https://picsum.photos/1920/780?random=2');
+            }
+
+            .main_slide:nth-child(3) {
+                background-image: url('https://picsum.photos/1920/780?random=3');
+            }
+
+            #main_slider_pager {
+                height: 780px;
+
+                .page {
+                    transition: background-color 0.5s linear;
+                }
+            }
+        }
+        #nav_container {
+            transition: all 0.2s linear;
+    
+            #blackboard {
+                transition: margin-top 0.5s ease-in-out;
+            }
+    
+            nav {
+                #logo {
+                    font-family: 'Lobster';
+                    font-size: 1.2em;
+                    transition: all 0.2s linear;
+    
+                    &.scrolled {
+                        transform: scale(0.7) translate(0, 10px);
+                    }
+                }
+            }
+    
+            ul {
+                li {
+                    color: #e0d9cb;
+                    transition: color 0.1s, border-bottom 0.1s;
+    
+                    a {
+                        position: relative;
+    
+                        &:after {
+                            content: "";
+                            position: absolute;
+                            height: 4px;
+                            bottom: -5px;
+                            width: 120%;
+                            left: -10%;
+                            right: 0;
+                            background: #cfc37b;
+                            -webkit-transform: scale(0);
+                            -ms-transform: scale(0);
+                            transform: scale(0);
+                            -webkit-transition: -webkit-transform 0.2s linear;
+                            transition: -webkit-transform 0.2s linear;
+                            transition: transform 0.2s linear;
+                            transition: transform 0.2s linear, -webkit-transform 0.2s linear;
+                        }
+    
+                    }
+    
+                    &:hover {
+                        a {
+                            &:after {
+                                transform: scale(1);
+                            }
+                        }
+                    }
+                }
+            }
+    
+            &.scrolled {
+                margin-top: -1.3em;
+            }
+        }
+        #sections .card {
+            width: 300px;
+        }
+    }
+}
