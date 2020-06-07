@@ -13,6 +13,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', 'TemplateController@index');
+
+Auth::routes();
+
+Route::get('/dashboard', 'HomeController@index')->name('home');

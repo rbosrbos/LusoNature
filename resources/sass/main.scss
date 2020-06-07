@@ -1,124 +1,339 @@
 @import url('https://fonts.googleapis.com/css2?family=Lobster&display=swap');
+@import 'aos.css';
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    25% {
+        stroke: #38a169;
+    }
+
+    50% {
+        stroke: #22543d;
+    }
+
+    75% {
+        stroke: #38a169;
+    }
+
+    100% {
+        transform: rotate(360deg);
+        stroke: #22543d;
+    }
+}
+
+@keyframes anim-button {
+    60% {
+        -webkit-transform: scale3d(0.8, 0.8, 1);
+        transform: scale3d(0.8, 0.8, 1);
+    }
+
+    85% {
+        -webkit-transform: scale3d(1.1, 1.1, 1);
+        transform: scale3d(1.1, 1.1, 1);
+    }
+
+    100% {
+        -webkit-transform: scale3d(1, 1, 1);
+        transform: scale3d(1, 1, 1);
+    }
+}
+
 
 html {
     font-size: 16px;
 
     body {
-        font-family: "Open Sans", "Helvetica Neue", "Helvetica", sans-serif;
+        #app {
+            button:hover {
+                animation: anim-button 0.3s forwards;
+            }
 
-        h1,
-        h2,
-        h3,
-        h4,
-        h5,
-        h6 {
-            font-weight: 700;
-        }
+            font-family: "Open Sans",
+            "Helvetica Neue",
+            "Helvetica",
+            sans-serif;
 
-        h1 {
-            font-size: 4rem;
-        }
-
-        h2 {
-            font-size: 3.5rem;
-        }
-
-        h3 {
-            font-size: 2rem;
-        }
-
-        #main_slider_container {
-            .main_slide {
+            #section_topper {
+                height: 510px;
                 background-image: url('https://picsum.photos/1920/780?random=1');
-                height: 780px;
-                background-size: cover;
-                opacity: 0;
-                transition: opacity 1s linear;
 
-                &.active {
-                    opacity: 1;
+                div {
+                    height: 510px;
                 }
             }
 
-            .main_slide:nth-child(2) {
-                background-image: url('https://picsum.photos/1920/780?random=2');
-            }
+            #main_slider_container {
+                height: 100vh;
 
-            .main_slide:nth-child(3) {
-                background-image: url('https://picsum.photos/1920/780?random=3');
-            }
+                .main_slide {
 
-            #main_slider_pager {
-                height: 780px;
+                    .main_slide_bg,
+                    .overlay {
+                        height: 100vh;
+                    }
 
-                .page {
-                    transition: background-color 0.5s linear;
+                    .main_slide_bg {
+                        background-size: cover;
+                        background-image: url('https://picsum.photos/1920/780?random=1');
+                        height: 100vh;
+                        transition: transform 5s linear;
+                    }
+
+                    height: 100vh;
+                    opacity: 0;
+                    transition: opacity 1s linear;
+
+                    &.active {
+                        opacity: 1;
+                    }
                 }
-            }
-        }
-        #nav_container {
-            transition: all 0.2s linear;
-    
-            #blackboard {
-                transition: margin-top 0.5s ease-in-out;
-            }
-    
-            nav {
-                #logo {
-                    font-family: 'Lobster';
-                    font-size: 1.2em;
-                    transition: all 0.2s linear;
-    
-                    &.scrolled {
-                        transform: scale(0.7) translate(0, 10px);
+
+                .main_slide:nth-child(2) {
+                    .main_slide_bg {
+                        background-image: url('https://picsum.photos/1920/780?random=2');
+                    }
+                }
+
+                .main_slide:nth-child(3) {
+                    .main_slide_bg {
+                        background-image: url('https://picsum.photos/1920/780?random=3');
+                    }
+                }
+
+                #main_slider_pager {
+                    height: 100vh;
+
+                    .page {
+                        transition: background-color 0.5s linear;
                     }
                 }
             }
-    
-            ul {
-                li {
-                    color: #e0d9cb;
-                    transition: color 0.1s, border-bottom 0.1s;
-    
-                    a {
-                        position: relative;
-    
-                        &:after {
-                            content: "";
-                            position: absolute;
-                            height: 4px;
-                            bottom: -5px;
-                            width: 120%;
-                            left: -10%;
-                            right: 0;
-                            background: #cfc37b;
-                            -webkit-transform: scale(0);
-                            -ms-transform: scale(0);
-                            transform: scale(0);
-                            -webkit-transition: -webkit-transform 0.2s linear;
-                            transition: -webkit-transform 0.2s linear;
-                            transition: transform 0.2s linear;
-                            transition: transform 0.2s linear, -webkit-transform 0.2s linear;
+
+            #nav_container {
+                transition: all 0.2s linear;
+
+                .menu-mob {
+                    transition: all .5s ease-in-out;
+                }
+
+                .menu-mob_burger {
+                    width: 30px;
+                    height: 3px;
+                    background: #fff;
+                    border-radius: 5px;
+                    box-shadow: 0 2px 5px rgba(255, 101, 47, .2);
+                    transition: all .5s ease-in-out;
+                }
+
+                .menu-mob_burger::before,
+                .menu-mob_burger::after {
+                    content: '';
+                    position: absolute;
+                    width: 30px;
+                    height: 3px;
+                    background: #fff;
+                    border-radius: 5px;
+                    box-shadow: 0 2px 5px rgba(255, 101, 47, .2);
+                    transition: all .5s ease-in-out;
+                }
+
+                .menu-mob_burger::before {
+                    transform: translateY(-8px);
+                }
+
+                .menu-mob_burger::after {
+                    transform: translateY(8px);
+                }
+
+                /* ANIMATION */
+                .menu-mob.open .menu-mob_burger {
+                    transform: translateX(-30px);
+                    background: transparent;
+                    box-shadow: none;
+                }
+
+                .menu-mob.open .menu-mob_burger::before {
+                    transform: rotate(45deg) translate(15px, -15px);
+                }
+
+                .menu-mob.open .menu-mob_burger::after {
+                    transform: rotate(-45deg) translate(15px, 15px);
+                }
+
+                #blackboard {
+                    transition: margin-top 0.5s ease-in-out;
+                }
+
+                nav {
+                    #logo {
+                        font-family: 'Lobster';
+                        font-size: 1.2em;
+                        transition: all 0.2s linear;
+
+                        &.scrolled {
+                            transform: scale(0.7) translate(0, 5px);
                         }
-    
+
+                        .logo_anim {
+                            transform-box: fill-box;
+                            transform-origin: 50% 50%;
+                            animation: spin 45s linear infinite;
+                        }
                     }
-    
-                    &:hover {
+                }
+
+                ul {
+                    li {
+                        color: #e0d9cb;
+                        transition: color 0.1s, border-bottom 0.1s;
+
                         a {
+                            position: relative;
+
                             &:after {
-                                transform: scale(1);
+                                content: "";
+                                position: absolute;
+                                height: 4px;
+                                bottom: -5px;
+                                width: 120%;
+                                left: -10%;
+                                right: 0;
+                                background: #cfc37b;
+                                -webkit-transform: scale(0);
+                                -ms-transform: scale(0);
+                                transform: scale(0);
+                                -webkit-transition: -webkit-transform 0.2s linear;
+                                transition: -webkit-transform 0.2s linear;
+                                transition: transform 0.2s linear;
+                                transition: transform 0.2s linear, -webkit-transform 0.2s linear;
+                            }
+
+                        }
+
+                        &:hover {
+                            a {
+                                &:after {
+                                    transform: scale(1);
+                                }
                             }
                         }
                     }
+
+                    transition: margin-left 0.2s ease-in-out;
+
+                    &.mobile {
+                        position: fixed;
+                        top: 0;
+                        left: 0;
+                        width: 100%;
+                        height: 100%;
+                        background-color: black;
+
+                    }
+                }
+
+                &.scrolled {
+                    margin-top: -2em;
                 }
             }
-    
-            &.scrolled {
-                margin-top: -1.3em;
+
+            #sections .card {
+                width: 300px;
             }
         }
-        #sections .card {
-            width: 300px;
+
+        #top_ranked {
+            .top {
+                cursor: pointer;
+                width: 300px;
+                height: 300px;
+                background-size: cover;
+                background-image: url('https://picsum.photos/1920/780?random=1');
+
+                div {
+                    height: 100px;
+                    width: 100px;
+                }
+
+                div:after {
+                    content: "";
+                    position: absolute;
+                    top: 8px;
+                    left: 8px;
+                    right: 8px;
+                    bottom: 8px;
+                    border-radius: 50%;
+                    border: 3px solid #fff;
+                }
+            }
+
+            .text-center:nth-child(2) .top {
+                background-image: url('https://picsum.photos/1920/780?random=2');
+
+            }
+
+            .text-center:nth-child(3) .top {
+                background-image: url('https://picsum.photos/1920/780?random=3');
+
+            }
+
+            .top:after {
+                position: relative;
+                text-align: center;
+                z-index: 11;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                color: white;
+                padding: 3em 1em;
+                content: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Totam laborum vero facilis explicabo nesciunt laboriosam fuga aut, nemo beatae nostrum optio quidem, nisi ex perferendis blanditiis iure rerum a enim!";
+                position: absolute;
+                top: 0;
+                left: 0;
+                bottom: 0;
+                right: 0;
+                border-radius: 50%;
+                background: rgba(0, 0, 0, 0.7);
+                transform: scale(0);
+                transition: transform 0.3s linear;
+            }
+
+            .top:hover {
+                &:after {
+                    transform: scale(1);
+                }
+            }
+        }
+
+        #feedback {
+            height: 500px;
+            background-image: url('https://picsum.photos/1920/780?random=2');
+            background-attachment: fixed;
+            background-size: cover;
+
+            a {
+                transition: opacity 0.3s linear;
+
+                &:hover {
+                    opacity: 1;
+                }
+            }
+        }
+
+        footer {
+            background-color: #212121;
+
+            svg {
+                transition: fill 0.2s linear;
+                fill: #fbd38d;
+
+                &:hover {
+                    fill: #fff;
+                }
+            }
         }
     }
 }
