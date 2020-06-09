@@ -1,6 +1,39 @@
-@include('header',['section'=>'main'])
+@extends('layouts.app')
+
+@section('top')
+<div id="main_slider_container" class="relative">
+  <div class="main_slide w-full absolute active overflow-hidden">
+    <div class="main_slide_bg w-full absolute z-0"></div>
+    <div class="overlay bg-black bg-opacity-50 w-full h-full z-10 relative flex flex-col justify-center items-center px-20 text-white">
+      <h1 class="text-center text-4xl sm:text-6xl">There is no sincerer love</h1>
+      <h3 class="text-center text-xl sm:text-2xl">than the love of food</h3>
+    </div>
+  </div>
+  <div class="main_slide w-full absolute overflow-hidden">
+    <div class="main_slide_bg w-full absolute z-0"></div>
+    <div class="overlay bg-black bg-opacity-50 w-full h-full z-10 relative flex flex-col justify-center items-center px-20 text-white">
+      <h1 class="text-center text-4xl sm:text-6xl">There is no sincerer love 2</h1>
+      <h3 class="text-center text-xl sm:text-2xl">than the love of food</h3>
+    </div>
+  </div>
+  <div class="main_slide w-full absolute overflow-hidden">
+    <div class="main_slide_bg w-full absolute z-0"></div>
+    <div class="overlay bg-black bg-opacity-50 w-full h-full z-10 relative flex flex-col justify-center items-center px-20 text-white">
+      <h1 class="text-center text-4xl sm:text-6xl">There is no sincerer love 3</h1>
+      <h3 class="text-center text-xl sm:text-2xl">than the love of food</h3>
+    </div>
+  </div>
+  <div id="main_slider_pager" class="absolute w-full flex items-end z-10 justify-center pb-5">
+    <div class="page cursor-pointer rounded-full w-3 h-3 mr-2 bg-black bg-white"></div>
+    <div class="page cursor-pointer rounded-full w-3 h-3 mr-2 bg-black"></div>
+    <div class="page cursor-pointer rounded-full w-3 h-3 bg-black"></div>
+  </div>
+</div>
+@endsection
+
+@section('content')
 <section id="sections" class="pt-16 relative bg-green-100">
-  <p class="text-center w-full text-6xl">Let's Go!</p>
+  <h1 class="text-center w-full text-6xl">Let's Go!</h1>
   <p class="text-center m-auto w-3/5">Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt quibusdam numquam, possimus quae quisquam nisi dicta unde libero excepturi voluptates obcaecati aspernatur vitae ea sapiente, laboriosam nostrum autem! Aliquam, eum?</p>
   <div class="flex flex-wrap justify-center mt-16">
     <div data-aos="flip-left" class="card m-10">
@@ -116,13 +149,13 @@
   </div>
 </section>
 <section id="top_ranked" class="pt-16 bg-white">
-  <p class="text-center text-6xl">Top Ranked</p>
+  <h1 class="text-center text-4xl sm:text-6xl">Top Ranked</h1>
   <div class="flex mt-10 flex-wrap justify-center">
     <div data-aos="flip-up" class="text-center mb-10">
       <div class="top relative rounded-full sm:mr-10 bg-black">
         <div class="rounded-full absolute top-0 right-0 bg-orange-500 text-white text-bold flex justify-center items-center z-10 text-4xl">5</div>
       </div>
-      <div class="text-3xl sm:-ml-10">
+      <div class="text-2xl sm:text-3xl sm:-ml-10">
         asdasd
       </div>
     </div>
@@ -130,7 +163,7 @@
       <div class="top relative rounded-full sm:mr-10 bg-black">
         <div class="rounded-full absolute top-0 right-0 bg-orange-500 text-white text-bold flex justify-center items-center z-10 text-4xl">5</div>
       </div>
-      <div class="text-3xl sm:-ml-10">
+      <div class="text-2xl sm:text-3xl sm:-ml-10">
         asdasd
       </div>
     </div>
@@ -138,7 +171,7 @@
       <div class="top relative rounded-full bg-black">
         <div class="rounded-full absolute top-0 right-0 bg-orange-500 text-white text-bold flex justify-center items-center z-10 text-4xl">5</div>
       </div>
-      <div class="text-3xl">
+      <div class="text-2xl sm:text-3xl">
         asdasd
       </div>
     </div>
@@ -146,7 +179,7 @@
 </section>
 <section id="feedback" class="relative w-full">
   <div class="absolute bg-black bg-opacity-25 h-full w-full"></div>
-  <p class="text-white text-bold text-6xl relative text-center pt-5">Feedback</p>
+  <h1 class="text-white text-bold text-6xl relative text-center pt-5">Feedback</h1>
   <div id="feed_width_definer" class="absolute text-white overflow-hidden top-50 inset-y-0 inset-x-0 mx-10 sm:mx-20 xl:mx-40">
     <div id="fb-container" class="h-full w-full text-white text-center" style="width:200vw;">
       <div class="h-full flex items-center">
@@ -178,4 +211,4 @@
     </a>
   </div>
 </section>
-@include('footer')
+@endsection

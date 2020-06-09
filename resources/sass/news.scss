@@ -1,0 +1,17 @@
+section {
+    .news-container {
+        .news {
+            background-image: url('http://picsum.photos/770/400');
+            height: 400px;
+            .summary {
+              transition: all 0.5s ease-in-out;
+              max-height: 0;
+            }
+            &:hover {
+              .font-bold .summary {
+                max-height: 300px;
+              }
+            }
+        }
+    }
+}

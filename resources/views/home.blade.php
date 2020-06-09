@@ -1,5 +1,11 @@
 @extends('layouts.app')
 
+@section('top')
+<div id="section_topper" class="w-full">
+    <div class="w-full bg-opacity-50 bg-black"></div>
+  </div>
+@endsection
+
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
