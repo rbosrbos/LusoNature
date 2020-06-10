@@ -74,16 +74,16 @@ menuBtn.addEventListener('click', () => {
  */
 
 window.addEventListener('scroll', function (e) {
-  if (window.scrollY > 50) {
-      document.getElementById('nav_container').classList.add('scrolled');
-      document.getElementById('logo').classList.add('scrolled');
-      document.getElementById('blackboard').classList.remove('-mt-32');
-      document.getElementById('menu-mob').classList.add('h-24');
-  } else {
-      document.getElementById('nav_container').classList.remove('scrolled');
-      document.getElementById('logo').classList.remove('scrolled');
-      document.getElementById('blackboard').classList.add('-mt-32');
-  }
+    if (window.scrollY > 50) {
+        document.getElementById('nav_container').classList.add('scrolled');
+        document.getElementById('logo').classList.add('scrolled');
+        document.getElementById('blackboard').classList.remove('-mt-32');
+        document.getElementById('menu-mob').classList.add('h-24');
+    } else {
+        document.getElementById('nav_container').classList.remove('scrolled');
+        document.getElementById('logo').classList.remove('scrolled');
+        document.getElementById('blackboard').classList.add('-mt-32');
+    }
 });
 
 
@@ -209,21 +209,21 @@ if (slides.length > 0) { // We are at the mainpage
             } else {
                 /* right swipe */
                 for (let i = 0; i < slides.length; i++) {
-                  if (slides[i].classList.contains('active')) {
-                      slides[i].classList.remove('active');
-                      pager[i].classList.remove('bg-white');
-                      if (i === 0) {
-                          slides[slides.length-1].classList.add('active');
-                          pager[slides.length-1].classList.add('bg-white');
-                          break;
-                      } else {
-                          slides[i - 1].classList.add('active');
-                          pager[i - 1].classList.add('bg-white');
-                          break;
-                      }
-                  }
-              }
-              resetSlider();
+                    if (slides[i].classList.contains('active')) {
+                        slides[i].classList.remove('active');
+                        pager[i].classList.remove('bg-white');
+                        if (i === 0) {
+                            slides[slides.length - 1].classList.add('active');
+                            pager[slides.length - 1].classList.add('bg-white');
+                            break;
+                        } else {
+                            slides[i - 1].classList.add('active');
+                            pager[i - 1].classList.add('bg-white');
+                            break;
+                        }
+                    }
+                }
+                resetSlider();
             }
         }
         xDown = null;
@@ -325,64 +325,7 @@ if (slides.length > 0) { // We are at the mainpage
         });
     }
 }
-/**
- *
- * Close Modals
- *
- */
-const modalContainer = document.querySelector('#modal_container');
-function closeModal() {
-  modalContainer.classList.add('opacity-0');
-  setTimeout(function(){
-    modalContainer.style.zIndex = '-1';
-    modalContainer.childNodes.forEach(element => {
-      if (!element.classList.contains('opacity-0')) {
-          element.classList.add('opacity-0');
-          element.style.zIndex = '-1';
-      }
-  });
-  },800);
-}
-document.querySelectorAll('.close-modal').forEach(element => {
-  element.addEventListener('click', closeModal);
-});
 
-/**
- *
- * Login - Open Modal/Close
- *
- */
-const modalLogin = document.querySelector('#modal_login');
-const allContents = modalLogin.querySelectorAll('*');
-
-function closeIfItsOutside(e) {
-  const lm = document.querySelector('.login-mobile');
-  const allLM = lm.querySelectorAll('*');
-  
-  if (!Array.from(allContents).includes(e.target)
-  && e.target != modalLogin
-  && !Array.from(allLM).includes(e.target)
-  && e.target != lm) {
-    document.removeEventListener('click',closeIfItsOutside);
-    closeModal();
-  }
-}
-function openLoginModal(e) {
-  e.preventDefault();
-  menuContents.classList.remove('mobile');
-  menuContents.classList.add('hidden');
-  menuBtn.classList.remove('open');
-  document.addEventListener('click',closeIfItsOutside, false);
-  modalLogin.parentElement.classList.remove('opacity-0');
-  modalLogin.parentElement.style.zIndex = '';
-  modalLogin.classList.remove('opacity-0');
-  modalLogin.style.zIndex = '';
-  modalLogin.querySelectorAll('input')[1].focus();
-  modalLogin.querySelectorAll('input')[1].select();
-}
-
-document.querySelector('.login').addEventListener('click', openLoginModal);
-document.querySelector('.login-mobile').addEventListener('click', openLoginModal);
 
 /**
  * 
@@ -390,8 +333,22 @@ document.querySelector('.login-mobile').addEventListener('click', openLoginModal
  * 
  */
 
- const goUpBtn = document.querySelector('#go_up');
- goUpBtn.addEventListener('click',function(e){
-     e.preventDefault();
+const goUpBtn = document.querySelector('#go_up');
+goUpBtn.addEventListener('click', function (e) {
+    e.preventDefault();
     window.scrollTo(0, 0);
- });
+});
+
+/**
+ * 
+ * Alert handling
+ * 
+ */
+
+const alerts = document.querySelectorAll('.alert');
+if (alerts.length > 0) {
+    alerts.forEach(el => {
+        el.addEventListener('transitionend', () => el.remove());
+        el.childNodes[2].addEventListener('click', () => el.style.opacity = '0');
+    });
+}

@@ -14,10 +14,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+
 Route::get('/', 'MainpageController@index')->name('mainpage');
+Route::resource('profile', 'ProfileController')->middleware('auth');
 Route::resource('news', 'NewsController');
 
-
 Auth::routes();
-
-Route::get('/dashboard', 'HomeController@index')->name('home');

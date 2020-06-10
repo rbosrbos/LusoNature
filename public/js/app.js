@@ -50034,76 +50034,35 @@ if (slides.length > 0) {
   };
 }
 /**
- *
- * Close Modals
- *
- */
-
-
-var modalContainer = document.querySelector('#modal_container');
-
-function closeModal() {
-  modalContainer.classList.add('opacity-0');
-  setTimeout(function () {
-    modalContainer.style.zIndex = '-1';
-    modalContainer.childNodes.forEach(function (element) {
-      if (!element.classList.contains('opacity-0')) {
-        element.classList.add('opacity-0');
-        element.style.zIndex = '-1';
-      }
-    });
-  }, 800);
-}
-
-document.querySelectorAll('.close-modal').forEach(function (element) {
-  element.addEventListener('click', closeModal);
-});
-/**
- *
- * Login - Open Modal/Close
- *
- */
-
-var modalLogin = document.querySelector('#modal_login');
-var allContents = modalLogin.querySelectorAll('*');
-
-function closeIfItsOutside(e) {
-  var lm = document.querySelector('.login-mobile');
-  var allLM = lm.querySelectorAll('*');
-
-  if (!Array.from(allContents).includes(e.target) && e.target != modalLogin && !Array.from(allLM).includes(e.target) && e.target != lm) {
-    document.removeEventListener('click', closeIfItsOutside);
-    closeModal();
-  }
-}
-
-function openLoginModal(e) {
-  e.preventDefault();
-  menuContents.classList.remove('mobile');
-  menuContents.classList.add('hidden');
-  menuBtn.classList.remove('open');
-  document.addEventListener('click', closeIfItsOutside, false);
-  modalLogin.parentElement.classList.remove('opacity-0');
-  modalLogin.parentElement.style.zIndex = '';
-  modalLogin.classList.remove('opacity-0');
-  modalLogin.style.zIndex = '';
-  modalLogin.querySelectorAll('input')[1].focus();
-  modalLogin.querySelectorAll('input')[1].select();
-}
-
-document.querySelector('.login').addEventListener('click', openLoginModal);
-document.querySelector('.login-mobile').addEventListener('click', openLoginModal);
-/**
  * 
  * Go up
  * 
  */
+
 
 var goUpBtn = document.querySelector('#go_up');
 goUpBtn.addEventListener('click', function (e) {
   e.preventDefault();
   window.scrollTo(0, 0);
 });
+/**
+ * 
+ * Alert handling
+ * 
+ */
+
+var alerts = document.querySelectorAll('.alert');
+
+if (alerts.length > 0) {
+  alerts.forEach(function (el) {
+    el.addEventListener('transitionend', function () {
+      return el.remove();
+    });
+    el.childNodes[2].addEventListener('click', function () {
+      return el.style.opacity = '0';
+    });
+  });
+}
 
 /***/ }),
 

@@ -9,16 +9,9 @@ use Illuminate\Support\Facades\Route;
 class NewsController extends Controller
 {
     /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-
-
-    /**
      * Display all news
      * 
-     * @return \Illuminate\View\View
+     * @return \Illuminate\Contracts\Support\Renderable
      */
     public function index()
     {
@@ -53,7 +46,7 @@ class NewsController extends Controller
      * Display the specified resource.
      *
      * @param  \App\Models\News  $news
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\Support\Renderable
      */
     public function show(News $news)
     {
