@@ -2,7 +2,6 @@
 
   @push('styles')
   <link href="{{ asset('css/news.css') }}" rel="stylesheet">
-  <script type="module" src="https://unpkg.com/ionicons@5.0.0/dist/ionicons/ionicons.esm.js"></script>
   @endpush
 
   @section('top')

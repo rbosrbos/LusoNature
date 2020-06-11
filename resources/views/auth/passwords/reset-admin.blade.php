@@ -7,9 +7,9 @@
 @section('content')
 <div class="text-orange-400 md:w-1/2 xl:w-1/4 m-auto mb-10 text-center mt-5">
     <div class="text-center text-gray-700">
-        <p class="text-2xl">{{ __('Reset Password') }}</p>
+        <p class="text-2xl">Admin {{ __('Reset Password') }}</p>
         <p>Fill the following form</p>
-        <form method="POST" action="{{ route('password.update') }}">
+        <form method="POST" action="{{ route('admin.password.request') }}">
             @csrf
             <input type="hidden" name="token" value="{{ $token }}">
             <input

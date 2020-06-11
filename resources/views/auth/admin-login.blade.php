@@ -14,24 +14,25 @@
             d='M256,144c-19.72,0-37.55,7.39-50.22,20.82s-19,32-17.57,51.93C191.11,256,221.52,288,256,288s64.83-32,67.79-71.24c1.48-19.74-4.8-38.14-17.68-51.82C293.39,151.44,275.59,144,256,144Z' />
     </svg>
     <div class="text-center text-gray-700">
-        <p class="text-2xl">{{ __('Login') }}</p>
+        <p class="text-2xl">ADMIN {{ __('Login') }}</p>
         <p>Enter your credentials below</p>
-        <form method="POST" action="{{ route('login') }}">
+        <form method="POST" action="{{ route('admin.login.submit') }}">
             @csrf
             <input
                 class="@error('email') text-red-500 @enderror bg-white focus:outline-none focus:shadow-outline border border-gray-300 rounded-lg py-2 px-4 block m-auto mt-10 mb-5 appearance-none leading-normal w-3/4"
                 type="text" placeholder="{{ __('E-Mail Address') }}" name="email" value="{{ old('email') }}" autofocus
                 required>
             @error('email')
-            <span class="text-red-500" role="alert">
+            <span class="invalid-feedback" role="alert">
                 <strong>{{ $message }}</strong>
             </span>
             @enderror
             <input
                 class="@error('password') text-red-500 @enderror bg-white focus:outline-none focus:shadow-outline border border-gray-300 rounded-lg py-2 px-4 block m-auto my-5 appearance-none leading-normal w-3/4"
-                type="password" placeholder="{{ __('Password') }}" name="password" required>
+                type="password" placeholder="{{ __('Password') }}" name="password" required
+                value="{{ old('password') }}">
             @error('password')
-            <span class="text-red-500" role="alert">
+            <span class="invalid-feedback" role="alert">
                 <strong>{{ $message }}</strong>
             </span>
             @enderror
@@ -46,12 +47,9 @@
         </form>
         <div class="mt-10">
             @if (Route::has('password.request'))
-            <a class="block transition duration-200 hover:text-orange-500" href="{{ route('password.request') }}">
+            <a class="block transition duration-200 hover:text-orange-500" href="{{ route('admin.password.request') }}">
                 {{ __('Forgot Your Password?') }}
             </a>
-            @endif
-            @if (Route::has('register'))
-            <a class="block transition duration-200 hover:text-orange-500" href="{{ route('register') }}">Register</a>
             @endif
         </div>
     </div>

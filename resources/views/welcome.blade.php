@@ -37,6 +37,8 @@
 
 @section('content')
 <section id="sections" class="pt-16 relative bg-green-100">
+    @component('components.who')
+    @endcomponent
     <h1 class="text-center w-full text-6xl">Let's Go!</h1>
     <p class="text-center m-auto w-3/5">Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt quibusdam numquam,
         possimus quae quisquam nisi dicta unde libero excepturi voluptates obcaecati aspernatur vitae ea sapiente,

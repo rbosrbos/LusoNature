@@ -16,9 +16,9 @@
             </span>
         </div>
         @endif
-        <p class="text-2xl">{{ __('Reset Password') }}</p>
+        <p class="text-2xl">Admin {{ __('Reset Password') }}</p>
         <p>Enter your email</p>
-        <form method="POST" action="{{ route('password.email') }}">
+        <form method="POST" action="{{ route('admin.password.email') }}">
             @csrf
             <input
                 class="@error('email') text-red-500 @enderror bg-white focus:outline-none focus:shadow-outline border border-gray-300 rounded-lg py-2 px-4 block m-auto mt-10 mb-5 appearance-none leading-normal w-3/4"
@@ -32,11 +32,6 @@
             <button type="submit"
                 class="block m-auto bg-transparent mt-5 hover:bg-orange-300 text-orange-500 font-semibold hover:text-white py-2 px-4 border border-orange-300 hover:border-transparent rounded">{{ __('Send Password Reset Link') }}</button>
         </form>
-        <div class="mt-10">
-            @if (Route::has('register'))
-            <a class="block transition duration-200 hover:text-orange-500" href="{{ route('register') }}">Register</a>
-            @endif
-        </div>
     </div>
 </div>
 @endsection

@@ -59,7 +59,7 @@
         @endif
         <div class="mt-10">
             @if (Route::has('logout'))
-            <form action="{{ route('logout') }}" method="POST">
+            <form action="{{ route('user.logout') }}" method="POST">
                 @csrf
                 <button type="submit"
                     class="block m-auto bg-transparent mt-5 hover:bg-orange-300 text-orange-500 font-semibold hover:text-white py-2 px-4 border border-orange-300 hover:border-transparent rounded">Logout</button>
