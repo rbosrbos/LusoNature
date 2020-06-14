@@ -16,7 +16,7 @@ Where do you wish to go today?
     @endforeach
 </div>
 <div class="w-full bg-black bg-opacity-50 fixed bottom-0 pb-6 pt-1 lg:static lg:pb-0 lg:pt-0 lg:bg-transparent">
-    <div class="w-10/12 m-auto">
+    <div class="w-10/12 mx-auto my-10">
         {{$places->links()}}
     </div>
 </div>

@@ -21,6 +21,7 @@ Add New Place
                     </span>
                 </div>
                 @endif
+
                 <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="name">
                     Name
                 </label>
@@ -43,6 +44,52 @@ Add New Place
                 @error('description')
                 <div class="text-red-500 italic font-bold">{{ $message }}</div>
                 @enderror
+            </div>
+            <div class="w-full flex justify-center">
+                <div class="m-auto">
+                    <label class="block text-center uppercase tracking-wide mt-5 text-gray-700 text-xs font-bold my-2"
+                        for="name">
+                        Category
+                    </label>
+                    <select
+                        class="bg-gray-200 w-40 sm:w-64 text-gray-700 border border-gray-200 rounded py-1 px-1 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                        name="category">
+                        <option disabled @if (!old('category')) selected @endif value> -- select an option -- </option>
+                        @foreach ($categories as $category)
+                        @if (old('category'))
+                        @if ($category->id == old('category'))
+                        <option selected value="{{ $category->id }}">{{$category->name}}</option>
+                        @else
+                        <option value="{{ $category->id }}">{{$category->name}}</option>
+                        @endif
+                        @else
+                        <option value="{{ $category->id }}">{{$category->name}}</option>
+                        @endif
+                        @endforeach
+                    </select>
+                    @error('category')
+                    <div class="text-red-500 italic font-bold">{{ $message }}</div>
+                    @enderror
+                </div>
+            </div>
+            <div class="w-full flex justify-center">
+                <div class="m-auto">
+                    <label class="block text-center uppercase tracking-wide my-2 text-gray-700 text-xs font-bold"
+                    for="name">
+                    City
+                </label>
+                <select
+                    class="bg-gray-200 w-40 sm:w-64 text-gray-700 border border-gray-200 rounded py-1 px-1 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                    name="city">
+                    <option disabled selected value> -- select an option -- </option>
+                    @foreach ($cities as $city)
+                    <option value="{{ $city->id }}">{{$city->name}}</option>
+                    @endforeach
+                </select>
+                @error('city')
+                <div class="text-red-500 italic font-bold">{{ $message }}</div>
+                @enderror
+                </div>
             </div>
             <div class="w-full ">
                 <h3 class="text-center mt-10">GPS Coordinates</h3>

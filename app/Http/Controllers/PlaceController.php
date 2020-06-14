@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
+use App\Models\City;
 use App\Models\Place;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\App;
@@ -14,8 +16,9 @@ use stdClass;
 
 class PlaceController extends Controller
 {
-    public function main() {
-        $places = Place::with('categories')->paginate();
+    public function main()
+    {
+        $places = Place::with(['categories','cities'])->paginate();
         // $dumpHeaders = [];
         // foreach($headers as $header) {
         //     array_push($dumpHeaders,array(
@@ -23,7 +26,7 @@ class PlaceController extends Controller
         //         'value' => $header
         //         ));
         // }
-        return view('place.index-main',[
+        return view('place.index-main', [
             'places' => $places
         ]);
     }
@@ -34,8 +37,8 @@ class PlaceController extends Controller
      */
     public function index()
     {
-        $places = Place::where('user_id',Auth::user()->id)->get();
-        return view('place.index',[
+        $places = Place::where('user_id', Auth::user()->id)->get();
+        return view('place.index', [
             'places' => $places
         ]);
     }
@@ -47,7 +50,12 @@ class PlaceController extends Controller
      */
     public function create()
     {
-        return view('place.create');
+        $cities = City::orderBy('name', 'asc')->get();
+        $categories = Category::orderBy('name', 'asc')->get();
+        return view('place.create', [
+            'cities' => $cities,
+            'categories' => $categories
+        ]);
     }
 
     /**
@@ -58,10 +66,11 @@ class PlaceController extends Controller
      */
     public function store(Request $request)
     {
-        // TODO: STORAGE OF PICTURES
         $request->validate([
             'name' => 'required|min:10',
             'description' => 'required|min:30',
+            'city' => 'required',
+            'category' => 'required',
             'pictures' => 'required|min:1|max:10',
             'pictures.*' => 'image|dimensions:min_width=200,min_height=200'
         ], [
@@ -71,14 +80,15 @@ class PlaceController extends Controller
         $data = $request->only('name', 'description', 'latitude', 'longitude', 'parking', 'wc', 'restaurants');
         $data['id'] = Str::uuid();
         $data['user_id'] = Auth::user()->id;
+        $data['cities_id'] = $request->city;
         Place::create($data);
         $id = $data['id'];
         $files = $request->pictures;
-        mkdir('storage/place/'.$id.'/', 666, true);
+        mkdir('storage/place/' . $id . '/', 666, true);
         for ($i = 0; $i < count($files); $i++) {
             Image::make($request->file('pictures')[$i]->getRealPath())->resize(1920, null, function ($constraint) {
                 $constraint->aspectRatio();
-            })->save('storage/place/'.$id.'/'.($i+1).'.jpg');
+            })->save('storage/place/' . $id . '/' . ($i + 1) . '.jpg');
         }
 
         return back()->with(['status' => 'success']);
