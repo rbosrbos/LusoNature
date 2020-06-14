@@ -1,15 +1,14 @@
-@extends('layouts.app')
-
-
-@section('top')
-<div id="section_topper" class="w-full">
-    <div class="w-full bg-opacity-50 bg-black"></div>
-</div>
+@extends('layouts.user')
+@section('title')
+User Area
 @endsection
-
-@section('content')
-<section id="sections" class="pt-16 relative bg-green-100">
-    @component('components.who')
+@section('usercontent')
+<div class="flex justify-center items-start pt-10">
+    @component('components.user-button',[
+    'title' => 'Add New Place',
+    'icon' => 'add-circle-outline',
+    'route' => route('place.create')
+    ])
     @endcomponent
-</section>
+</div>
 @endsection

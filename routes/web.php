@@ -16,13 +16,13 @@ use Illuminate\Support\Facades\Auth;
 
 
 Route::get('/', 'MainpageController@index')->name('mainpage');
-Route::get('/home', 'HomeController@index')->name('home')->middleware('auth');
-Route::post('/users/logout', 'Auth\LoginController@userLogout')->name('user.logout');
+
+Route::post('/user/logout', 'Auth\LoginController@userLogout')->name('user.logout');
 
 Route::prefix('admin')->group(function(){
   Route::get('/', 'AdminController@index')->name('admin.mainpage');
   Route::get('/login', 'Auth\AdminLoginController@showLoginForm')->name('admin.login');
-  Route::get('/logout', 'Auth\AdminLoginController@logout')->name('admin.logout');
+  Route::post('/logout', 'Auth\AdminLoginController@logout')->name('admin.logout');
   Route::post('/login', 'Auth\AdminLoginController@login')->name('admin.login.submit');
 
   //Password reset routes
@@ -32,7 +32,10 @@ Route::prefix('admin')->group(function(){
   Route::get('/password/reset/{token}', 'Auth\AdminResetPasswordController@showResetForm')->name('admin.password.reset');
 });
 
-Route::resource('profile', 'ProfileController')->middleware('auth');
-Route::resource('news', 'NewsController');
+Route::resource('home', 'HomeController')->middleware('auth');
+
+Route::resource('news', 'NewsController')->middleware('auth',['except' => ['index','show']]);
+Route::get('/place/all', 'PlaceController@main')->name('place.main');
+Route::resource('place', 'PlaceController')->middleware('auth',['except' => ['index','show']]);
 
 Auth::routes();

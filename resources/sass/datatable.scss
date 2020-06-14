@@ -1,0 +1,104 @@
+/*Form fields*/
+/*Row Hover*/
+/*Pagination Buttons*/
+/*Pagination Buttons - Current selected */
+/*Pagination Buttons - Hover */
+/*Add padding to bottom border */
+/*Change colour of responsive icon*/
+@import '~datatables.net-dt/css/jquery.dataTables.min.css';
+@import '~datatables.net-responsive-dt/css/responsive.dataTables.min.css';
+
+.dataTables_wrapper {
+	select {
+		color: #4a5568;
+        padding: .5rem 1rem;
+		line-height: 1.25;
+		border-width: 2px;
+		border-radius: .25rem;
+		border-color: #edf2f7;
+		background-color: #edf2f7;
+	}
+	.dataTables_filter {
+		input {
+			color: #4a5568;
+            padding: .5rem 1rem;
+			line-height: 1.25;
+			border-width: 2px;
+			border-radius: .25rem;
+			border-color: #edf2f7;
+			background-color: #edf2f7;
+		}
+		input[type="search"] {
+			width: 100%;
+			@screen sm {
+			width: auto;
+			}
+		}
+	}
+	.dataTables_paginate {
+		.paginate_button {
+			font-weight: 700;
+			border-radius: .25rem;
+			border: 1px solid transparent;
+			&:hover {
+				color: #fff !important;
+				box-shadow: 0 1px 3px 0 rgba(0,0,0,.1), 0 1px 2px 0 rgba(0,0,0,.06);
+				font-weight: 700;
+				border-radius: .25rem;
+				background: #667eea !important;
+				border: 1px solid transparent;
+			}
+		}
+		.paginate_button.current {
+			color: #fff !important;
+			box-shadow: 0 1px 3px 0 rgba(0,0,0,.1), 0 1px 2px 0 rgba(0,0,0,.06);
+			font-weight: 700;
+			border-radius: .25rem;
+			background: #667eea !important;
+			border: 1px solid transparent;
+		}
+	}
+}
+table.dataTable.hover {
+	tbody {
+		tr {
+			&:hover {
+				background-color: #ebf4ff;
+			}
+		}
+	}
+}
+table.dataTable.display {
+	tbody {
+		tr {
+			&:hover {
+				background-color: #ebf4ff;
+			}
+		}
+	}
+}
+table.dataTable.no-footer {
+	border-bottom: 1px solid #e2e8f0;
+	margin-top: 0.75em;
+	margin-bottom: 0.75em;
+}
+table.dataTable.dtr-inline.collapsed {
+	>tbody {
+		>tr {
+			>td {
+				&:first-child {
+					&:before {
+						background-color: #667eea !important;
+					}
+				}
+			}
+			>th {
+				&:first-child {
+					&:before {
+						background-color: #667eea !important;
+					}
+				}
+			}
+		}
+	}
+}

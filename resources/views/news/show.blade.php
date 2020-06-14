@@ -1,16 +1,8 @@
-  @extends('layouts.app')
+  @extends('layouts.section')
 
   @push('styles')
   <link href="{{ asset('css/news.css') }}" rel="stylesheet">
   @endpush
-
-  @section('top')
-  <div id="section_topper" class="w-full">
-      <div class="w-full bg-opacity-50 bg-black h-full flex items-end justify-center">
-          <h1 class="text-center text-white w-full lg:hidden">News</h1>
-      </div>
-  </div>
-  @endsection
 
   @section('content')
   <section class="flex justify-center flex-wrap">

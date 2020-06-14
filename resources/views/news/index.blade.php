@@ -1,17 +1,11 @@
-  @extends('layouts.app')
+  @extends('layouts.section')
 
   @push('styles')
   <link href="{{ asset('css/news.css') }}" rel="stylesheet">
   @endpush
-
-  @section('top')
-  <div id="section_topper" class="w-full">
-      <div class="w-full bg-opacity-50 bg-black h-full flex items-end justify-center">
-          <h1 class="text-center text-white w-full lg:hidden">News</h1>
-      </div>
-  </div>
+  @section('title')
+  News
   @endsection
-
   @section('content')
   <section class="flex flex-wrap">
     <div class="w-full ml-5 my-5">
@@ -21,7 +15,7 @@
           <h1 class="text-xl lg:text-4xl text-center">Filters</h1>
       </div>
       <div class="news-container w-full md:w-5/5 xl:w-5/6 flex flex-wrap justify-around">
-          <h1 class="text-black text-center w-full hidden lg:inline">News</h1>
+          
           <div
               class="w-full bg-black bg-opacity-50 fixed bottom-0 pb-6 pt-1 lg:static lg:pb-0 lg:pt-0 lg:bg-transparent">
               <div class="w-10/12 m-auto">

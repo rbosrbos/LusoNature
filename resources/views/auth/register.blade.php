@@ -1,9 +1,4 @@
-@extends('layouts.app')
-@section('top')
-<div id="section_topper" class="w-full">
-    <div class="w-full bg-opacity-50 bg-black"></div>
-</div>
-@endsection
+@extends('layouts.section')
 @section('content')
 <div class="text-orange-400 md:w-1/2 xl:w-1/4 m-auto mb-10 text-center mt-5">
     <ion-icon style="font-size: 8em;" name="person-add-outline"></ion-icon>

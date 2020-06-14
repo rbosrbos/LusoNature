@@ -3,5 +3,8 @@
     "/css/app.css": "/css/app.css",
     "/css/main.css": "/css/main.css",
     "/css/news.css": "/css/news.css",
-    "/js/profile.js": "/js/profile.js"
+    "/css/datatable.css": "/css/datatable.css",
+    "/js/datatable.js": "/js/datatable.js",
+    "/js/profile.js": "/js/profile.js",
+    "/js/user.js": "/js/user.js"
 }

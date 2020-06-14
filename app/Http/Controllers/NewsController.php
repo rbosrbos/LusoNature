@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Route;
 
 class NewsController extends Controller
 {
+    
     /**
      * Display all news
      * 
@@ -15,7 +16,9 @@ class NewsController extends Controller
      */
     public function index()
     {
-        $news = News::with('user')->orderBy('created_at','desc')->paginate();
+        //$news = News::with('user')->orderBy('created_at','desc')->paginate();
+        $news = News::orderBy('created_at','desc')->paginate();
+
         return view('news.index', [
             'news' => $news
         ]);
@@ -28,7 +31,7 @@ class NewsController extends Controller
      */
     public function create()
     {
-        //
+        return view('new.create');
     }
 
     /**
@@ -39,7 +42,7 @@ class NewsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        
     }
 
     /**

@@ -17,8 +17,8 @@ class UsersTableSeeder extends Seeder
             'id' => Str::uuid(),
             'name' => 'Rui Silva',
             'email' => 'ruibatisilva@sapo.pt',
-            'password' => bcrypt('Rui#1q2w3e4r'),
+            'password' => bcrypt('123456'),
         ]);
-        factory(User::class, 30)->create();
+        // factory(User::class, 3)->create();
     }
 }

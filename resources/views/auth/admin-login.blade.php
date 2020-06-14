@@ -1,9 +1,4 @@
-@extends('layouts.app')
-@section('top')
-<div id="section_topper" class="w-full">
-    <div class="w-full bg-opacity-50 bg-black"></div>
-</div>
-@endsection
+@extends('layouts.section')
 @section('content')
 <div class="text-orange-400 md:w-1/2 xl:w-1/4 m-auto mb-10">
     <svg class="block m-auto mt-10 fill-current" xmlns='http://www.w3.org/2000/svg' width='100' height='100'

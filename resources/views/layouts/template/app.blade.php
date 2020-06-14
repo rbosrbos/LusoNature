@@ -7,7 +7,7 @@
     <title>LusoNature</title>
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link href="{{ asset('css/main.css') }}" rel="stylesheet">
-    <meta name="csrf-token" content="{{ csrf_token() }}">
+    {{-- <meta name="csrf-token" content="{{ csrf_token() }}"> --}}
     @stack('styles')
     <script type="module" src="https://unpkg.com/ionicons@5.0.0/dist/ionicons/ionicons.esm.js"></script>
 </head>
@@ -22,7 +22,7 @@
                     <div id="logo" class="mt-3 pt-1 sm:pt-0 sm:mt-4 text-green-900">
                         <svg class="w-24 sm:w-32 fill-current stroke-current" viewBox="0 0 2134 2134" version="1.1"
                             xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
-                            xml:space="preserve" xmlns:serif="http://www.serif.com/"
+                            xml:space="preserve"
                             style="fill-rule:evenodd;clip-rule:evenodd;stroke-linecap:round;stroke-miterlimit:10;">
                             <g class="logo_anim">
                                 <path
@@ -62,10 +62,13 @@
                     </div>
                     <div class="flex flex-col absolute right-0 top-0 pt-1">
                         <div class="hidden lg:flex justify-end items-start text-xs font-bold">
-                            @if(!empty(Auth::user()->name))
-                            <a href="{{ route('profile.index') }}">Hello {{ Auth::user()->name }}</a>
+                            @if (Auth::guard('web')->check())
+                            <a href="{{ route('home.index') }}">Hello {{ Auth::guard('web')->user()->name }}</a>
                             @else
                             <a href="{{ route('login') }}">Login / Register</a>
+                            @endif
+                            @if (Auth::guard('admin')->check())
+                            &nbsp;<a class="text-orange-500" href="{{ route('admin.mainpage') }}"> (Admin)</a>
                             @endif
                         </div>
                         <div id="menu-mob"
@@ -75,8 +78,7 @@
                         <ul class="lg:ml-0 lg:mt-12 hidden flex flex-col justify-center items-center lg:block text-lg">
                             <li class="p-5 lg:p-0 lg:inline lg:mr-6"><a href="/">Home</a></li>
                             <li class="p-5 lg:p-0 lg:inline lg:mr-6"><a href="{{ route('news.index') }}">News</a></li>
-                            <li class="p-5 lg:p-0 lg:inline lg:mr-6"><a href="#">Events</a></li>
-                            <li class="p-5 lg:p-0 lg:inline lg:mr-6"><a href="#">Browse Places</a></li>
+                        <li class="p-5 lg:p-0 lg:inline lg:mr-6"><a href="{{ route('place.main') }}">Browse Places</a></li>
                             <li class="p-5 lg:p-0 lg:inline lg:mr-6"><a href="#">Weather Forecast</a></li>
                             <li class="p-5 lg:p-0 lg:inline lg:mr-6"><a href="#">Contact Us</a></li>
                             <li class="p-5 lg:p-0 lg:inline">
@@ -106,7 +108,7 @@
             </div>
             @yield('top')
         </header>
-        <main class="relative">
+        <main class="relative pt-5">
             @yield('content')
         </main>
         <footer class="text-orange-300 px-10 py-5">
@@ -160,7 +162,7 @@
                 <div class="text-center sm:text-left md:w-1/5">
                     <p class="font-bold text-3xl">NewsLetter</p>
                     <span class="block text-white">Lorem, ipsum dolor sit amet consectetur adipisicing elit.</span>
-                    <input class="block mx-auto mt-5 sm:mx-0" type="text" name="" id="">
+                    <input class="block mx-auto mt-5 sm:mx-0" type="text">
                     <button
                         class="bg-transparent mt-5 hover:bg-orange-300 text-orange-500 font-semibold hover:text-white py-2 px-4 border border-orange-300 hover:border-transparent rounded">
                         Subscribe
