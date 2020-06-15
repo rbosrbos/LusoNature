@@ -7,8 +7,8 @@
     }
 </style>
 @endpush
-<div class="flex">
-    <div class="text-orange-400 p-5 inline-block">
+<div class="flex flex-col sm:flex-row">
+    <div class="text-orange-400 px-5 sm:py-5 inline-block">
         @if ($errors->avatar->any())
         @foreach ($errors->avatar->all() as $error)
         <div class="text-center bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative alert transition duration-500"
@@ -31,8 +31,8 @@
                 @endif
                 <p class="left text-base">{{ Auth::user()->name ?? '' }}</p>
             </div>
-        <a class="text-xs cursor-pointer block w-24 m-auto bg-transparent my-2 hover:bg-orange-300 text-orange-500 font-semibold hover:text-white border border-orange-300 hover:border-transparent rounded" href="{{ route('home.index') }}">Home</a>
-            <form method="POST" id="avatar_form" action="{{ route('home.store',Auth::user()->id) }}"
+        <a class="text-xs cursor-pointer inline-block sm:block w-24 m-auto bg-transparent sm:mb-2 hover:bg-orange-300 text-orange-500 font-semibold hover:text-white border border-orange-300 hover:border-transparent rounded" href="{{ route('home.index') }}">Home</a>
+            <form method="POST" id="avatar_form" class="inline-block sm:block" action="{{ route('home.store',Auth::user()->id) }}"
                 enctype="multipart/form-data">
                 @csrf
                 <input type="file" class="hidden" name="avatar" id="avatar">
@@ -44,7 +44,7 @@
 
             </form>
             @if(!empty($avatar))
-            <form method="POST" action="{{ route('home.destroy',Auth::user()->id) }}" enctype="multipart/form-data">
+            <form method="POST" class="inline-block sm:block" action="{{ route('home.destroy',Auth::user()->id) }}" enctype="multipart/form-data">
                 @csrf
                 @method('delete')
                 <a id="delete_avatar"
@@ -52,7 +52,7 @@
                     Avatar</a>
             </form>
             @endif
-            <div class="mt-2">
+            <div class="sm:mt-2 inline-block sm:block">
                 @if (Route::has('logout'))
                 <form action="{{ route('user.logout') }}" method="POST">
                     @csrf
@@ -62,13 +62,13 @@
                 @endif
             </div>
         </div>
-        <div id="user_menu" class="mt-10">
+        <div id="user_menu" class="mt-3 sm:mt-10">
             <p class="left text-black text-base text-center">Submissions</p>
-            <ul>
-                <li><a class="text-xs cursor-pointer block w-24 m-auto bg-transparent hover:bg-orange-300 text-orange-500 font-semibold hover:text-white border border-orange-300 hover:border-transparent rounded text-center"
+            <ul class="text-center">
+                <li class="inline-block sm:block"><a class="text-xs cursor-pointer block w-24 m-auto bg-transparent hover:bg-orange-300 text-orange-500 font-semibold hover:text-white border border-orange-300 hover:border-transparent rounded text-center"
                         href="{{ route('place.index') }}">Places</a></li>
-                <li><a class="text-xs my-2 cursor-pointer block w-24 m-auto bg-transparent hover:bg-orange-300 text-orange-500 font-semibold hover:text-white border border-orange-300 hover:border-transparent rounded text-center"
-                        href="{{ route('home.index') }}">Comments</a></li>
+                <li class="inline-block sm:block"><a class="text-xs my-2 cursor-pointer block w-24 m-auto bg-transparent hover:bg-orange-300 text-orange-500 font-semibold hover:text-white border border-orange-300 hover:border-transparent rounded text-center"
+                        href="{{ route('home.index') }}">Recent Activity</a></li>
             </ul>
         </div>
     </div>

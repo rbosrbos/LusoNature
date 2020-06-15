@@ -55,7 +55,6 @@ html {
             sans-serif;
         font-size: 14px;
 
-        h1,
         h2,
         h3,
         h4,
@@ -64,15 +63,24 @@ html {
         }
 
         h1 {
-            font-size: 3rem;
+            font-size: 2rem;
+            @screen sm {
+                font-size: 3rem;
+            }
         }
 
         h2 {
-            font-size: 2rem;
+            font-size: 1.5rem;
+            @screen sm {
+                font-size: 2rem;
+            }
         }
 
         h3 {
-            font-size: 1.5rem;
+            font-size: 1rem;
+            @screen sm {
+                font-size: 1.5rem;
+            }
         }
 
         #app {
@@ -89,8 +97,11 @@ html {
             }
 
             #section_topper {
-                height: 25vh;
+                height: 150px;
                 background-image: url('https://picsum.photos/1920/250?random=1');
+                @screen sm {
+                    height: 200px;
+                }
             }
 
             #main_slider_container {

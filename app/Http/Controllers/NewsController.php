@@ -53,6 +53,7 @@ class NewsController extends Controller
      */
     public function show(News $news)
     {
+        $news->load('user');
         return view('news.show',[
             'new' => $news->load('user'),
             'route' => Route::currentRouteName()

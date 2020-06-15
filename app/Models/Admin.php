@@ -9,7 +9,7 @@ use App\Notifications\AdminResetPasswordNotification;
 class Admin extends Authenticatable
 {
     use Notifiable;
-
+    protected $keyType = 'string';
     protected $guard = 'admin';
     /**
      * The attributes that are mass assignable.

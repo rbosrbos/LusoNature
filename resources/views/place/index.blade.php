@@ -3,7 +3,7 @@
 <link rel="stylesheet" href="{{ asset('css/datatable.css') }}">
 @endpush
 @section('title')
-Your contributed place
+Your contributed places
 @endsection
 @section('scripts')
 <script src="{{ asset('js/user.js') }}"></script>
@@ -23,6 +23,7 @@ Your contributed place
                     <th data-priority="6">Latitude</th>
                     <th data-priority="7">Longitude</th>
                     <th data-priority="8">Status</th>
+                    <th data-priority="9">Edit</th>
                 </tr>
             </thead>
             <tbody>
@@ -36,6 +37,7 @@ Your contributed place
                     <td>{{ $place->latitude ?? '' }}</td>
                     <td>{{ $place->longitude ?? '' }}</td>
                     <td>@if($place->status) Published @else Awaiting @endif</td>
+                    <td><a class="text-blue-500 font-bold" href="{{ route('place.index',['id'=>$place->id]) }}">Edit</a></td>
                 </tr>
                 @endforeach
             </tbody>

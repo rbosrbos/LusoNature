@@ -8,11 +8,12 @@ use Illuminate\Support\Str;
 
 class Place extends Model
 {
+    protected $keyType = 'string';
     protected $fillable = [
-        'id', 'user_id', 'name', 'description', 'latitude', 'longitude', 'parking', 'wc', 'restaurants', 'cities_id'
+        'id', 'categories_id', 'user_id', 'name', 'description', 'latitude', 'longitude', 'parking', 'wc', 'restaurants', 'cities_id'
     ];
     public $timestamps = false;
-
+    public $incrementing = false;
     public function categories() {
         return $this->belongsTo(Category::class);
     }

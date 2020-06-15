@@ -21,6 +21,7 @@ try {
 
 window.axios = require('axios');
 window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
+// delete axios.defaults.headers.common['X-CSRF-TOKEN'];
 
 require('datatables.net-dt');
 require('datatables.net-responsive-dt');

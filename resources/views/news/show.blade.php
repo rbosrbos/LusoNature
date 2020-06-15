@@ -11,10 +11,10 @@
       </div>
       <div class="w-full lg:w-2/3 my-10">
           <img src="https://picsum.photos/1920/500" alt="">
-          <h1 class="w-full">{{ $new->title }}</h1>
-          <h3 class="w-full">{{ $new->summary }}</h3>
-          <p>{{ $new->body }}</p>
-          <p class="text-orange-300 text-right">
+          <h1 class="px-3 sm:px-5 lg:px-0 w-full">{{ $new->title }}</h1>
+          <h3 class="px-3 sm:px-5 lg:px-0 mb-5 text-md w-full">{{ $new->summary }}</h3>
+          <p class="px-3 sm:px-5 lg:px-0">{{ $new->body }}</p>
+          <p class="px-3 sm:px-5 lg:px-0 text-orange-300 text-right">
               <ion-icon style="transform:translateY(4px)" class="text-xl" name="person-circle-outline"></ion-icon> <a
                   class="mr-5" href="mailto:{{ $new->user->email }}">{{ $new->user->name }}</a>
               <ion-icon style="transform:translateY(4px)" class="text-xl" name="calendar-outline"></ion-icon>

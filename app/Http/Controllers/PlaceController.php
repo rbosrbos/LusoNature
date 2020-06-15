@@ -4,21 +4,22 @@ namespace App\Http\Controllers;
 
 use App\Models\Category;
 use App\Models\City;
+use App\Models\Images;
 use App\Models\Place;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Schema;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Str;
 use Intervention\Image\Facades\Image;
-use stdClass;
 
 class PlaceController extends Controller
 {
     public function main()
     {
-        $places = Place::with(['categories','cities'])->paginate();
+        $places = Place::with(['categories', 'cities'])->paginate();
         // $dumpHeaders = [];
         // foreach($headers as $header) {
         //     array_push($dumpHeaders,array(
@@ -78,20 +79,40 @@ class PlaceController extends Controller
             'pictures.*.image' => 'Some of your files are not images',
         ]);
         $data = $request->only('name', 'description', 'latitude', 'longitude', 'parking', 'wc', 'restaurants');
-        $data['id'] = Str::uuid();
-        $data['user_id'] = Auth::user()->id;
-        $data['cities_id'] = $request->city;
-        Place::create($data);
-        $id = $data['id'];
-        $files = $request->pictures;
-        mkdir('storage/place/' . $id . '/', 666, true);
-        for ($i = 0; $i < count($files); $i++) {
-            Image::make($request->file('pictures')[$i]->getRealPath())->resize(1920, null, function ($constraint) {
-                $constraint->aspectRatio();
-            })->save('storage/place/' . $id . '/' . ($i + 1) . '.jpg');
-        }
+        $isValidCategory = Category::where('id', $request->category)->first();
+        $isValidCity = City::where('id', $request->city)->first();
+        if (!empty($isValidCity) && !empty($isValidCategory)) {
+            $data['id'] = Str::uuid();
+            $data['user_id'] = Auth::user()->id;
+            $data['categories_id'] = $request->category;
+            $data['cities_id'] = $request->city;
 
-        return back()->with(['status' => 'success']);
+            Place::create($data);
+            $id = $data['id'];
+            $files = $request->pictures;
+            mkdir('storage/places/' . $id . '/', 666, true);
+            for ($i = 0; $i < count($files); $i++) {
+                $imageID = Str::uuid();
+                Image::make($request->file('pictures')[$i]->getRealPath())->resize(1920, null, function ($constraint) {
+                    $constraint->aspectRatio();
+                })->save('storage/places/' . $id . '/' . $imageID . '.jpg');
+                Image::make($request->file('pictures')[$i]->getRealPath())->resize(500, null, function ($constraint) {
+                    $constraint->aspectRatio();
+                })->save('storage/places/' . $id . '/' . $imageID . '-small.jpg');
+                $dataImage = array(
+                    'id' => $imageID,
+                    'place_id' => $data['id'],
+                    'user_id' => $data['user_id'],
+                    'url' => 'storage/places/' . $id . '/' . ($i + 1)
+                );
+                Images::create($dataImage);
+            }
+
+
+            return back()->with(['status' => 'success']);
+        } else {
+            return back()->with(['status' => 'error']);
+        }
     }
 
     /**

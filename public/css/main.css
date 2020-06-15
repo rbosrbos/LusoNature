@@ -1058,7 +1058,6 @@ html body {
   font-size: 14px;
 }
 
-html body h1,
 html body h2,
 html body h3,
 html body h4,
@@ -1067,15 +1066,33 @@ html body h5 {
 }
 
 html body h1 {
-  font-size: 3rem;
-}
-
-html body h2 {
   font-size: 2rem;
 }
 
-html body h3 {
+@media (min-width: 640px) {
+  html body h1 {
+    font-size: 3rem;
+  }
+}
+
+html body h2 {
   font-size: 1.5rem;
+}
+
+@media (min-width: 640px) {
+  html body h2 {
+    font-size: 2rem;
+  }
+}
+
+html body h3 {
+  font-size: 1rem;
+}
+
+@media (min-width: 640px) {
+  html body h3 {
+    font-size: 1.5rem;
+  }
 }
 
 html body #app button:hover {
@@ -1092,8 +1109,14 @@ html body #app .custom-label input:checked + svg {
 }
 
 html body #app #section_topper {
-  height: 25vh;
+  height: 150px;
   background-image: url("https://picsum.photos/1920/250?random=1");
+}
+
+@media (min-width: 640px) {
+  html body #app #section_topper {
+    height: 200px;
+  }
 }
 
 html body #app #main_slider_container {

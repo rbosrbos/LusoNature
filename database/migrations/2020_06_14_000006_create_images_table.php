@@ -26,7 +26,6 @@ class CreateImagesTable extends Migration
             $table->primary('id');
             $table->char('place_id', 36);
             $table->char('user_id', 36);
-            $table->string('url', 200)->nullable();
             $table->tinyInteger('status')->nullable();
 
             $table->index(["place_id"], 'fk_places_has_users_places3_idx');

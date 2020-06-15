@@ -21,6 +21,7 @@ Vue.config.ignoredElements = ['ion-icon']
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))
 
 Vue.component('place-card', require('./components/placeCard.vue').default);
+Vue.component('joke', require('./components/jokeOfTheDay.vue').default); 
 // import Vuetify from '../plugins/vuetify';
 /**
  * Next, we will create a fresh Vue application instance and attach it to
