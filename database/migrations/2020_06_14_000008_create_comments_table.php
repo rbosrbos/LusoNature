@@ -29,7 +29,7 @@ class CreateCommentsTable extends Migration
             $table->char('user_id', 36);
             $table->longText('comment');
             $table->timestamp('time');
-            $table->tinyInteger('status')->nullable();
+            $table->tinyInteger('status')->default('0');
 
             $table->index(["user_id"], 'fk_places_has_users_users1_idx');
 

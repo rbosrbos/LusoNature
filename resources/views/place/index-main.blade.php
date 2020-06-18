@@ -6,10 +6,11 @@
 Where do you wish to go today?
 @endsection
 @section('scripts')
-<script src="{{ asset('js/user.js') }}"></script>
+{{-- <script src="{{ asset('js/user.js') }}"></script> --}}
 <script src="{{ asset('js/datatable.js') }}"></script>
 @endsection
 @section('content')
+<filters :categories='@json($categories)' :cities='@json($cities)'></filters>
 <div class="flex flex-wrap justify-center">
     @foreach ($places as $place)
     <place-card :place='@json($place)'></place-card>
@@ -20,16 +21,4 @@ Where do you wish to go today?
         {{$places->links()}}
     </div>
 </div>
-{{-- @foreach ($place as $place)
-<div>
-    <div>{{ $place->name ?? '' }}</div>
-<div>{{ $place->description ?? '' }}</div>
-<div>@if($place->parking) Yes @else No @endif</div>
-<div>@if($place->wc) Yes @else No @endif</div>
-<div>@if($place->restaurants) Yes @else No @endif</div>
-<div>{{ $place->latitude ?? '' }}</div>
-<div>{{ $place->longitude ?? '' }}</div>
-<div>@if($place->status) Published @else Awaiting @endif</div>
-</div>
-@endforeach --}}
 @endsection

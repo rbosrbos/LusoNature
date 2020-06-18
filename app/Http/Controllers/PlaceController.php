@@ -17,18 +17,58 @@ use Intervention\Image\Facades\Image;
 
 class PlaceController extends Controller
 {
-    public function main()
+    /**
+     * Validates the request. Type 1 for update (new pictures can be null)
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param integer $type
+     */
+    private function validatePlace(Request $request, $type = null)
     {
-        $places = Place::with(['categories', 'cities'])->paginate();
-        // $dumpHeaders = [];
-        // foreach($headers as $header) {
-        //     array_push($dumpHeaders,array(
-        //         'text' => ucfirst($header),
-        //         'value' => $header
-        //         ));
-        // }
+        $rules = [
+            'name' => 'required|min:10',
+            'description' => 'required|min:30',
+            'city' => 'required',
+            'category' => 'required'
+        ];
+        $messages = [];
+        if (empty($type)) {
+            $rules = array_merge($rules, ['pictures' => 'required|min:1|max:10'], ['pictures.*' => 'image|dimensions:min_width=200,min_height=200']);
+            $messages = [
+                'pictures' => 'required|min:1|max:10',
+                'pictures.*' => 'image|dimensions:min_width=200,min_height=200'
+            ];
+        }
+        $request->validate($rules, $messages);
+
+        $isValidCategory = Category::where('id', $request->category)->first();
+        $isValidCity = City::where('id', $request->city)->first();
+        if (!empty($isValidCity) && !empty($isValidCategory)) {
+            return true;
+        }
+        return false;
+    }
+    /**
+     * 
+     * Public page for places
+     * 
+     * @param Array $filters
+     */
+    public function main(Request $request)
+    {
+        $places = Place::where('status',1)
+        ->with(['categories', 'cities'])
+        ->wc($request->wc)
+        ->restaurants($request->restaurants)
+        ->parking($request->parking)
+        ->category($request->category)
+        ->city($request->city)
+        ->paginate(10);
+
         return view('place.index-main', [
-            'places' => $places
+            'places' => $places,
+            'categories' => Category::orderBy('name', 'asc')->get(),
+            'cities' => City::orderBy('name', 'asc')->get()
         ]);
     }
     /**
@@ -51,11 +91,13 @@ class PlaceController extends Controller
      */
     public function create()
     {
+        $place = new Place();
         $cities = City::orderBy('name', 'asc')->get();
         $categories = Category::orderBy('name', 'asc')->get();
-        return view('place.create', [
+        return view('place.create-edit', [
             'cities' => $cities,
-            'categories' => $categories
+            'categories' => $categories,
+            'place' => $place
         ]);
     }
 
@@ -67,21 +109,8 @@ class PlaceController extends Controller
      */
     public function store(Request $request)
     {
-        $request->validate([
-            'name' => 'required|min:10',
-            'description' => 'required|min:30',
-            'city' => 'required',
-            'category' => 'required',
-            'pictures' => 'required|min:1|max:10',
-            'pictures.*' => 'image|dimensions:min_width=200,min_height=200'
-        ], [
-            'pictures.*.dimensions' => 'Some of your images doesn\'t match minimum size',
-            'pictures.*.image' => 'Some of your files are not images',
-        ]);
-        $data = $request->only('name', 'description', 'latitude', 'longitude', 'parking', 'wc', 'restaurants');
-        $isValidCategory = Category::where('id', $request->category)->first();
-        $isValidCity = City::where('id', $request->city)->first();
-        if (!empty($isValidCity) && !empty($isValidCategory)) {
+        if ($this->validatePlace($request)) {
+            $data = $request->only('name', 'description', 'latitude', 'longitude', 'parking', 'wc', 'restaurants');
             $data['id'] = Str::uuid();
             $data['user_id'] = Auth::user()->id;
             $data['categories_id'] = $request->category;
@@ -102,13 +131,10 @@ class PlaceController extends Controller
                 $dataImage = array(
                     'id' => $imageID,
                     'place_id' => $data['id'],
-                    'user_id' => $data['user_id'],
-                    'url' => 'storage/places/' . $id . '/' . ($i + 1)
+                    'user_id' => $data['user_id']
                 );
                 Images::create($dataImage);
             }
-
-
             return back()->with(['status' => 'success']);
         } else {
             return back()->with(['status' => 'error']);
@@ -134,7 +160,18 @@ class PlaceController extends Controller
      */
     public function edit(Place $place)
     {
-        //
+        if ($place->user_id != Auth::user()->id) {
+            abort(403, 'Can\'t touch this');
+        } else {
+            $place->load('images');
+            $cities = City::orderBy('name', 'asc')->get();
+            $categories = Category::orderBy('name', 'asc')->get();
+            return view('place.create-edit', [
+                'place' => $place,
+                'cities' => $cities,
+                'categories' => $categories
+            ]);
+        }
     }
 
     /**
@@ -146,7 +183,50 @@ class PlaceController extends Controller
      */
     public function update(Request $request, Place $place)
     {
-        //
+        if ($place->user_id != Auth::user()->id) {
+            abort(403, 'Can\'t touch this');
+        } else {
+            if ($this->validatePlace($request, 1)) {
+                $data = $request->only('name', 'description', 'latitude', 'longitude', 'parking', 'wc', 'restaurants');
+                $data['categories_id'] = $request->category;
+                $data['cities_id'] = $request->city;
+                $data['status'] = NULL;
+                Place::where('id', $place->id)->update($data);
+                $id = $place->id;
+                foreach ($place->images as $img) {
+                    if (!in_array($img, json_decode($request->images))) {
+                        Images::destroy($img->id);
+                        Storage::delete('places/'.$place->id.'/'.$img->id.'.jpg');
+                        Storage::delete('places/'.$place->id.'/'.$img->id.'-small.jpg');
+                    }
+                }
+                $files = $request->pictures;
+                if ($files) {
+                    if (!file_exists('storage/places/' . $id . '/')) {
+                        mkdir('storage/places/' . $id . '/', 666, true);
+                    }
+                    for ($i = 0; $i < count($files); $i++) {
+                        $imageID = Str::uuid();
+                        Image::make($request->file('pictures')[$i]->getRealPath())->resize(1920, null, function ($constraint) {
+                            $constraint->aspectRatio();
+                        })->save('storage/places/' . $id . '/' . $imageID . '.jpg');
+                        Image::make($request->file('pictures')[$i]->getRealPath())->resize(500, null, function ($constraint) {
+                            $constraint->aspectRatio();
+                        })->save('storage/places/' . $id . '/' . $imageID . '-small.jpg');
+                        $dataImage = array(
+                            'id' => $imageID,
+                            'place_id' => $place->id,
+                            'user_id' => Auth::user()->id
+                        );
+                        Images::create($dataImage);
+                    }
+                }
+
+                return back()->with(['status' => 'success']);
+            } else {
+                return back()->with(['status' => 'error']);
+            }
+        }
     }
 
     /**

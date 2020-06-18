@@ -6,7 +6,6 @@
 Your contributed places
 @endsection
 @section('scripts')
-<script src="{{ asset('js/user.js') }}"></script>
 <script src="{{ asset('js/datatable.js') }}"></script>
 @endsection
 @section('usercontent')
@@ -37,7 +36,7 @@ Your contributed places
                     <td>{{ $place->latitude ?? '' }}</td>
                     <td>{{ $place->longitude ?? '' }}</td>
                     <td>@if($place->status) Published @else Awaiting @endif</td>
-                    <td><a class="text-blue-500 font-bold" href="{{ route('place.index',['id'=>$place->id]) }}">Edit</a></td>
+                    <td><a class="text-blue-500 font-bold" href="{{ route('place.edit',['place'=>$place]) }}">Edit</a></td>
                 </tr>
                 @endforeach
             </tbody>

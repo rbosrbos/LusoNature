@@ -132,6 +132,28 @@ function inside() {
   }, 100);
 }
 
+document.getElementById('formSubmit').onclick = function (e) {
+  e.preventDefault();
+  var images = document.getElementById('place_images');
+
+  if (images) {
+    var children = images.children;
+    var sendImages = [];
+
+    for (var i = 0; i < children.length; i++) {
+      sendImages.push(children[i].id);
+    }
+
+    var input = document.createElement("input");
+    input.setAttribute('type', 'hidden');
+    input.setAttribute('name', 'images');
+    input.setAttribute('value', JSON.stringify(sendImages));
+    this.parentElement.appendChild(input);
+  }
+
+  this.parentElement.submit();
+};
+
 /***/ }),
 
 /***/ 2:

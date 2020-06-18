@@ -29,18 +29,19 @@ class CreatePlacesTable extends Migration
             $table->char('user_id', 36);
             $table->string('name');
             $table->longText('description');
-            $table->integer('parking')->nullable();
-            $table->integer('wc')->nullable();
-            $table->integer('restaurants')->nullable();
+            $table->integer('parking')->default('0');
+            $table->integer('wc')->default('0');
+            $table->integer('restaurants')->default('0');
             $table->string('latitude', 45)->nullable();
             $table->string('longitude', 45)->nullable();
-            $table->tinyInteger('status')->nullable();
+            $table->tinyInteger('status')->default('0');
 
             $table->index(["categories_id"], 'fk_places_categories1_idx');
 
             $table->index(["cities_id"], 'fk_places_cities1_idx');
 
             $table->index(["user_id"], 'fk_places_users1_idx');
+            $table->timestamps();
 
 
             $table->foreign('user_id', 'fk_places_users1_idx')

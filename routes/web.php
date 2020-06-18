@@ -35,7 +35,7 @@ Route::prefix('admin')->group(function(){
 Route::resource('home', 'HomeController')->middleware('auth');
 
 Route::resource('news', 'NewsController')->middleware('auth',['except' => ['index','show']]);
-Route::get('/place/all', 'PlaceController@main')->name('place.main');
+Route::get('/place/index/', 'PlaceController@main')->name('place.main');
 Route::resource('place', 'PlaceController')->middleware('auth',['except' => ['index','show']]);
 
 Auth::routes();

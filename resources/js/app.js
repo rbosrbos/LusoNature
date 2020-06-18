@@ -20,8 +20,11 @@ Vue.config.ignoredElements = ['ion-icon']
 // const files = require.context('./', true, /\.vue$/i)
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))
 
-Vue.component('place-card', require('./components/placeCard.vue').default);
-Vue.component('joke', require('./components/jokeOfTheDay.vue').default); 
+Vue.component('place-card', require('./components/place/PlaceCard.vue').default);
+Vue.component('joke', require('./components/RandomJoke.vue').default); 
+Vue.component('place-images-edit', require('./components/place/PlaceImagesEdit.vue').default); 
+Vue.component('filters', require('./components/Filters.vue').default); 
+
 // import Vuetify from '../plugins/vuetify';
 /**
  * Next, we will create a fresh Vue application instance and attach it to
