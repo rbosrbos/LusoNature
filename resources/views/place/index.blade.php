@@ -15,7 +15,7 @@ Your contributed places
             <thead>
                 <tr>
                     <th data-priority="1">Name</th>
-                    <th data-priority="2">Description</th>
+                    {{-- <th data-priority="2">Description</th> --}}
                     <th data-priority="3">Parking</th>
                     <th data-priority="4">WC</th>
                     <th data-priority="5">Restaurants</th>
@@ -29,7 +29,7 @@ Your contributed places
                 @foreach ($places as $place)
                 <tr>
                     <td>{{ $place->name ?? '' }}</td>
-                    <td>{{ $place->description ?? '' }}</td>
+                    {{-- <td>{{ $place->description ?? '' }}</td> --}}
                     <td>@if($place->parking) Yes @else No @endif</td>
                     <td>@if($place->wc) Yes @else No @endif</td>
                     <td>@if($place->restaurants) Yes @else No @endif</td>

@@ -1,6 +1,13 @@
 section .news-container .news {
-  background-image: url("http://picsum.photos/770/400");
-  height: 400px;
+  background-size: cover;
+  width: 700px;
+  height: 200px;
+}
+
+@media (min-width: 640px) {
+  section .news-container .news {
+    height: 300px;
+  }
 }
 
 section .news-container .news .summary {

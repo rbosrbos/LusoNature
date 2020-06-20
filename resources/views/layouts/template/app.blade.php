@@ -78,9 +78,11 @@
                         <ul class="lg:ml-0 lg:mt-12 hidden flex flex-col justify-center items-center lg:block text-lg">
                             <li class="p-5 lg:p-0 lg:inline lg:mr-6"><a href="/">Home</a></li>
                             <li class="p-5 lg:p-0 lg:inline lg:mr-6"><a href="{{ route('news.index') }}">News</a></li>
-                        <li class="p-5 lg:p-0 lg:inline lg:mr-6"><a href="{{ route('place.main') }}">Browse Places</a></li>
+                            <li class="p-5 lg:p-0 lg:inline lg:mr-6"><a href="{{ route('place.main') }}">Browse
+                                    Places</a></li>
                             <li class="p-5 lg:p-0 lg:inline lg:mr-6"><a href="#">Weather Forecast</a></li>
-                            <li class="p-5 lg:p-0 lg:inline lg:mr-6"><a href="#">Contact Us</a></li>
+                            <li class="p-5 lg:p-0 lg:inline lg:mr-6"><a href="{{route('contact.index')}}">Contact Us</a>
+                            </li>
                             <li class="p-5 lg:p-0 lg:inline">
                                 <a href="#">
                                     <svg class="inline" xmlns='http://www.w3.org/2000/svg' width='20' height='20'
@@ -92,7 +94,7 @@
                                             style='fill:none;stroke:#e0d9cb;stroke-linecap:round;stroke-miterlimit:10;stroke-width:64px' />
                                     </svg>
                                 </a>
-                            <a class="ml-5 login-mobile sm:hidden" href="{{route('login')}}">
+                                <a class="ml-5 login-mobile sm:hidden" href="{{route('login')}}">
                                     <svg class="inline fill-current" xmlns='http://www.w3.org/2000/svg' width='28'
                                         height='28' viewBox='0 0 512 512'>
                                         <path

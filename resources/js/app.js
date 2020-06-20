@@ -308,28 +308,31 @@ if (slides.length > 0) { // We are at the mainpage
     }
 
     const feeders = document.getElementsByClassName('feed-start');
-    feeders[0].onclick = function (e) {
-        e.preventDefault();
-        setFeedbackInterval(-1);
-    };
-    feeders[1].onclick = function (e) {
-        e.preventDefault();
-        setFeedbackInterval(1);
-    };
-    stopFeed.onclick = function (e) {
-        e.preventDefault();
-        clearInterval(feedBackInterval);
-        feedBackInterval = 0;
-        stopFeed.classList.add('hidden');
-    }
-    document.querySelectorAll('.fb-item').forEach(element => {
-        element.style.width = document.querySelector('#feed_width_definer').offsetWidth + 'px';
-    });
-    window.onresize = function () {
+    if (feeders.length > 0) {
+        feeders[0].onclick = function (e) {
+            e.preventDefault();
+            setFeedbackInterval(-1);
+        };
+        feeders[1].onclick = function (e) {
+            e.preventDefault();
+            setFeedbackInterval(1);
+        };
+        stopFeed.onclick = function (e) {
+            e.preventDefault();
+            clearInterval(feedBackInterval);
+            feedBackInterval = 0;
+            stopFeed.classList.add('hidden');
+        }
         document.querySelectorAll('.fb-item').forEach(element => {
             element.style.width = document.querySelector('#feed_width_definer').offsetWidth + 'px';
         });
+        window.onresize = function () {
+            document.querySelectorAll('.fb-item').forEach(element => {
+                element.style.width = document.querySelector('#feed_width_definer').offsetWidth + 'px';
+            });
+        }
     }
+
 }
 
 

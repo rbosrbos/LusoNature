@@ -12,6 +12,9 @@ Where do you wish to go today?
 @section('content')
 <filters :categories='@json($categories)' :cities='@json($cities)'></filters>
 <div class="flex flex-wrap justify-center">
+    @if(count($places) === 0)
+    <div class="font-bold">Your query returned 0 results</div>
+    @endif
     @foreach ($places as $place)
     <place-card :place='@json($place)'></place-card>
     @endforeach

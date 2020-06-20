@@ -1104,6 +1104,10 @@ html body #app main {
   min-height: 53vh;
 }
 
+html body #app .h-screen-55 {
+  height: 55vh;
+}
+
 html body #app .custom-label input:checked + svg {
   display: block !important;
 }

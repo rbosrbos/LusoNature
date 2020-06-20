@@ -154,7 +154,8 @@ Place - {{ $place->name }}
                 @if(count($place->images) > 0)
                 <div class="w-full flex flex-wrap justify-center text-center">
                     <h3 class="text-center w-full mt-10">Current pictures:</h3>
-                    <place-images-edit :storelink='@json(asset('storage/places/' . $place->id))' :images='@json($place->images)'></place-images-edit>
+                    <place-images-edit :storelink='@json(asset(' storage/places/' . $place->id))'
+                        :images='@json($place->images)'></place-images-edit>
                 </div>
                 @endif
                 <div class="w-full text-center">

@@ -17,6 +17,10 @@ use Intervention\Image\Facades\Image;
 
 class PlaceController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth')->except('index', 'show', 'main');
+    }
     /**
      * Validates the request. Type 1 for update (new pictures can be null)
      *
@@ -56,15 +60,17 @@ class PlaceController extends Controller
      */
     public function main(Request $request)
     {
-        $places = Place::where('status',1)
-        ->with(['categories', 'cities'])
-        ->wc($request->wc)
-        ->restaurants($request->restaurants)
-        ->parking($request->parking)
-        ->category($request->category)
-        ->city($request->city)
-        ->paginate(10);
-
+        $places = Place::where('status', 1)
+            ->with(['categories', 'cities', 'images'])
+            ->whereHas('images', function ($query) {
+                return $query->where('status', '=', 1);
+            })
+            ->wc($request->wc)
+            ->restaurants($request->restaurants)
+            ->parking($request->parking)
+            ->category($request->category)
+            ->city($request->city)
+            ->paginate(10);
         return view('place.index-main', [
             'places' => $places,
             'categories' => Category::orderBy('name', 'asc')->get(),
@@ -78,7 +84,9 @@ class PlaceController extends Controller
      */
     public function index()
     {
+
         $places = Place::where('user_id', Auth::user()->id)->get();
+
         return view('place.index', [
             'places' => $places
         ]);
@@ -124,10 +132,10 @@ class PlaceController extends Controller
                 $imageID = Str::uuid();
                 Image::make($request->file('pictures')[$i]->getRealPath())->resize(1920, null, function ($constraint) {
                     $constraint->aspectRatio();
-                })->save('storage/places/' . $id . '/' . $imageID . '.jpg');
+                })->orientate()->save('storage/places/' . $id . '/' . $imageID . '.jpg');
                 Image::make($request->file('pictures')[$i]->getRealPath())->resize(500, null, function ($constraint) {
                     $constraint->aspectRatio();
-                })->save('storage/places/' . $id . '/' . $imageID . '-small.jpg');
+                })->orientate()->save('storage/places/' . $id . '/' . $imageID . '-small.jpg');
                 $dataImage = array(
                     'id' => $imageID,
                     'place_id' => $data['id'],
@@ -149,7 +157,10 @@ class PlaceController extends Controller
      */
     public function show(Place $place)
     {
-        //
+        return view('place.show', [
+            'place' => $place,
+            'images' => $place->images()->get()
+        ]);
     }
 
     /**
@@ -196,8 +207,8 @@ class PlaceController extends Controller
                 foreach ($place->images as $img) {
                     if (!in_array($img, json_decode($request->images))) {
                         Images::destroy($img->id);
-                        Storage::delete('places/'.$place->id.'/'.$img->id.'.jpg');
-                        Storage::delete('places/'.$place->id.'/'.$img->id.'-small.jpg');
+                        Storage::delete('places/' . $place->id . '/' . $img->id . '.jpg');
+                        Storage::delete('places/' . $place->id . '/' . $img->id . '-small.jpg');
                     }
                 }
                 $files = $request->pictures;
@@ -209,10 +220,10 @@ class PlaceController extends Controller
                         $imageID = Str::uuid();
                         Image::make($request->file('pictures')[$i]->getRealPath())->resize(1920, null, function ($constraint) {
                             $constraint->aspectRatio();
-                        })->save('storage/places/' . $id . '/' . $imageID . '.jpg');
+                        })->orientate()->save('storage/places/' . $id . '/' . $imageID . '.jpg');
                         Image::make($request->file('pictures')[$i]->getRealPath())->resize(500, null, function ($constraint) {
                             $constraint->aspectRatio();
-                        })->save('storage/places/' . $id . '/' . $imageID . '-small.jpg');
+                        })->orientate()->save('storage/places/' . $id . '/' . $imageID . '-small.jpg');
                         $dataImage = array(
                             'id' => $imageID,
                             'place_id' => $place->id,

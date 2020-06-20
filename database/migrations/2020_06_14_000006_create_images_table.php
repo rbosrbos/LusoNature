@@ -31,6 +31,7 @@ class CreateImagesTable extends Migration
             $table->index(["place_id"], 'fk_places_has_users_places3_idx');
 
             $table->index(["user_id"], 'fk_places_has_users_users3_idx');
+            $table->nullableTimestamps();
 
 
             $table->foreign('place_id', 'fk_places_has_users_places3_idx')

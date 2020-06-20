@@ -18,12 +18,6 @@ class AvatarProvider extends ServiceProvider
 
     public function register()
     {
-        //$avatar = preg_grep("/" . $auth->user()->id . "/", Storage::files('avatars'));
-        // $avatarUrl = '';
-        // if (count($avatar) > 0) {
-        //     $avatarUrl = Storage::url($avatar[0]);
-        // }
-        // $this->avatar = $avatarUrl;
     }
 
     /**

@@ -1985,13 +1985,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   mounted: function mounted() {
     var urlParams = new URLSearchParams(window.location.search);
@@ -2146,6 +2139,13 @@ __webpack_require__.r(__webpack_exports__);
   props: {
     place: Object
   },
+  filters: {
+    limit: function limit(value) {
+      if (!value) return '';
+      value = value.toString();
+      return value.substring(0, 300) + '...';
+    }
+  },
   methods: {
     over: function over() {
       var animDiv = this.$el.childNodes[0];
@@ -2166,6 +2166,9 @@ __webpack_require__.r(__webpack_exports__);
       animDiv.children[0].classList.remove('normal');
       animDiv.children[2].classList.remove('normal');
       animDiv.classList.remove('h-full');
+    },
+    "goto": function goto(e) {
+      window.location.href = e.target.closest('.parent').id;
     }
   }
 });
@@ -55736,13 +55739,19 @@ var render = function() {
       {
         staticClass:
           "parent cursor-pointer shadow-md transition duration-500 transform hover:scale-110 flex items-end bg-cover justify-center m-5 bg-pink-500",
-        staticStyle: {
-          "background-image": "url('https://picsum.photos/400/500')",
+        style: {
+          backgroundImage:
+            "url(../storage/places/" +
+            this.place.id +
+            "/" +
+            this.place.images[0].id +
+            ".jpg)",
           height: "500px",
           width: "400px"
-        }
+        },
+        attrs: { id: _vm.place.id }
       },
-      { mouseover: _vm.over, mouseleave: _vm.leave }
+      { mouseover: _vm.over, mouseleave: _vm.leave, click: _vm.goto }
     ),
     [
       _c(
@@ -55767,7 +55776,7 @@ var render = function() {
           _c(
             "p",
             { staticClass: "text-black hidden text-center font-normal p-3" },
-            [_vm._v(_vm._s(_vm.place.description))]
+            [_vm._v(_vm._s(_vm._f("limit")(_vm.place.description)))]
           )
         ]
       )
@@ -68335,32 +68344,34 @@ if (slides.length > 0) {
   var stopFeed = document.getElementById('stop_feed');
   var feeders = document.getElementsByClassName('feed-start');
 
-  feeders[0].onclick = function (e) {
-    e.preventDefault();
-    setFeedbackInterval(-1);
-  };
+  if (feeders.length > 0) {
+    feeders[0].onclick = function (e) {
+      e.preventDefault();
+      setFeedbackInterval(-1);
+    };
 
-  feeders[1].onclick = function (e) {
-    e.preventDefault();
-    setFeedbackInterval(1);
-  };
+    feeders[1].onclick = function (e) {
+      e.preventDefault();
+      setFeedbackInterval(1);
+    };
 
-  stopFeed.onclick = function (e) {
-    e.preventDefault();
-    clearInterval(feedBackInterval);
-    feedBackInterval = 0;
-    stopFeed.classList.add('hidden');
-  };
+    stopFeed.onclick = function (e) {
+      e.preventDefault();
+      clearInterval(feedBackInterval);
+      feedBackInterval = 0;
+      stopFeed.classList.add('hidden');
+    };
 
-  document.querySelectorAll('.fb-item').forEach(function (element) {
-    element.style.width = document.querySelector('#feed_width_definer').offsetWidth + 'px';
-  });
-
-  window.onresize = function () {
     document.querySelectorAll('.fb-item').forEach(function (element) {
       element.style.width = document.querySelector('#feed_width_definer').offsetWidth + 'px';
     });
-  };
+
+    window.onresize = function () {
+      document.querySelectorAll('.fb-item').forEach(function (element) {
+        element.style.width = document.querySelector('#feed_width_definer').offsetWidth + 'px';
+      });
+    };
+  }
 }
 /**
  * 

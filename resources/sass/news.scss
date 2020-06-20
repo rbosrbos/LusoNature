@@ -1,8 +1,13 @@
 section {
     .news-container {
         .news {
-            background-image: url('http://picsum.photos/770/400');
-            height: 400px;
+            //background-image: url('http://picsum.photos/770/400');
+            background-size: cover;
+            width: 700px;
+            height: 200px;
+            @screen sm {
+              height: 300px;
+            }
             .summary {
               transition: all 0.5s ease-in-out;
               max-height: 0;

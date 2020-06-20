@@ -27,7 +27,7 @@ class CreateNewsTable extends Migration
             $table->char('user_id', 36);
             $table->string('title');
             $table->longText('body');
-            $table->string('summary');
+            $table->text('summary');
 
             $table->index(["user_id"], 'fk_news_users1_idx');
             $table->timestamps();

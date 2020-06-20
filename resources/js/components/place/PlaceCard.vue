@@ -1,13 +1,13 @@
 <template>
-    <div v-on="{mouseover: over, mouseleave: leave}"
+    <div :id="place.id" v-on="{mouseover: over, mouseleave: leave, click: goto}"
         class="parent cursor-pointer shadow-md transition duration-500 transform hover:scale-110 flex items-end bg-cover justify-center m-5 bg-pink-500"
-        style="background-image: url('https://picsum.photos/400/500'); height: 500px; width: 400px;">
+        v-bind:style="{ backgroundImage: 'url(../storage/places/'+this.place.id + '/' + this.place.images[0].id + '.jpg)', height: '500px', width: '400px' }">
         <div
             class="bg-white bg-opacity-75 w-full font-bold h-40 text-orange-500 flex items-center flex-col justify-center">
             <p class="text-lg">{{place.categories.name}}</p>
             <p class="text-black text-2xl">{{place.name}}</p>
             <p class="text-lg ">{{place.cities.name}}</p>
-            <p class="text-black hidden text-center font-normal p-3">{{place.description}}</p>
+            <p class="text-black hidden text-center font-normal p-3">{{place.description | limit}}</p>
         </div>
     </div>
 </template>
@@ -44,6 +44,13 @@
         props: {
             place: Object
         },
+        filters: {
+            limit: function (value) {
+                if (!value) return ''
+                value = value.toString()
+                return value.substring(0, 300) + '...'
+            }
+        },
         methods: {
             over: function () {
                 let animDiv = this.$el.childNodes[0];
@@ -59,11 +66,14 @@
             },
             leave: function () {
                 let animDiv = this.$el.childNodes[0];
-                animDiv.children[3].classList.add('hidden','opacity-0')
+                animDiv.children[3].classList.add('hidden', 'opacity-0')
                 animDiv.children[3].classList.remove('opacity-1')
                 animDiv.children[0].classList.remove('normal')
                 animDiv.children[2].classList.remove('normal')
                 animDiv.classList.remove('h-full')
+            },
+            goto: function (e) {
+                window.location.href = e.target.closest('.parent').id;
             }
         }
     }
