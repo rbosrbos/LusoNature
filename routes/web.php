@@ -41,4 +41,6 @@ Route::resource('place', 'PlaceController');
 Route::get('/contact', 'ContactController@index')->name('contact.index');
 Route::post('/contact', 'ContactController@create')->middleware('throttle:1,1')->name('contact.create');
 
+Route::get('/forecast', 'WeatherForecastController@index')->name('weatherforecast.index');
+
 Auth::routes();

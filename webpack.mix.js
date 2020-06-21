@@ -25,10 +25,12 @@ mix.js('resources/js/app.js', 'public/js')
 .js('resources/js/profile.js', 'public/js')
 .js('resources/js/user.js', 'public/js')
 .js('resources/js/datatable.js', 'public/js')
+.js('resources/js/weatherforecast.js', 'public/js')
     .sass('resources/sass/app.scss', 'public/css')
     .sass('resources/sass/main.scss', 'public/css')
     .sass('resources/sass/news.scss', 'public/css')
     .sass('resources/sass/datatable.scss', 'public/css')
+    .sass('resources/sass/weatherforecast.scss', 'public/css')
     .options({
         processCssUrls: false,
         postCss: [

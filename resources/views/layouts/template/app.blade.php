@@ -80,7 +80,7 @@
                             <li class="p-5 lg:p-0 lg:inline lg:mr-6"><a href="{{ route('news.index') }}">News</a></li>
                             <li class="p-5 lg:p-0 lg:inline lg:mr-6"><a href="{{ route('place.main') }}">Browse
                                     Places</a></li>
-                            <li class="p-5 lg:p-0 lg:inline lg:mr-6"><a href="#">Weather Forecast</a></li>
+                            <li class="p-5 lg:p-0 lg:inline lg:mr-6"><a href="{{ route('weatherforecast.index') }}">Weather Forecast</a></li>
                             <li class="p-5 lg:p-0 lg:inline lg:mr-6"><a href="{{route('contact.index')}}">Contact Us</a>
                             </li>
                             <li class="p-5 lg:p-0 lg:inline">
