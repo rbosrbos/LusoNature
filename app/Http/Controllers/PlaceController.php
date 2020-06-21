@@ -40,7 +40,7 @@ class PlaceController extends Controller
             $rules = array_merge($rules, ['pictures' => 'required|min:1|max:10'], ['pictures.*' => 'image|dimensions:min_width=200,min_height=200']);
             $messages = [
                 'pictures' => 'required|min:1|max:10',
-                'pictures.*' => 'image|dimensions:min_width=200,min_height=200'
+                'pictures.*' => 'image|dimensions:min_width=1920,min_height=1080'
             ];
         }
         $request->validate($rules, $messages);

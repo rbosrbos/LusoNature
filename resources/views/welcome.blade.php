@@ -52,7 +52,9 @@
                     <p class="text-center">Aenean efficitur diam enim, eu ultrices quam imperdiet sed. Cras non egestas
                         ipsum. Donec dictum diam vel nulla porttitor, ac posuere tortor porta. In sed amet.</p>
                     <button
-                        class="bg-transparent mt-5 hover:bg-orange-300 text-orange-500 font-semibold hover:text-white py-2 px-4 border border-orange-300 hover:border-transparent rounded">
+                        class="bg-transparent mt-5 hover:bg-orange-300 text-orange-500 font-semibold hover:text-white py-2 px-4 border border-orange-300 hover:border-transparent rounded"
+                    onclick="location.href='{{route('place.main',['category'=>$beaches])}}'" type="button"
+                        >
                         View Section
                     </button>
                 </div>
@@ -87,7 +89,9 @@
                     <p class="text-center">Aenean efficitur diam enim, eu ultrices quam imperdiet sed. Cras non egestas
                         ipsum. Donec dictum diam vel nulla porttitor, ac posuere tortor porta. In sed amet.</p>
                     <button
-                        class="bg-transparent mt-5 hover:bg-orange-300 text-orange-500 font-semibold hover:text-white py-2 px-4 border border-orange-300 hover:border-transparent rounded">
+                        class="bg-transparent mt-5 hover:bg-orange-300 text-orange-500 font-semibold hover:text-white py-2 px-4 border border-orange-300 hover:border-transparent rounded"
+                        onclick="location.href='{{route('place.main',['category'=>$forests])}}'" type="button"
+                        >
                         View Section
                     </button>
                 </div>
@@ -118,7 +122,9 @@
                     <p class="text-center">Aenean efficitur diam enim, eu ultrices quam imperdiet sed. Cras non egestas
                         ipsum. Donec dictum diam vel nulla porttitor, ac posuere tortor porta. In sed amet.</p>
                     <button
-                        class="bg-transparent mt-5 hover:bg-orange-300 text-orange-500 font-semibold hover:text-white py-2 px-4 border border-orange-300 hover:border-transparent rounded">
+                        class="bg-transparent mt-5 hover:bg-orange-300 text-orange-500 font-semibold hover:text-white py-2 px-4 border border-orange-300 hover:border-transparent rounded"
+                        onclick="location.href='{{route('place.main',['category'=>$camping])}}'" type="button"
+                        >
                         View Section
                     </button>
                 </div>
@@ -151,7 +157,9 @@
                     <p class="text-center">Aenean efficitur diam enim, eu ultrices quam imperdiet sed. Cras non egestas
                         ipsum. Donec dictum diam vel nulla porttitor, ac posuere tortor porta. In sed amet.</p>
                     <button
-                        class="bg-transparent mt-5 hover:bg-orange-300 text-orange-500 font-semibold hover:text-white py-2 px-4 border border-orange-300 hover:border-transparent rounded">
+                        class="bg-transparent mt-5 hover:bg-orange-300 text-orange-500 font-semibold hover:text-white py-2 px-4 border border-orange-300 hover:border-transparent rounded"
+                        onclick="location.href='{{route('place.main',['category'=>$fun])}}'" type="button"
+                        >
                         View Section
                     </button>
                 </div>
@@ -196,7 +204,7 @@
 </section>
 <section id="feedback" class="relative w-full">
     <div class="absolute bg-black bg-opacity-25 h-full w-full"></div>
-    <h1 class="text-white text-bold text-6xl relative text-center pt-5">Feedback</h1>
+    <h1 class="text-white text-bold text-6xl relative text-center pt-5">Latest comments</h1>
     <div id="feed_width_definer"
         class="absolute text-white overflow-hidden top-50 inset-y-0 inset-x-0 mx-10 sm:mx-20 xl:mx-40">
         <div id="fb-container" class="h-full w-full text-white text-center" style="width:200vw;">

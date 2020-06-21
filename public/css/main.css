@@ -1140,21 +1140,12 @@ html body #app #main_slider_container .main_slide .overlay {
 
 html body #app #main_slider_container .main_slide .main_slide_bg {
   background-size: cover;
-  background-image: url("https://picsum.photos/1920/780?random=1");
   height: 100vh;
   transition: transform 5s linear;
 }
 
 html body #app #main_slider_container .main_slide.active {
   opacity: 1;
-}
-
-html body #app #main_slider_container .main_slide:nth-child(2) .main_slide_bg {
-  background-image: url("https://picsum.photos/1920/780?random=2");
-}
-
-html body #app #main_slider_container .main_slide:nth-child(3) .main_slide_bg {
-  background-image: url("https://picsum.photos/1920/780?random=3");
 }
 
 html body #app #main_slider_container #main_slider_pager {

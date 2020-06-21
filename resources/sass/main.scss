@@ -118,7 +118,6 @@ html {
 
                     .main_slide_bg {
                         background-size: cover;
-                        background-image: url('https://picsum.photos/1920/780?random=1');
                         height: 100vh;
                         transition: transform 5s linear;
                     }
@@ -129,18 +128,6 @@ html {
 
                     &.active {
                         opacity: 1;
-                    }
-                }
-
-                .main_slide:nth-child(2) {
-                    .main_slide_bg {
-                        background-image: url('https://picsum.photos/1920/780?random=2');
-                    }
-                }
-
-                .main_slide:nth-child(3) {
-                    .main_slide_bg {
-                        background-image: url('https://picsum.photos/1920/780?random=3');
                     }
                 }
 
