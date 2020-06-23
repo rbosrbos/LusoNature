@@ -5,9 +5,9 @@
         <div class="main_slide w-full absolute @if ($loop->first) active @endif overflow-hidden">
         <div class="main_slide_bg w-full absolute z-0" style="background-image: url('{{ Storage::url('places/'.$item->id.'/'.$item->images->random(1)[0]->id.'.jpg') }}');"></div>
             <div
-                class="overlay bg-black bg-opacity-50 w-full h-full z-10 relative flex flex-col justify-center items-center px-20 text-white">
+                class="overlay bg-black bg-opacity-50 w-full h-full z-10 relative flex flex-col justify-center items-center px-10 sm:px-20 text-white">
                 <h1 class="text-center text-4xl sm:text-6xl">{{$item->name}}</h1>
-                <h3 class="text-center text-xl sm:text-2xl">{{Str::limit($item->description, 400)}}</h3>
+                <h3 class="text-center text-lg sm:text-xl">{{Str::limit($item->description, 400)}}</h3>
             </div>
         </div>
     @endforeach

@@ -38,5 +38,5 @@ mix.js('resources/js/app.js', 'public/js')
         ]
     })
     .browserSync({
-        proxy: 'lusonature.test:8000',
+        proxy: 'localhost:8000',
     });

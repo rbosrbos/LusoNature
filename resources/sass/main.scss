@@ -64,7 +64,7 @@ html {
 
         h1 {
             font-size: 2rem;
-            @screen sm {
+            @screen lg {
                 font-size: 3rem;
             }
         }
@@ -77,10 +77,7 @@ html {
         }
 
         h3 {
-            font-size: 1rem;
-            @screen sm {
                 font-size: 1.5rem;
-            }
         }
 
         #app {

@@ -18,12 +18,19 @@ use Illuminate\Support\Str;
 */
 
 $factory->define(User::class, function (Faker $faker) {
+    $avatar = $faker->boolean(95);
+    $id = $faker->uuid;
+    if ($avatar) {
+        $new = $faker->image('public/storage/avatars/', 70, 70, null, false);
+        rename ('public/storage/avatars/'.$new, 'public/storage/avatars/'.$id.'.jpg');
+    }
     return [
-        'id' => $faker->uuid,
+        'id' => $id,
         'name' => $faker->name,
         'email' => $faker->unique()->safeEmail,
         'email_verified_at' => now(),
         'password' => bcrypt('123456'), // password
         'remember_token' => Str::random(10),
+        'avatar' => $avatar
     ];
 });

@@ -30,6 +30,11 @@ class Place extends Model
         return $this->hasMany(Images::class);
     }
 
+    public function ratings()
+    {
+        return $this->hasMany(Rating::class);
+    }
+
     public function scopeWC($query,$wc) {
         if(!Empty($wc)){
             return $query->where('wc',$wc);

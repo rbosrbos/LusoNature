@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\PlaceController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 
@@ -35,12 +36,19 @@ Route::prefix('admin')->group(function(){
 Route::resource('home', 'HomeController')->middleware('auth');
 
 Route::resource('news', 'NewsController');
+
+
 Route::get('/place/index/', 'PlaceController@main')->name('place.main');
 Route::resource('place', 'PlaceController');
+Route::post('/place/rate','PlaceController@rate')->name('place.rate');
+
+
 
 Route::get('/contact', 'ContactController@index')->name('contact.index');
 Route::post('/contact', 'ContactController@create')->middleware('throttle:1,1')->name('contact.create');
 
 Route::get('/forecast', 'WeatherForecastController@index')->name('weatherforecast.index');
+
+Route::resource('rating', 'ratingController');
 
 Auth::routes();

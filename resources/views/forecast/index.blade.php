@@ -7,8 +7,8 @@ Weather Forecast
 @endsection
 @section('content')
 <div class="w-full flex justify-center items-center">Provided by: <a title="Instituto Português do Mar e da Atmosfera" href="https://www.ipma.pt/"><img width="100" src="http://www.ipma.pt/system/modules/ipma.website/resources/images/logo-ipma-17-180x48.png" alt=""></a></div>
-<div class="flex w-full sm:w-2/3 flex-wrap justify-between items-center mx-auto">
-    <div id="forecast" class="w-full sm:w-2/5 my-10 sm:my-0">
+<div class="flex w-full sm:w-11/12 lg:w-2/3 flex-wrap justify-between items-center mx-auto">
+    <div id="forecast" class="w-full sm:w-3/5 my-10 sm:my-0 sm:pr-12">
         <table class="w-full table-auto rounded-lg shadow-2xl">
         </table>
     </div>

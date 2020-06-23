@@ -28,14 +28,12 @@
         "sass-loader": "^8.0.2",
         "tailwindcss": "^1.4.6",
         "vue": "^2.5.17",
-        "vue-template-compiler": "^2.6.10",
-        "vuetify-loader": "^1.5.0"
+        "vue-template-compiler": "^2.6.10"
     },
     "dependencies": {
         "aos": "^2.3.4",
         "datatables.net-dt": "^1.10.21",
-        "datatables.net-responsive-dt": "^2.2.5",
-        "vuetify": "^2.3.0"
+        "datatables.net-responsive-dt": "^2.2.5"
     },
     "config": {
         "commitizen": {

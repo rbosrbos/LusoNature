@@ -4,8 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Models\Category;
 use App\Models\City;
+use App\Models\Comment;
 use App\Models\Images;
 use App\Models\Place;
+use App\Models\Rating;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Auth;
@@ -14,6 +16,7 @@ use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Str;
 use Intervention\Image\Facades\Image;
+use stdClass;
 
 class PlaceController extends Controller
 {
@@ -86,7 +89,6 @@ class PlaceController extends Controller
     {
 
         $places = Place::where('user_id', Auth::user()->id)->get();
-
         return view('place.index', [
             'places' => $places
         ]);
@@ -157,9 +159,33 @@ class PlaceController extends Controller
      */
     public function show(Place $place)
     {
+        $ratings = Rating::where([
+            'user_id' => Auth::id(),
+            'place_id' => $place->id
+        ])->first();
+        $votes = Rating::where('place_id', $place->id)->get();
+        $comments = Comment::where([
+            'place_id' => $place->id,
+            'status' => 1
+        ])->with('user')->get();
+        $average = [];
+        if (count($votes) > 0) {
+            $average['access'] = $votes->sum('access') / count($votes);
+            $average['location'] = $votes->sum('location') / count($votes);
+            $average['giftshops'] = $votes->sum('giftshops') / count($votes);
+            $average['restaurants'] = $votes->sum('restaurants') / count($votes);
+        }
+        $colors = [
+            'blue', 'orange', 'red', 'green'
+        ];
         return view('place.show', [
             'place' => $place,
-            'images' => $place->images()->get()
+            'images' => $place->images()->get(),
+            'ratings' => $ratings,
+            'average' => $average,
+            'votes' => count($votes),
+            'comments' => $comments,
+            'colors' => $colors
         ]);
     }
 
@@ -239,7 +265,6 @@ class PlaceController extends Controller
             }
         }
     }
-
     /**
      * Remove the specified resource from storage.
      *

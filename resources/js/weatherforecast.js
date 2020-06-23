@@ -42,7 +42,7 @@ $('path').click(function (e) {
         const cityID = e.target.dataset.city;
 
         getCity(cityID).then(function (data) {
-            let html = '<thead><tr><th colspan="5"><h1 class="text-gray-800">';
+            let html = '<thead><tr><th colspan="5"><h1 class="text-gray-800 p-2">';
             html += data.local;
             html += '</h1></th></tr></thead><tbody><tr><th class="pl-5 py-5">Day</th><th class="py-5">Min</th><th class="py-5">Max</th><th class="py-5">Rain Prob.</th><th class="pr-5 py-5">Weather</th></tr>';
             $('#forecast table').html(html);

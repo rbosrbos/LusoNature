@@ -24,16 +24,15 @@ class CreateCommentsTable extends Migration
             $table->engine = 'InnoDB';
             $table->uuid('id');
             $table->primary('id');
-            $table->string('token');
             $table->char('place_id', 36);
             $table->char('user_id', 36);
             $table->longText('comment');
-            $table->timestamp('time');
             $table->tinyInteger('status')->default('0');
 
             $table->index(["user_id"], 'fk_places_has_users_users1_idx');
 
             $table->index(["place_id"], 'fk_places_has_users_places1_idx');
+            $table->nullableTimestamps();
 
 
             $table->foreign('place_id', 'fk_places_has_users_places1_idx')

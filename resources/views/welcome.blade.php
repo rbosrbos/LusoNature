@@ -7,10 +7,10 @@
         possimus quae quisquam nisi dicta unde libero excepturi voluptates obcaecati aspernatur vitae ea sapiente,
         laboriosam nostrum autem! Aliquam, eum?</p>
     <div class="flex flex-wrap justify-center mt-16">
-        <div data-aos="flip-left" class="card m-10">
+        <div data-aos="flip-left" class="card m-10 shadow-xl">
             <div>
                 <div class="bg-white">
-                    <img src="https://www.themediterraneantraveller.com/wp-content/uploads/2018/04/portugal-praia-do-camilo-1.jpeg"
+                <img src="{{ asset('/images/beaches.jpg') }}"
                         alt="image description" class="w-full rounded-t-lg">
                     <div class="bg-orange-300 z-20 relative w-24 m-auto h-24 p-5 rounded-full -mt-12">
                         <svg viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
@@ -60,10 +60,10 @@
                 </div>
             </div>
         </div>
-        <div data-aos="flip-left" class="card m-10">
+        <div data-aos="flip-left" class="card m-10 shadow-xl">
             <div>
                 <div class="bg-white">
-                    <img src="https://img.itinari.com/page/content/original/9cbf0950-125c-465b-b2d2-70e3c852a09e-istock-879069748.jpg?ch=DPR&dpr=1&w=994&s=303c3d5a1149e73e208296d2a17dcbc6"
+                    <img src="{{ asset('/images/forests.jpg') }}"
                         alt="image description" class="w-full rounded-t-lg">
                     <div class="bg-orange-300 z-20 relative w-24 m-auto h-24 p-5 rounded-full -mt-12">
                         <svg viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
@@ -97,10 +97,10 @@
                 </div>
             </div>
         </div>
-        <div data-aos="flip-left" class="card m-10">
+        <div data-aos="flip-left" class="card m-10 shadow-xl">
             <div>
                 <div class="bg-white">
-                    <img src="https://3dcomunicacaovisual.com/wp-content/uploads/2019/09/image1.jpg"
+                    <img src="{{ asset('/images/camping.jpg') }}"
                         alt="image description" class="w-full rounded-t-lg">
                     <div class="bg-orange-300 z-20 relative w-24 m-auto h-24 p-5 rounded-full -mt-12">
                         <svg viewBox="0 0 511.919 511.919" xmlns="http://www.w3.org/2000/svg">
@@ -130,10 +130,10 @@
                 </div>
             </div>
         </div>
-        <div data-aos="flip-left" class="card m-10">
+        <div data-aos="flip-left" class="card m-10 shadow-xl">
             <div>
                 <div class="bg-white">
-                    <img src="https://www.paraeles.pt/wp-content/uploads/2018/07/AP-1W8R6CH5N2111_hires_jpeg_24bit_rgb_resized.jpg"
+                    <img src="{{ asset('/images/fun.jpg') }}"
                         alt="image description" class="w-full rounded-t-lg">
                     <div class="bg-orange-300 z-20 relative w-24 m-auto h-24 p-5 rounded-full -mt-12">
                         <svg viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
@@ -171,7 +171,7 @@
     <h1 class="text-center text-4xl sm:text-6xl">Top Ranked</h1>
     <div class="flex mt-10 flex-wrap justify-center">
         <div data-aos="flip-up" class="text-center mb-10">
-            <div class="top relative rounded-full sm:mr-10 bg-black">
+            <div class="top relative rounded-full sm:mr-10 bg-black shadow-2xl">
                 <div
                     class="rounded-full absolute top-0 right-0 bg-orange-500 text-white text-bold flex justify-center items-center z-10 text-4xl">
                     5</div>
@@ -181,7 +181,7 @@
             </div>
         </div>
         <div data-aos="flip-down" data-aos-delay="250" class="text-center mb-10">
-            <div class="top relative rounded-full sm:mr-10 bg-black">
+            <div class="top relative rounded-full sm:mr-10 bg-black shadow-2xl">
                 <div
                     class="rounded-full absolute top-0 right-0 bg-orange-500 text-white text-bold flex justify-center items-center z-10 text-4xl">
                     5</div>
@@ -191,7 +191,7 @@
             </div>
         </div>
         <div data-aos="flip-up" data-aos-delay="500" class="text-center mb-10">
-            <div class="top relative rounded-full bg-black">
+            <div class="top relative rounded-full bg-black shadow-2xl">
                 <div
                     class="rounded-full absolute top-0 right-0 bg-orange-500 text-white text-bold flex justify-center items-center z-10 text-4xl">
                     5</div>
@@ -204,12 +204,12 @@
 </section>
 <section id="feedback" class="relative w-full">
     <div class="absolute bg-black bg-opacity-25 h-full w-full"></div>
-    <h1 class="text-white text-bold text-6xl relative text-center pt-5">Latest comments</h1>
+    <h1 class="text-white text-bold text-4xl sm:text-6xl relative text-center pt-5">Latest comments</h1>
     <div id="feed_width_definer"
         class="absolute text-white overflow-hidden top-50 inset-y-0 inset-x-0 mx-10 sm:mx-20 xl:mx-40">
         <div id="fb-container" class="h-full w-full text-white text-center" style="width:200vw;">
             <div class="h-full flex items-center">
-                <div class="text-xs sm:text-base fb-item float-left text-center px-10">
+                <div class="text-xs sm:text-base fb-item float-left text-center">
                     Rui Batista de Oliveira e Silva Rui Batista de Oliveira e Silva Rui Batista de Oliveira e Silva Rui
                     Batista de Oliveira e Silva Rui Batista de Oliveira e Silva Rui Batista de Oliveira e Silva Rui
                     Batista de Oliveira e Silva Rui Batista de Oliveira e Silva Rui Batista de Oliveira e Silva Rui
