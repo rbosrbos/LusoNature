@@ -1,6 +1,6 @@
 @extends('layouts.section')
 @section('content')
-<div class="text-orange-400 md:w-1/2 xl:w-1/4 m-auto mb-10 text-center mt-5">
+<div class="text-green-400 md:w-1/2 xl:w-1/4 m-auto mb-10 text-center mt-5">
     <ion-icon style="font-size: 8em;" name="person-add-outline"></ion-icon>
     <div class="text-center text-gray-700">
         <p class="text-2xl">{{ __('Register') }}</p>
@@ -39,7 +39,7 @@
                 autocomplete="new-password" placeholder="{{ __('Confirm Password') }}">
 
             <button type="submit"
-                class="block m-auto bg-transparent mt-5 hover:bg-orange-300 text-orange-500 font-semibold hover:text-white py-2 px-4 border border-orange-300 hover:border-transparent rounded">{{ __('Register') }}</button>
+                class="block m-auto bg-transparent mt-5 hover:bg-green-300 text-green-500 font-semibold hover:text-white py-2 px-4 border border-green-300 hover:border-transparent rounded">{{ __('Register') }}</button>
         </form>
     </div>
 </div>

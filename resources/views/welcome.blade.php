@@ -10,9 +10,8 @@
         <div data-aos="flip-left" class="card m-10 shadow-xl">
             <div>
                 <div class="bg-white">
-                <img src="{{ asset('/images/beaches.jpg') }}"
-                        alt="image description" class="w-full rounded-t-lg">
-                    <div class="bg-orange-300 z-20 relative w-24 m-auto h-24 p-5 rounded-full -mt-12">
+                    <img src="{{ asset('/images/beaches.jpg') }}" alt="image description" class="w-full rounded-t-lg">
+                    <div class="bg-green-300 z-20 relative w-24 m-auto h-24 p-5 rounded-full -mt-12">
                         <svg viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
                             <g>
                                 <path style="fill:white;fill-rule:nonzero;"
@@ -52,9 +51,8 @@
                     <p class="text-center">Aenean efficitur diam enim, eu ultrices quam imperdiet sed. Cras non egestas
                         ipsum. Donec dictum diam vel nulla porttitor, ac posuere tortor porta. In sed amet.</p>
                     <button
-                        class="bg-transparent mt-5 hover:bg-orange-300 text-orange-500 font-semibold hover:text-white py-2 px-4 border border-orange-300 hover:border-transparent rounded"
-                    onclick="location.href='{{route('place.main',['category'=>$beaches])}}'" type="button"
-                        >
+                        class="bg-transparent mt-5 hover:bg-green-300 text-green-500 font-semibold hover:text-white py-2 px-4 border border-green-300 hover:border-transparent rounded"
+                        onclick="location.href='{{route('place.main',['category'=>$beaches])}}'" type="button">
                         View Section
                     </button>
                 </div>
@@ -63,9 +61,8 @@
         <div data-aos="flip-left" class="card m-10 shadow-xl">
             <div>
                 <div class="bg-white">
-                    <img src="{{ asset('/images/forests.jpg') }}"
-                        alt="image description" class="w-full rounded-t-lg">
-                    <div class="bg-orange-300 z-20 relative w-24 m-auto h-24 p-5 rounded-full -mt-12">
+                    <img src="{{ asset('/images/forests.jpg') }}" alt="image description" class="w-full rounded-t-lg">
+                    <div class="bg-green-300 z-20 relative w-24 m-auto h-24 p-5 rounded-full -mt-12">
                         <svg viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
                             <g>
                                 <path style="fill:white;fill-rule:nonzero;"
@@ -89,9 +86,8 @@
                     <p class="text-center">Aenean efficitur diam enim, eu ultrices quam imperdiet sed. Cras non egestas
                         ipsum. Donec dictum diam vel nulla porttitor, ac posuere tortor porta. In sed amet.</p>
                     <button
-                        class="bg-transparent mt-5 hover:bg-orange-300 text-orange-500 font-semibold hover:text-white py-2 px-4 border border-orange-300 hover:border-transparent rounded"
-                        onclick="location.href='{{route('place.main',['category'=>$forests])}}'" type="button"
-                        >
+                        class="bg-transparent mt-5 hover:bg-green-300 text-green-500 font-semibold hover:text-white py-2 px-4 border border-green-300 hover:border-transparent rounded"
+                        onclick="location.href='{{route('place.main',['category'=>$forests])}}'" type="button">
                         View Section
                     </button>
                 </div>
@@ -100,9 +96,8 @@
         <div data-aos="flip-left" class="card m-10 shadow-xl">
             <div>
                 <div class="bg-white">
-                    <img src="{{ asset('/images/camping.jpg') }}"
-                        alt="image description" class="w-full rounded-t-lg">
-                    <div class="bg-orange-300 z-20 relative w-24 m-auto h-24 p-5 rounded-full -mt-12">
+                    <img src="{{ asset('/images/camping.jpg') }}" alt="image description" class="w-full rounded-t-lg">
+                    <div class="bg-green-300 z-20 relative w-24 m-auto h-24 p-5 rounded-full -mt-12">
                         <svg viewBox="0 0 511.919 511.919" xmlns="http://www.w3.org/2000/svg">
                             <g>
                                 <path style="fill:white;fill-rule:nonzero;" d="m300.919 413.459h60v-240h-60z" />
@@ -122,9 +117,8 @@
                     <p class="text-center">Aenean efficitur diam enim, eu ultrices quam imperdiet sed. Cras non egestas
                         ipsum. Donec dictum diam vel nulla porttitor, ac posuere tortor porta. In sed amet.</p>
                     <button
-                        class="bg-transparent mt-5 hover:bg-orange-300 text-orange-500 font-semibold hover:text-white py-2 px-4 border border-orange-300 hover:border-transparent rounded"
-                        onclick="location.href='{{route('place.main',['category'=>$camping])}}'" type="button"
-                        >
+                        class="bg-transparent mt-5 hover:bg-green-300 text-green-500 font-semibold hover:text-white py-2 px-4 border border-green-300 hover:border-transparent rounded"
+                        onclick="location.href='{{route('place.main',['category'=>$camping])}}'" type="button">
                         View Section
                     </button>
                 </div>
@@ -133,9 +127,8 @@
         <div data-aos="flip-left" class="card m-10 shadow-xl">
             <div>
                 <div class="bg-white">
-                    <img src="{{ asset('/images/fun.jpg') }}"
-                        alt="image description" class="w-full rounded-t-lg">
-                    <div class="bg-orange-300 z-20 relative w-24 m-auto h-24 p-5 rounded-full -mt-12">
+                    <img src="{{ asset('/images/fun.jpg') }}" alt="image description" class="w-full rounded-t-lg">
+                    <div class="bg-green-300 z-20 relative w-24 m-auto h-24 p-5 rounded-full -mt-12">
                         <svg viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
                             <g>
                                 <path style="fill:white;fill-rule:nonzero;"
@@ -157,9 +150,8 @@
                     <p class="text-center">Aenean efficitur diam enim, eu ultrices quam imperdiet sed. Cras non egestas
                         ipsum. Donec dictum diam vel nulla porttitor, ac posuere tortor porta. In sed amet.</p>
                     <button
-                        class="bg-transparent mt-5 hover:bg-orange-300 text-orange-500 font-semibold hover:text-white py-2 px-4 border border-orange-300 hover:border-transparent rounded"
-                        onclick="location.href='{{route('place.main',['category'=>$fun])}}'" type="button"
-                        >
+                        class="bg-transparent mt-5 hover:bg-green-300 text-green-500 font-semibold hover:text-white py-2 px-4 border border-green-300 hover:border-transparent rounded"
+                        onclick="location.href='{{route('place.main',['category'=>$fun])}}'" type="button">
                         View Section
                     </button>
                 </div>
@@ -170,36 +162,19 @@
 <section id="top_ranked" class="pt-16 bg-white">
     <h1 class="text-center text-4xl sm:text-6xl">Top Ranked</h1>
     <div class="flex mt-10 flex-wrap justify-center">
+        @foreach ($top as $item)
         <div data-aos="flip-up" class="text-center mb-10">
-            <div class="top relative rounded-full sm:mr-10 bg-black shadow-2xl">
+            <div data-description="{{Str::limit($item->place->description,250)}}"
+                class="top relative rounded-full sm:mr-10 bg-black shadow-2xl">
                 <div
-                    class="rounded-full absolute top-0 right-0 bg-orange-500 text-white text-bold flex justify-center items-center z-10 text-4xl">
-                    5</div>
+                    class="rounded-full absolute top-0 right-0 bg-green-500 text-white text-bold flex justify-center items-center z-10 text-xl">
+                    {{ $item->total }} pts</div>
             </div>
             <div class="text-2xl sm:text-3xl sm:-ml-10">
-                asdasd
+                {{ $item->place->name }}
             </div>
         </div>
-        <div data-aos="flip-down" data-aos-delay="250" class="text-center mb-10">
-            <div class="top relative rounded-full sm:mr-10 bg-black shadow-2xl">
-                <div
-                    class="rounded-full absolute top-0 right-0 bg-orange-500 text-white text-bold flex justify-center items-center z-10 text-4xl">
-                    5</div>
-            </div>
-            <div class="text-2xl sm:text-3xl sm:-ml-10">
-                asdasd
-            </div>
-        </div>
-        <div data-aos="flip-up" data-aos-delay="500" class="text-center mb-10">
-            <div class="top relative rounded-full bg-black shadow-2xl">
-                <div
-                    class="rounded-full absolute top-0 right-0 bg-orange-500 text-white text-bold flex justify-center items-center z-10 text-4xl">
-                    5</div>
-            </div>
-            <div class="text-2xl sm:text-3xl">
-                asdasd
-            </div>
-        </div>
+        @endforeach
     </div>
 </section>
 <section id="feedback" class="relative w-full">
@@ -209,28 +184,16 @@
         class="absolute text-white overflow-hidden top-50 inset-y-0 inset-x-0 mx-10 sm:mx-20 xl:mx-40">
         <div id="fb-container" class="h-full w-full text-white text-center" style="width:200vw;">
             <div class="h-full flex items-center">
-                <div class="text-xs sm:text-base fb-item float-left text-center">
-                    Rui Batista de Oliveira e Silva Rui Batista de Oliveira e Silva Rui Batista de Oliveira e Silva Rui
-                    Batista de Oliveira e Silva Rui Batista de Oliveira e Silva Rui Batista de Oliveira e Silva Rui
-                    Batista de Oliveira e Silva Rui Batista de Oliveira e Silva Rui Batista de Oliveira e Silva Rui
-                    Batista de Oliveira e Silva Rui Batista de Oliveira e Silva Rui Batista de Oliveira e Silva
+                @foreach ($comments as $item)
+                <div class="text-xs sm:text-base fb-item float-left text-center @if($loop->iteration > 2) hidden @endif">
+                    <p>{{$item->comment}}</p>
+                <p class="text-green-200"><a href="mailto:{{$item->user->email}}">{{$item->user->name}}</a> <span class="text-white">- about <a href="{{ route('place.show',$item->place->id) }}">{{$item->place->name}}</a></span></p>
                 </div>
-                <div class="text-xs sm:text-base fb-item float-left text-center">2Lorem ipsum dolor sit amet
-                    consectetur, adipisicing elit. Tenetur quas repellendus error, tempora cumque itaque, repellat
-                    minima officia reprehenderit cum dolorem placeat nesciunt voluptatem nostrum, soluta doloremque
-                    similique a consectetur.</div>
-                <div class="text-xs sm:text-base fb-item float-left text-center hidden">3Lorem ipsum dolor sit amet
-                    consectetur, adipisicing elit. Tenetur quas repellendus error, tempora cumque itaque, repellat
-                    minima officia reprehenderit cum dolorem placeat nesciunt voluptatem nostrum, soluta doloremque
-                    similique a consectetur.</div>
-                <div class="text-xs sm:text-base fb-item float-left text-center hidden">4Lorem ipsum dolor sit amet
-                    consectetur, adipisicing elit. Tenetur quas repellendus error, tempora cumque itaque, repellat
-                    minima officia reprehenderit cum dolorem placeat nesciunt voluptatem nostrum, soluta doloremque
-                    similique a consectetur.</div>
+                @endforeach
             </div>
         </div>
         <div class="absolute text-center w-full mb-40 bottom-0">
-            <a class="text-orange-500 hidden" id="stop_feed" href="#">
+            <a class="text-green-500 hidden" id="stop_feed" href="#">
                 <svg class="fill-current stroke-current inline" xmlns='http://www.w3.org/2000/svg' width='30'
                     height='30' viewBox='0 0 512 512'>
                     <path d='M448,256c0-106-86-192-192-192S64,150,64,256s86,192,192,192S448,362,448,256Z'
@@ -242,13 +205,13 @@
         </div>
     </div>
     <div class="absolute text-2xl text-white top-50 inset-y-0 left-0 ml-2 sm:ml-5 xl:ml-24 flex items-center">
-        <a href="#" id="feed_left" class="feed-start bg-orange-400 opacity-50 px-2 sm:px-5 pb-1 leading-8"
+        <a href="#" id="feed_left" class="feed-start bg-green-400 opacity-50 px-2 sm:px-5 pb-1 leading-8"
             style="border-radius: 50% 0 0 50%">
             &#8249;
         </a>
     </div>
     <div class="absolute text-2xl text-white top-50 inset-y-0 right-0 mr-2 sm:mr-5 xl:mr-24 flex items-center">
-        <a href="#" id="feed_right" class="feed-start bg-orange-400 opacity-50 px-2 sm:px-5 pb-1 leading-8"
+        <a href="#" id="feed_right" class="feed-start bg-green-400 opacity-50 px-2 sm:px-5 pb-1 leading-8"
             style="border-radius: 0 50% 50% 0">
             &#8250;
         </a>

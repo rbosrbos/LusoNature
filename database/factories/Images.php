@@ -15,6 +15,10 @@ $factory->define(Images::class, function (Faker $faker, array $place) {
     Image::make('public/storage/places/' . $place['place_id'] . '/' . $img)->resize(665, null, function ($constraint) {
         $constraint->aspectRatio();
     })->orientate()->save('public/storage/places/' . $place['place_id'] . '/' . $id . '-card.jpg');
+    Image::make('public/storage/places/' . $place['place_id'] . '/' . $img)->fit(640, 853, function ($constraint) {
+        $constraint->aspectRatio();
+    })->orientate()->save('public/storage/places/' . $place['place_id'] . '/' . $id . '-mobile.jpg');
+    
     rename('public/storage/places/' . $place['place_id'] . '/' . $img, 'public/storage/places/' . $place['place_id'] . '/' . $id . '.jpg');
 
     return [

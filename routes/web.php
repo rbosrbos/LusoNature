@@ -49,6 +49,6 @@ Route::post('/contact', 'ContactController@create')->middleware('throttle:1,1')-
 
 Route::get('/forecast', 'WeatherForecastController@index')->name('weatherforecast.index');
 
-Route::resource('rating', 'ratingController');
+Route::post('/rating/{rate?}', 'ratingController@storeOrUpdate')->name('rating.storeorupdate');
 
 Auth::routes();

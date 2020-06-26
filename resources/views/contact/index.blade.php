@@ -9,7 +9,7 @@ Contact
 @section('content')
 <section class="flex flex-wrap h-screen-55">
     <div class="w-full ml-5 my-5">
-        <a class="mr-3 text-orange-500" href="{{ route('mainpage') }}">Home</a>/<span class="mx-3">Contact</span>
+        <a class="mr-3 text-green-500" href="{{ route('mainpage') }}">Home</a>/<span class="mx-3">Contact</span>
     </div>
     <div class="w-full sm:w-2/3 flex flex-wrap mx-auto">
         <form action="{{ route('contact.create') }}" enctype="multipart/form-data" method="POST"
@@ -69,7 +69,7 @@ Contact
                 </div>
             </div>
             <button type="submit" id="formSubmit"
-                class="m-auto block bg-transparent my-5 hover:bg-orange-300 text-orange-500 font-semibold hover:text-white py-2 px-4 border border-orange-300 hover:border-transparent rounded">
+                class="m-auto block bg-transparent my-5 hover:bg-green-300 text-green-500 font-semibold hover:text-white py-2 px-4 border border-green-300 hover:border-transparent rounded">
                 Submit
             </button>
         </form>

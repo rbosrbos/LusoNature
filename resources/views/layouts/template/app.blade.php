@@ -68,7 +68,7 @@
                             <a href="{{ route('login') }}">Login / Register</a>
                             @endif
                             @if (Auth::guard('admin')->check())
-                            &nbsp;<a class="text-orange-500" href="{{ route('admin.mainpage') }}"> (Admin)</a>
+                            &nbsp;<a class="text-green-500" href="{{ route('admin.mainpage') }}"> (Admin)</a>
                             @endif
                         </div>
                         <div id="menu-mob"
@@ -113,7 +113,7 @@
         <main class="relative pt-5">
             @yield('content')
         </main>
-        <footer class="text-orange-300 px-10 py-5">
+        <footer class="text-green-300 px-10 py-5">
             <div class="flex flex-wrap justify-around">
                 <div class="text-center sm:text-left sm:mr-10 mb-10 md:mb-0 md:w-1/5">
                     <p class="font-bold text-3xl">LusoNature</p>
@@ -166,7 +166,7 @@
                     <span class="block text-white">Lorem, ipsum dolor sit amet consectetur adipisicing elit.</span>
                     <input class="block mx-auto mt-5 sm:mx-0" type="text">
                     <button
-                        class="bg-transparent mt-5 hover:bg-orange-300 text-orange-500 font-semibold hover:text-white py-2 px-4 border border-orange-300 hover:border-transparent rounded">
+                        class="bg-transparent mt-5 hover:bg-green-300 text-green-500 font-semibold hover:text-white py-2 px-4 border border-green-300 hover:border-transparent rounded">
                         Subscribe
                     </button>
                 </div>
@@ -191,7 +191,7 @@
                 </g>
             </svg>
         </div>
-        <div class="go-top h-5 lg:hidden bg-black fixed bottom-0 text-orange-500 text-center w-full">
+        <div class="go-top h-5 lg:hidden bg-black fixed bottom-0 text-green-500 text-center w-full">
             <a id="go_up" href="">
                 <ion-icon size="large" style="transform:translateY(-5px);" name="chevron-up-outline"></ion-icon>
             </a>

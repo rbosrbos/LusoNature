@@ -81,37 +81,90 @@
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 4);
+/******/ 	return __webpack_require__(__webpack_require__.s = 3);
 /******/ })
 /************************************************************************/
 /******/ ({
 
-/***/ "./resources/js/datatable.js":
-/*!***********************************!*\
-  !*** ./resources/js/datatable.js ***!
-  \***********************************/
+/***/ "./resources/js/place.js":
+/*!*******************************!*\
+  !*** ./resources/js/place.js ***!
+  \*******************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-$(document).ready(function () {
-  var table = $('#datatable').DataTable({
-    responsive: true,
-    "order": [[7, "asc"]]
+var slider = document.querySelector('#comments');
+var isDown = false;
+var startX;
+var scrollLeft;
+slider.addEventListener('mousedown', function (e) {
+  slider.style.cursor = 'grabbing';
+  isDown = true;
+  slider.classList.add('active');
+  startX = e.pageX - slider.offsetLeft;
+  scrollLeft = slider.scrollLeft;
+});
+slider.addEventListener('mouseup', function (e) {
+  slider.style.cursor = 'grab';
+});
+slider.addEventListener('mouseleave', function () {
+  isDown = false;
+  slider.classList.remove('active');
+});
+slider.addEventListener('mouseup', function () {
+  isDown = false;
+  slider.classList.remove('active');
+});
+slider.addEventListener('mousemove', function (e) {
+  if (!isDown) return;
+  e.preventDefault();
+  var x = e.pageX - slider.offsetLeft;
+  var walk = (x - startX) * 2;
+  slider.scrollLeft = scrollLeft - walk;
+});
+
+document.getElementById('main_slider_pager').onclick = function () {
+  var slides = this.parentElement.children;
+
+  for (var i = 0; i < slides.length; i++) {
+    if (slides[i].classList.contains('active')) {
+      var bg = slides[i].children[0].style.backgroundImage;
+      bg = bg.replace('url("', '').replace('")', '');
+      window.open(bg, '_blank');
+    }
+  }
+};
+
+$('.custom-cb').hover(function () {
+  $(this).addClass("checke");
+  $(this).prevAll().addClass("checke");
+  $(this).nextAll().removeClass("checke");
+}, function () {
+  if ($(this).prop("checked") == true) {
+    $(this).addClass("checke");
+  } else {
+    $(this).removeClass("checke");
+  }
+
+  $(this).siblings().each(function () {
+    if ($(this).prop("checked") == true) {
+      $(this).addClass("checke");
+    } else {
+      $(this).removeClass("checke");
+    }
   });
-  table.columns.adjust();
-  table.responsive.recalc();
 });
 
 /***/ }),
 
-/***/ 4:
-/*!*****************************************!*\
-  !*** multi ./resources/js/datatable.js ***!
-  \*****************************************/
+/***/ 3:
+/*!*************************************!*\
+  !*** multi ./resources/js/place.js ***!
+  \*************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! C:\Users\punk\Desktop\LusoNature\resources\js\datatable.js */"./resources/js/datatable.js");
+module.exports = __webpack_require__(/*! C:\Users\punk\Desktop\LusoNature\resources\js\place.js */"./resources/js/place.js");
 
 
 /***/ })

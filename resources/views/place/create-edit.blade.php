@@ -162,7 +162,7 @@ Place - {{ $place->name }}
                     <h3 class="text-center mt-10">Give us some nice pictures!</h3>
                     <input type="file" class="hidden" name="pictures[]" accept="image/*" multiple id="pictures">
                     <label
-                        class="m-auto cursor-pointer w-40 block bg-transparent my-5 hover:bg-orange-300 text-orange-500 font-semibold hover:text-white py-2 px-4 border border-orange-300 hover:border-transparent rounded"
+                        class="m-auto cursor-pointer w-40 block bg-transparent my-5 hover:bg-green-300 text-green-500 font-semibold hover:text-white py-2 px-4 border border-green-300 hover:border-transparent rounded"
                         for="pictures">
                         <span id="file_value">Go get'em!</span>
                     </label>
@@ -241,7 +241,7 @@ Place - {{ $place->name }}
                 All submitted place requires admin approval before they're available to other users
             </p>
             <button type="submit" id="formSubmit"
-                class="m-auto block bg-transparent my-5 hover:bg-orange-300 text-orange-500 font-semibold hover:text-white py-2 px-4 border border-orange-300 hover:border-transparent rounded">
+                class="m-auto block bg-transparent my-5 hover:bg-green-300 text-green-500 font-semibold hover:text-white py-2 px-4 border border-green-300 hover:border-transparent rounded">
                 @if(request()->route()->action['as'] == 'place.create')
                 Submit
                 @else

@@ -8,7 +8,7 @@
 </style>
 @endpush
 <div class="flex flex-col sm:flex-row">
-    <div class="text-orange-400 px-5 sm:py-5 inline-block">
+    <div class="text-green-400 px-5 sm:py-5 inline-block">
         @if ($errors->avatar->any())
         @foreach ($errors->avatar->all() as $error)
         <div class="text-center bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative alert transition duration-500"
@@ -27,17 +27,17 @@
                     <img class="block m-auto" width="70" src="{{ $avatar }}" alt="">
                 </a>
                 @else
-                <ion-icon class="text-orange-400" size="large" name="person-circle-outline"></ion-icon>
+                <ion-icon class="text-green-400" size="large" name="person-circle-outline"></ion-icon>
                 @endif
                 <p class="left text-base">{{ Auth::user()->name ?? '' }}</p>
             </div>
-        <a class="text-xs cursor-pointer inline-block sm:block w-24 m-auto bg-transparent sm:mb-2 hover:bg-orange-300 text-orange-500 font-semibold hover:text-white border border-orange-300 hover:border-transparent rounded" href="{{ route('home.index') }}">Home</a>
+        <a class="text-xs cursor-pointer inline-block sm:block w-24 m-auto bg-transparent sm:mb-2 hover:bg-green-300 text-green-500 font-semibold hover:text-white border border-green-300 hover:border-transparent rounded" href="{{ route('home.index') }}">Home</a>
             <form method="POST" id="avatar_form" class="inline-block sm:block" action="{{ route('home.store',Auth::user()->id) }}"
                 enctype="multipart/form-data">
                 @csrf
                 <input type="file" class="hidden" name="avatar" id="avatar">
                 <label
-                    class="text-xs cursor-pointer block w-24 m-auto bg-transparent hover:bg-orange-300 text-orange-500 font-semibold hover:text-white border border-orange-300 hover:border-transparent rounded"
+                    class="text-xs cursor-pointer block w-24 m-auto bg-transparent hover:bg-green-300 text-green-500 font-semibold hover:text-white border border-green-300 hover:border-transparent rounded"
                     for="avatar">
                     <span id="file_value">@if(!empty($avatar)) Change @else New @endif Avatar</span>
                 </label>
@@ -48,7 +48,7 @@
                 @csrf
                 @method('delete')
                 <a id="delete_avatar"
-                    class="text-xs cursor-pointer block w-24 m-auto bg-transparent mt-2 hover:bg-orange-300 text-orange-500 font-semibold hover:text-white border border-orange-300 hover:border-transparent rounded">Delete
+                    class="text-xs cursor-pointer block w-24 m-auto bg-transparent mt-2 hover:bg-green-300 text-green-500 font-semibold hover:text-white border border-green-300 hover:border-transparent rounded">Delete
                     Avatar</a>
             </form>
             @endif
@@ -57,7 +57,7 @@
                 <form action="{{ route('user.logout') }}" method="POST">
                     @csrf
                     <button type="submit"
-                        class="text-xs cursor-pointer block w-24 m-auto bg-transparent hover:bg-orange-300 text-orange-500 font-semibold hover:text-white border border-orange-300 hover:border-transparent rounded">Logout</button>
+                        class="text-xs cursor-pointer block w-24 m-auto bg-transparent hover:bg-green-300 text-green-500 font-semibold hover:text-white border border-green-300 hover:border-transparent rounded">Logout</button>
                 </form>
                 @endif
             </div>
@@ -65,9 +65,9 @@
         <div id="user_menu" class="mt-3 sm:mt-10">
             <p class="left text-black text-base text-center">Submissions</p>
             <ul class="text-center">
-                <li class="inline-block sm:block"><a class="text-xs cursor-pointer block w-24 m-auto bg-transparent hover:bg-orange-300 text-orange-500 font-semibold hover:text-white border border-orange-300 hover:border-transparent rounded text-center"
+                <li class="inline-block sm:block"><a class="text-xs cursor-pointer block w-24 m-auto bg-transparent hover:bg-green-300 text-green-500 font-semibold hover:text-white border border-green-300 hover:border-transparent rounded text-center"
                         href="{{ route('place.index') }}">Places</a></li>
-                <li class="inline-block sm:block"><a class="text-xs my-2 cursor-pointer block w-24 m-auto bg-transparent hover:bg-orange-300 text-orange-500 font-semibold hover:text-white border border-orange-300 hover:border-transparent rounded text-center"
+                <li class="inline-block sm:block"><a class="text-xs my-2 cursor-pointer block w-24 m-auto bg-transparent hover:bg-green-300 text-green-500 font-semibold hover:text-white border border-green-300 hover:border-transparent rounded text-center"
                         href="{{ route('home.index') }}">Recent Activity</a></li>
             </ul>
         </div>

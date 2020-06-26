@@ -12,7 +12,7 @@ Weather Forecast
         <table class="w-full table-auto rounded-lg shadow-2xl">
         </table>
     </div>
-    <div class="w-full sm:w-2/5 text-orange-500 my-10 sm:my-0" id="map">
+    <div class="w-full sm:w-2/5 text-green-500 my-10 sm:my-0" id="map">
         <svg class="fill-current" width="100%" height="100%" viewBox="0 0 2471 3750" version="1.1"
             xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve"
             xmlns:serif="http://www.serif.com/"

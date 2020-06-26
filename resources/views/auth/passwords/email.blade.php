@@ -5,7 +5,7 @@
 </div>
 @endsection
 @section('content')
-<div class="text-orange-400 md:w-1/2 xl:w-1/4 m-auto mb-10 text-center">
+<div class="text-green-400 md:w-1/2 xl:w-1/4 m-auto mb-10 text-center">
     <ion-icon style="font-size: 8em;" name="mail-outline"></ion-icon>
     <div class="text-center text-gray-700">
         @if (session('status'))
@@ -30,11 +30,11 @@
             </span>
             @enderror
             <button type="submit"
-                class="block m-auto bg-transparent mt-5 hover:bg-orange-300 text-orange-500 font-semibold hover:text-white py-2 px-4 border border-orange-300 hover:border-transparent rounded">{{ __('Send Password Reset Link') }}</button>
+                class="block m-auto bg-transparent mt-5 hover:bg-green-300 text-green-500 font-semibold hover:text-white py-2 px-4 border border-green-300 hover:border-transparent rounded">{{ __('Send Password Reset Link') }}</button>
         </form>
         <div class="mt-10">
             @if (Route::has('register'))
-            <a class="block transition duration-200 hover:text-orange-500" href="{{ route('register') }}">Register</a>
+            <a class="block transition duration-200 hover:text-green-500" href="{{ route('register') }}">Register</a>
             @endif
         </div>
     </div>

@@ -55,14 +55,8 @@ html {
             sans-serif;
         font-size: 14px;
 
-        h2,
-        h3,
-        h4,
-        h5 {
-            font-family: 'Lobster', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-        }
-
         h1 {
+            font-family: 'Lobster', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
             font-size: 2rem;
             @screen lg {
                 font-size: 3rem;
@@ -314,7 +308,8 @@ html {
                 align-items: center;
                 color: white;
                 padding: 3em 1em;
-                content: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Totam laborum vero facilis explicabo nesciunt laboriosam fuga aut, nemo beatae nostrum optio quidem, nisi ex perferendis blanditiis iure rerum a enim!";
+                //content: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Totam laborum vero facilis explicabo nesciunt laboriosam fuga aut, nemo beatae nostrum optio quidem, nisi ex perferendis blanditiis iure rerum a enim!";
+                content: attr(data-description);
                 position: absolute;
                 top: 0;
                 left: 0;
@@ -353,7 +348,7 @@ html {
 
             svg {
                 transition: fill 0.2s linear;
-                fill: #fbd38d;
+                fill: #9ae6b4;
 
                 &:hover {
                     fill: #fff;

@@ -1,6 +1,6 @@
 @extends('layouts.section')
 @section('content')
-<div class="text-orange-400 md:w-1/2 xl:w-1/4 m-auto mb-10">
+<div class="text-green-400 md:w-1/2 xl:w-1/4 m-auto mb-10">
     <svg class="block m-auto mt-10 fill-current" xmlns='http://www.w3.org/2000/svg' width='100' height='100'
         viewBox='0 0 512 512'>
         <path
@@ -37,16 +37,16 @@
                 {{ __('Remember Me') }}
             </label>
             <button type="submit"
-                class="block m-auto bg-transparent mt-5 hover:bg-orange-300 text-orange-500 font-semibold hover:text-white py-2 px-4 border border-orange-300 hover:border-transparent rounded">Login</button>
+                class="block m-auto bg-transparent mt-5 hover:bg-green-300 text-green-500 font-semibold hover:text-white py-2 px-4 border border-green-300 hover:border-transparent rounded">Login</button>
         </form>
         <div class="mt-10">
             @if (Route::has('password.request'))
-            <a class="block transition duration-200 hover:text-orange-500" href="{{ route('password.request') }}">
+            <a class="block transition duration-200 hover:text-green-500" href="{{ route('password.request') }}">
                 {{ __('Forgot Your Password?') }}
             </a>
             @endif
             @if (Route::has('register'))
-            <a class="block transition duration-200 hover:text-orange-500" href="{{ route('register') }}">Register</a>
+            <a class="block transition duration-200 hover:text-green-500" href="{{ route('register') }}">Register</a>
             @endif
         </div>
     </div>

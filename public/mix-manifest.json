@@ -3,9 +3,11 @@
     "/css/app.css": "/css/app.css",
     "/css/main.css": "/css/main.css",
     "/css/news.css": "/css/news.css",
+    "/css/place.css": "/css/place.css",
     "/css/datatable.css": "/css/datatable.css",
     "/css/weatherforecast.css": "/css/weatherforecast.css",
     "/js/datatable.js": "/js/datatable.js",
+    "/js/place.js": "/js/place.js",
     "/js/profile.js": "/js/profile.js",
     "/js/user.js": "/js/user.js",
     "/js/weatherforecast.js": "/js/weatherforecast.js"

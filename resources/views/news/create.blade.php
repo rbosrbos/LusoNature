@@ -121,7 +121,7 @@ Add New Place
             All submitted place requires admin approval before they're available to other users
         </p>
         <button
-            class="m-auto block bg-transparent my-5 hover:bg-orange-300 text-orange-500 font-semibold hover:text-white py-2 px-4 border border-orange-300 hover:border-transparent rounded">
+            class="m-auto block bg-transparent my-5 hover:bg-green-300 text-green-500 font-semibold hover:text-white py-2 px-4 border border-green-300 hover:border-transparent rounded">
             Submit
         </button>
     </form>
