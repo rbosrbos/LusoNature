@@ -14,19 +14,19 @@ class CategorySeeder extends Seeder
     public function run()
     {
         DB::table('categories')->insert([
-            'id' => Str::uuid(),
+            //'id' => Str::uuid(),
             'name' => 'Beaches'
         ]);
         DB::table('categories')->insert([
-            'id' => Str::uuid(),
+            //'id' => Str::uuid(),
             'name' => 'Forests'
         ]);
         DB::table('categories')->insert([
-            'id' => Str::uuid(),
+            //'id' => Str::uuid(),
             'name' => 'Camping'
         ]);
         DB::table('categories')->insert([
-            'id' => Str::uuid(),
+            //'id' => Str::uuid(),
             'name' => 'Fun'
         ]);
     }

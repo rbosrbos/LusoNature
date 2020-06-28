@@ -18,7 +18,7 @@ class CitySeeder extends Seeder
         );
         for ($i = 0; $i < count($cities); $i++) {
             DB::table('cities')->insert([
-                'id' => Str::uuid(),
+               // 'id' => Str::uuid(),
                 'name' => $cities[$i]
             ]);
         }

@@ -15,7 +15,6 @@ use Illuminate\Support\Facades\Auth;
 |
 */
 
-
 Route::get('/', 'MainpageController@index')->name('mainpage');
 
 Route::post('/user/logout', 'Auth\LoginController@userLogout')->name('user.logout');

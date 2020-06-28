@@ -14,6 +14,11 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
-});
+// Route::middleware('auth:api')->get('/user', function (Request $request) {
+//     return $request->user();
+// });
+
+Route::apiResource('news','Api\NewsController');
+Route::apiResource('places','Api\PlaceController');
+Route::get('/cities','Api\CityController@index');
+Route::get('/categories','Api\CategoryController@index');

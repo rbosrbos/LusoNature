@@ -35,7 +35,7 @@ class RatingSeeder extends Seeder
             }
             array_push($used,$new);
             $rating = new Rating;
-            $rating->id = Str::uuid();
+            //$rating->id = Str::uuid();
             $rating->user_id = $user_id;
             $rating->place_id = $place_id;
             $rating->access = rand(0, 5);

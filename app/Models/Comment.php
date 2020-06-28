@@ -6,8 +6,6 @@ use Illuminate\Database\Eloquent\Model;
 
 class Comment extends Model
 {
-    public $incrementing = false;
-    protected $keyType = 'string';
 
     public function user()
     {

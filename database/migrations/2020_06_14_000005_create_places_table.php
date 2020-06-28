@@ -24,8 +24,8 @@ class CreatePlacesTable extends Migration
             $table->engine = 'InnoDB';
             $table->uuid('id');
             $table->primary('id');
-            $table->char('categories_id', 36);
-            $table->char('cities_id', 36);
+            $table->unsignedInteger('categories_id');
+            $table->unsignedInteger('cities_id');
             $table->char('user_id', 36);
             $table->string('name');
             $table->longText('description');

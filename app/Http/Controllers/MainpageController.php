@@ -28,13 +28,13 @@ class MainpageController extends Controller
         $camping = Category::where('name', 'Camping')->first()->id;
         $fun = Category::where('name', 'Fun')->first()->id;
         $latest = Place::with('images')->orderBy('created_at', 'desc')->take(3)->get();
-        $top = Rating::selectRaw('SUM(access+giftshops+location+restaurants) as total, place_id')
+        $top = Rating::selectRaw('SUM(access + giftshops + location + restaurants) as total, place_id')
             ->with('place')
             ->groupBy('place_id')
             ->limit(3)
             ->orderBy('total', 'desc')
             ->get();
-        $comments = Comment::with(['place','user'])->orderBy('created_at', 'desc')->limit(4)->get();
+        $comments = Comment::with(['place', 'user'])->orderBy('created_at', 'desc')->limit(4)->get();
         return view('welcome', [
             'latest' => $latest,
             'beaches' => $beaches,

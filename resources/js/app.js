@@ -23,7 +23,7 @@ Vue.config.ignoredElements = ['ion-icon']
 Vue.component('place-card', require('./components/place/PlaceCard.vue').default);
 Vue.component('joke', require('./components/RandomJoke.vue').default); 
 Vue.component('place-images-edit', require('./components/place/PlaceImagesEdit.vue').default); 
-Vue.component('filters', require('./components/Filters.vue').default); 
+Vue.component('filters', require('./components/Filters.vue').default);
 
 // import Vuetify from '../plugins/vuetify';
 /**

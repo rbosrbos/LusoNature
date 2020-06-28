@@ -22,8 +22,7 @@ class CreateRatingsTable extends Migration
     {
         Schema::create($this->tableName, function (Blueprint $table) {
             $table->engine = 'InnoDB';
-            $table->uuid('id');
-            $table->primary('id');
+            $table->increments('id');
             $table->char('place_id', 36);
             $table->char('user_id', 36);
             $table->integer('access')->nullable();
@@ -34,6 +33,8 @@ class CreateRatingsTable extends Migration
             $table->index(["place_id"], 'fk_places_has_users_places2_idx');
 
             $table->index(["user_id"], 'fk_places_has_users_users2_idx');
+
+            $table->unique(["id"], 'id_UNIQUE');
 
             $table->unique(["user_id", "place_id"], 'only_one_user_per_place_rating');
             $table->nullableTimestamps();

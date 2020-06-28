@@ -9,8 +9,7 @@ class Rating extends Model
     protected $fillable = [
         'access', 'giftshops', 'location', 'restaurants'
     ];
-    public $incrementing = false;
-    protected $keyType = 'string';
+    
 
     public function user()
     {

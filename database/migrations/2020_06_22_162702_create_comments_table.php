@@ -22,8 +22,7 @@ class CreateCommentsTable extends Migration
     {
         Schema::create($this->tableName, function (Blueprint $table) {
             $table->engine = 'InnoDB';
-            $table->uuid('id');
-            $table->primary('id');
+            $table->increments('id');
             $table->char('place_id', 36);
             $table->char('user_id', 36);
             $table->longText('comment');

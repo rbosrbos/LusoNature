@@ -7,6 +7,9 @@ use App\Models\User;
 
 class News extends Model
 {
+  protected $fillable = [
+    'id','user_id','title','body','summary'
+  ];
     public $incrementing = false;
     protected $keyType = 'string';
 
