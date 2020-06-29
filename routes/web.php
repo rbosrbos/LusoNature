@@ -33,7 +33,7 @@ Route::prefix('admin')->group(function(){
 });
 
 Route::get('/user/places/', 'UserareaController@places')->name('user.places');
-Route::resource('user', 'UserareaController')->middleware('auth');
+Route::resource('user', 'UserareaController');//->middleware('auth');
 
 Route::resource('news', 'NewsController');
 

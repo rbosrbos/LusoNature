@@ -67,8 +67,6 @@
             <ul class="text-center">
                 <li class="inline-block sm:block"><a class="text-xs cursor-pointer block w-24 m-auto bg-transparent hover:bg-green-300 text-green-500 font-semibold hover:text-white border border-green-300 hover:border-transparent rounded text-center"
                         href="{{ route('user.places') }}">Places</a></li>
-                <li class="inline-block sm:block"><a class="text-xs my-2 cursor-pointer block w-24 m-auto bg-transparent hover:bg-green-300 text-green-500 font-semibold hover:text-white border border-green-300 hover:border-transparent rounded text-center"
-                        href="{{ route('user.index') }}">Other Activities</a></li>
             </ul>
         </div>
     </div>

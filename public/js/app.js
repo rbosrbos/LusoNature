@@ -2005,37 +2005,45 @@ __webpack_require__.r(__webpack_exports__);
       wc: 1,
       restaurants: 1,
       parking: 1,
-      link: 'index'
+      link: 'place'
     };
   },
   methods: {
     change: function change(e) {
-      this.link = 'index';
+      var count = 0;
+      this.link = 'place';
 
       if (this.vmCat != '' && this.vmCat != 'all' || this.vmCity != '' && this.vmCity != 'all' || this.wc != 1 || this.restaurants != 1 || this.parking != 1) {
         this.link += '?';
       }
 
-      if (this.vmCat != '' && this.vmCat != 'all') this.link += 'category=' + this.vmCat;
+      if (this.vmCat != '' && this.vmCat != 'all') {
+        this.link += 'category=' + this.vmCat;
+        count = 1;
+      }
 
       if (this.vmCity != '' && this.vmCity != 'all') {
-        if (this.vmCat != '' && this.vmCat != 'all') this.link += '&';
+        if (count > 0) this.link += '&';
         this.link += 'city=' + this.vmCity;
+        count = 1;
       }
 
       if (this.wc != 1) {
-        if (this.vmCity != '' && this.vmCity != 'all') this.link += '&';
+        if (count > 0) this.link += '&';
         this.link += 'wc=false';
+        count = 1;
       }
 
       if (this.restaurants != 1) {
-        if (this.wc != 1) this.link += '&';
+        if (count > 0) this.link += '&';
         this.link += 'restaurants=false';
+        count = 1;
       }
 
       if (this.parking != 1) {
-        if (this.restaurants != 1) this.link += '&';
+        if (count > 0) this.link += '&';
         this.link += 'parking=false';
+        count = 1;
       }
 
       window.location.href = this.link;
