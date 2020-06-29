@@ -61,7 +61,7 @@ class PlaceController extends Controller
      * 
      * @param Array $filters
      */
-    public function main(Request $request)
+    public function index(Request $request)
     {
         $places = Place::where('status', 1)
             ->with(['categories', 'cities', 'images'])
@@ -74,23 +74,10 @@ class PlaceController extends Controller
             ->category($request->category)
             ->city($request->city)
             ->paginate(10);
-        return view('place.index-main', [
+        return view('place.index', [
             'places' => $places,
             'categories' => Category::orderBy('name', 'asc')->get(),
             'cities' => City::orderBy('name', 'asc')->get()
-        ]);
-    }
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-
-        $places = Place::where('user_id', Auth::user()->id)->get();
-        return view('place.index', [
-            'places' => $places
         ]);
     }
 

@@ -52,7 +52,7 @@
                         ipsum. Donec dictum diam vel nulla porttitor, ac posuere tortor porta. In sed amet.</p>
                     <button
                         class="bg-transparent mt-5 hover:bg-green-300 text-green-500 font-semibold hover:text-white py-2 px-4 border border-green-300 hover:border-transparent rounded"
-                        onclick="location.href='{{route('place.main',['category'=>$beaches])}}'" type="button">
+                        onclick="location.href='{{route('place.index',['category'=>$beaches])}}'" type="button">
                         View Section
                     </button>
                 </div>
@@ -87,7 +87,7 @@
                         ipsum. Donec dictum diam vel nulla porttitor, ac posuere tortor porta. In sed amet.</p>
                     <button
                         class="bg-transparent mt-5 hover:bg-green-300 text-green-500 font-semibold hover:text-white py-2 px-4 border border-green-300 hover:border-transparent rounded"
-                        onclick="location.href='{{route('place.main',['category'=>$forests])}}'" type="button">
+                        onclick="location.href='{{route('place.index',['category'=>$forests])}}'" type="button">
                         View Section
                     </button>
                 </div>
@@ -118,7 +118,7 @@
                         ipsum. Donec dictum diam vel nulla porttitor, ac posuere tortor porta. In sed amet.</p>
                     <button
                         class="bg-transparent mt-5 hover:bg-green-300 text-green-500 font-semibold hover:text-white py-2 px-4 border border-green-300 hover:border-transparent rounded"
-                        onclick="location.href='{{route('place.main',['category'=>$camping])}}'" type="button">
+                        onclick="location.href='{{route('place.index',['category'=>$camping])}}'" type="button">
                         View Section
                     </button>
                 </div>
@@ -151,7 +151,7 @@
                         ipsum. Donec dictum diam vel nulla porttitor, ac posuere tortor porta. In sed amet.</p>
                     <button
                         class="bg-transparent mt-5 hover:bg-green-300 text-green-500 font-semibold hover:text-white py-2 px-4 border border-green-300 hover:border-transparent rounded"
-                        onclick="location.href='{{route('place.main',['category'=>$fun])}}'" type="button">
+                        onclick="location.href='{{route('place.index',['category'=>$fun])}}'" type="button">
                         View Section
                     </button>
                 </div>

@@ -8,8 +8,9 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
 use Intervention\Image\Facades\Image;
 use App\Models\User;
+use App\Models\Place;
 
-class HomeController extends Controller
+class UserareaController extends Controller
 {
   /**
    * Show user profile
@@ -18,8 +19,21 @@ class HomeController extends Controller
    */
   public function index()
   {
-    return view('home');
+    return view('user.index');
   }
+      /**
+     * User index for places
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function places()
+    {
+
+        $places = Place::where('user_id', Auth::user()->id)->get();
+        return view('user.places', [
+            'places' => $places
+        ]);
+    }
   public function show() {
     
   }
@@ -47,7 +61,7 @@ class HomeController extends Controller
       })->orientate()->save('storage/avatars/' . Auth::user()->id . '.jpg');
       Auth::user()->avatar = 1;
       DB::update('update users set avatar = 1 where id = ?', [Auth::user()->id]);
-      return view('home', [
+      return view('user.index', [
         'avatar' => Storage::url('avatars/' . Auth::user()->id . '.jpg')
       ]);
     }
@@ -64,6 +78,6 @@ class HomeController extends Controller
     Storage::delete('avatars/' . Auth::user()->id . '.jpg');
     $user->avatar = 0;
     $user->update();
-    return view('home');
+    return view('user.index');
   }
 }

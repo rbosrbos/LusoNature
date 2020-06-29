@@ -11,7 +11,7 @@
 <section class="flex justify-center flex-wrap">
     <div class="w-full ml-5 my-5">
         <a class="mr-3 text-green-500" href="{{ route('mainpage') }}">Home</a>/<a class="mx-3 text-green-500"
-            href="{{ route('place.main') }}">Places</a>/<span class="ml-3">{{ $place->name }}</span>
+            href="{{ route('place.index') }}">Places</a>/<span class="ml-3">{{ $place->name }}</span>
     </div>
     <div id="main_slider_container" class="relative m-auto w-full">
         @foreach ($images as $img)

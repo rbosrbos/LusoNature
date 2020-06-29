@@ -73,7 +73,7 @@
                 animDiv.classList.remove('h-full')
             },
             goto: function (e) {
-                window.location.href = e.target.closest('.parent').id;
+                window.location.href = 'place/' + e.target.closest('.parent').id;
             }
         }
     }

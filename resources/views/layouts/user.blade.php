@@ -23,7 +23,7 @@
         <div class="text-center text-gray-700">
             <div class="text-2xl">
                 @if(!empty($avatar))
-                <a href="{{ route('home.index') }}">
+                <a href="{{ route('user.index') }}">
                     <img class="block m-auto" width="70" src="{{ $avatar }}" alt="">
                 </a>
                 @else
@@ -31,8 +31,8 @@
                 @endif
                 <p class="left text-base">{{ Auth::user()->name ?? '' }}</p>
             </div>
-        <a class="text-xs cursor-pointer inline-block sm:block w-24 m-auto bg-transparent sm:mb-2 hover:bg-green-300 text-green-500 font-semibold hover:text-white border border-green-300 hover:border-transparent rounded" href="{{ route('home.index') }}">Home</a>
-            <form method="POST" id="avatar_form" class="inline-block sm:block" action="{{ route('home.store',Auth::user()->id) }}"
+        <a class="text-xs cursor-pointer inline-block sm:block w-24 m-auto bg-transparent sm:mb-2 hover:bg-green-300 text-green-500 font-semibold hover:text-white border border-green-300 hover:border-transparent rounded" href="{{ route('user.index') }}">Home</a>
+            <form method="POST" id="avatar_form" class="inline-block sm:block" action="{{ route('user.store',Auth::user()->id) }}"
                 enctype="multipart/form-data">
                 @csrf
                 <input type="file" class="hidden" name="avatar" id="avatar">
@@ -44,7 +44,7 @@
 
             </form>
             @if(!empty($avatar))
-            <form method="POST" class="inline-block sm:block" action="{{ route('home.destroy',Auth::user()->id) }}" enctype="multipart/form-data">
+            <form method="POST" class="inline-block sm:block" action="{{ route('user.destroy',Auth::user()->id) }}" enctype="multipart/form-data">
                 @csrf
                 @method('delete')
                 <a id="delete_avatar"
@@ -66,9 +66,9 @@
             <p class="left text-black text-base text-center">Submissions</p>
             <ul class="text-center">
                 <li class="inline-block sm:block"><a class="text-xs cursor-pointer block w-24 m-auto bg-transparent hover:bg-green-300 text-green-500 font-semibold hover:text-white border border-green-300 hover:border-transparent rounded text-center"
-                        href="{{ route('place.index') }}">Places</a></li>
+                        href="{{ route('user.places') }}">Places</a></li>
                 <li class="inline-block sm:block"><a class="text-xs my-2 cursor-pointer block w-24 m-auto bg-transparent hover:bg-green-300 text-green-500 font-semibold hover:text-white border border-green-300 hover:border-transparent rounded text-center"
-                        href="{{ route('home.index') }}">Recent Activity</a></li>
+                        href="{{ route('user.index') }}">Other Activities</a></li>
             </ul>
         </div>
     </div>

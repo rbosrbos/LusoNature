@@ -1,46 +1,27 @@
-@extends('layouts.user')
+@extends('layouts.section')
 @push('styles')
 <link rel="stylesheet" href="{{ asset('css/datatable.css') }}">
 @endpush
 @section('title')
-Your contributed places
+Where do you wish to go today?
 @endsection
 @section('scripts')
+{{-- <script src="{{ asset('js/user.js') }}"></script> --}}
 <script src="{{ asset('js/datatable.js') }}"></script>
 @endsection
-@section('usercontent')
-<div class="w-11/12 mx-auto">
-    <div id='recipients' class="p-8 mt-6 lg:mt-0 rounded shadow bg-white">
-        <table id="datatable" class="stripe hover" style="width:100%; padding-top: 1em;  padding-bottom: 1em;">
-            <thead>
-                <tr>
-                    <th data-priority="1">Name</th>
-                    {{-- <th data-priority="2">Description</th> --}}
-                    <th data-priority="3">Parking</th>
-                    <th data-priority="4">WC</th>
-                    <th data-priority="5">Restaurants</th>
-                    <th data-priority="6">Latitude</th>
-                    <th data-priority="7">Longitude</th>
-                    <th data-priority="8">Status</th>
-                    <th data-priority="9">Edit</th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach ($places as $place)
-                <tr>
-                    <td>{{ $place->name ?? '' }}</td>
-                    {{-- <td>{{ $place->description ?? '' }}</td> --}}
-                    <td>@if($place->parking) Yes @else No @endif</td>
-                    <td>@if($place->wc) Yes @else No @endif</td>
-                    <td>@if($place->restaurants) Yes @else No @endif</td>
-                    <td>{{ $place->latitude ?? '' }}</td>
-                    <td>{{ $place->longitude ?? '' }}</td>
-                    <td>@if($place->status) Published @else Awaiting @endif</td>
-                    <td><a class="text-blue-500 font-bold" href="{{ route('place.edit',['place'=>$place]) }}">Edit</a></td>
-                </tr>
-                @endforeach
-            </tbody>
-        </table>
+@section('content')
+<filters :categories='@json($categories)' :cities='@json($cities)'></filters>
+<div class="flex flex-wrap justify-center">
+    @if(count($places) === 0)
+    <div class="font-bold">Your query returned 0 results</div>
+    @endif
+    @foreach ($places as $place)
+    <place-card :place='@json($place)'></place-card>
+    @endforeach
+</div>
+<div class="w-full bg-black bg-opacity-50 fixed bottom-0 pb-6 pt-1 lg:static lg:pb-0 lg:pt-0 lg:bg-transparent">
+    <div class="w-10/12 mx-auto my-10">
+        {{$places->links()}}
     </div>
 </div>
 @endsection

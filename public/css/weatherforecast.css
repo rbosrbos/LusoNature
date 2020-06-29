@@ -1,1 +1,176 @@
-path,text[id^=svg_]{cursor:pointer}path{fill:var(--color3)}g{stroke:var(--color1)}.svg-text{fill:#000!important}path{transition:fill .3s linear}path:hover{fill:#fcd9b6}.main-container{display:flex;flex-wrap:wrap;justify-content:space-around;width:100%}.main-container .container{display:flex;flex-wrap:wrap;width:100%;max-width:48vw}@media (min-width:640px){.main-container .container{max-width:none}}.main-container .container .el1{background-color:rgba(0,0,0,.75);font-family:Lobster,Arial,Helvetica,sans-serif;text-align:center;color:var(--color2);margin:1em;padding:1em;display:flex;align-items:center;justify-content:center;border-radius:1em;width:100%}.main-container .container .el1 .change-location{display:none;margin-left:3em}@media (min-width:640px){.main-container .container .el1 .change-location{display:block}}@media (min-width:640px){.main-container .container .el1{margin:.4em 1em}}.main-container .container .el1:first-child{margin:0 1em}.main-container .container .el1 .child{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;width:100%;font-size:2em}@media (min-width:640px){.main-container .container .el1 .child{justify-content:center}}@media (min-width:640px){.main-container .container .el1 .child .day{flex-basis:100%;font-size:.6em;margin-bottom:1em}}.main-container .container .el1 .child .weather{display:flex;font-family:Roboto,-apple-system,BlinkMacSystemFont,Segoe UI,Oxygen,Ubuntu,Cantarell,Open Sans,Helvetica Neue,sans-serif;font-size:1rem}@media (min-width:640px){.main-container .container .el1 .child .weather{font-size:.6rem}}.main-container .container .el1 .child img{display:block}@media (min-width:640px){.main-container .container .el1 .child img{width:35px}}.main-container .container #map{background-color:rgba(0,0,0,.75);font-family:Lobster,Arial,Helvetica,sans-serif;text-align:center;color:var(--color2);margin:1em;padding:2em;border-radius:1em;width:100%;display:flex;align-items:center;justify-content:center}.main-container #where{font-size:2rem;margin:0}table thead{border-bottom:1px dotted #d3d3d3}table tbody tr{text-align:center;vertical-align:middle}table tbody tr+tr{border-top:1px dotted #d3d3d3}table tbody tr:hover{background-color:#f5f5f5}table td{width:180px}table td img{display:inline-block!important}#forecast{transition:margin-left .5s ease-in-out}.offscreen{margin-left:-100vw}
+path,
+text[id^=svg_] {
+  cursor: pointer;
+}
+
+path {
+  fill: var(--color3);
+}
+
+g {
+  stroke: var(--color1);
+}
+
+.svg-text {
+  fill: #000 !important;
+}
+
+path {
+  transition: fill 0.3s linear;
+}
+
+path:hover {
+  fill: #FCD9B6;
+}
+
+.main-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  width: 100%;
+}
+
+.main-container .container {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  max-width: 48vw;
+}
+
+@media (min-width: 640px) {
+  .main-container .container {
+    max-width: none;
+  }
+}
+
+.main-container .container .el1 {
+  background-color: rgba(0, 0, 0, 0.75);
+  font-family: "Lobster", Arial, Helvetica, sans-serif;
+  text-align: center;
+  color: var(--color2);
+  margin: 1em;
+  padding: 1em 1em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 1em;
+  width: 100%;
+}
+
+.main-container .container .el1 .change-location {
+  display: none;
+  margin-left: 3em;
+}
+
+@media (min-width: 640px) {
+  .main-container .container .el1 .change-location {
+    display: block;
+  }
+}
+
+@media (min-width: 640px) {
+  .main-container .container .el1 {
+    margin: 0.4em 1em;
+  }
+}
+
+.main-container .container .el1:first-child {
+  margin: 0 1em;
+}
+
+.main-container .container .el1 .child {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  font-size: 2em;
+}
+
+@media (min-width: 640px) {
+  .main-container .container .el1 .child {
+    justify-content: center;
+  }
+}
+
+@media (min-width: 640px) {
+  .main-container .container .el1 .child .day {
+    flex-basis: 100%;
+    font-size: 0.6em;
+    margin-bottom: 1em;
+  }
+}
+
+.main-container .container .el1 .child .weather {
+  display: flex;
+  font-family: Roboto, -apple-system, BlinkMacSystemFont, "Segoe UI", Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  font-size: 1rem;
+}
+
+@media (min-width: 640px) {
+  .main-container .container .el1 .child .weather {
+    font-size: 0.6rem;
+  }
+}
+
+.main-container .container .el1 .child img {
+  display: block;
+}
+
+@media (min-width: 640px) {
+  .main-container .container .el1 .child img {
+    width: 35px;
+  }
+}
+
+.main-container .container #map {
+  background-color: rgba(0, 0, 0, 0.75);
+  font-family: "Lobster", Arial, Helvetica, sans-serif;
+  text-align: center;
+  color: var(--color2);
+  margin: 1em;
+  padding: 2em;
+  border-radius: 1em;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.main-container #where {
+  font-size: 2rem;
+  margin: 0;
+}
+
+table thead {
+  border-bottom: 1px dotted lightgray;
+}
+
+table tbody tr {
+  text-align: center;
+  vertical-align: middle;
+}
+
+table tbody tr + tr {
+  border-top: 1px dotted lightgray;
+}
+
+table tbody tr:hover {
+  background-color: #f5f5f5;
+}
+
+table td {
+  width: 180px;
+}
+
+table td img {
+  display: inline-block !important;
+}
+
+#forecast {
+  transition: margin-left 0.5s ease-in-out;
+}
+
+.offscreen {
+  margin-left: -100vw;
+}

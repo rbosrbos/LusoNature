@@ -104,7 +104,7 @@ throw new Error("Module build failed (from ./node_modules/babel-loader/lib/index
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! C:\Users\punk\Desktop\LusoNature\resources\js\news.js */"./resources/js/news.js");
+module.exports = __webpack_require__(/*! /home/rbospt/LusoNature/resources\js\news.js */"./resources/js/news.js");
 
 
 /***/ })

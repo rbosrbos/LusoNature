@@ -63,7 +63,7 @@
                     <div class="flex flex-col absolute right-0 top-0 pt-1">
                         <div class="hidden lg:flex justify-end items-start text-xs font-bold">
                             @if (Auth::guard('web')->check())
-                            <a href="{{ route('home.index') }}">Hello {{ Auth::guard('web')->user()->name }}</a>
+                            <a href="{{ route('user.index') }}">Hello {{ Auth::guard('web')->user()->name }}</a>
                             @else
                             <a href="{{ route('login') }}">Login / Register</a>
                             @endif
@@ -78,7 +78,7 @@
                         <ul class="lg:ml-0 lg:mt-12 hidden flex flex-col justify-center items-center lg:block text-lg">
                             <li class="p-5 lg:p-0 lg:inline lg:mr-6"><a href="/">Home</a></li>
                             <li class="p-5 lg:p-0 lg:inline lg:mr-6"><a href="{{ route('news.index') }}">News</a></li>
-                            <li class="p-5 lg:p-0 lg:inline lg:mr-6"><a href="{{ route('place.main') }}">Browse
+                            <li class="p-5 lg:p-0 lg:inline lg:mr-6"><a href="{{ route('place.index') }}">Browse
                                     Places</a></li>
                             <li class="p-5 lg:p-0 lg:inline lg:mr-6"><a href="{{ route('weatherforecast.index') }}">Weather Forecast</a></li>
                             <li class="p-5 lg:p-0 lg:inline lg:mr-6"><a href="{{route('contact.index')}}">Contact Us</a>

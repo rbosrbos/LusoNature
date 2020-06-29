@@ -24,10 +24,9 @@ class RatingController extends Controller
             'user_id' => Auth::id()
         ])->first();
         if ($rating === null) {
-            
             $rating = new Rating;
 
-            $rating->id = Uuid::uuid4();
+            //$rating->id = Uuid::uuid4();
             $rating->place_id = $request->place_id;
             $rating->user_id = Auth::id();
             $rating->access = $request->access;

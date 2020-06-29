@@ -32,12 +32,11 @@ Route::prefix('admin')->group(function(){
   Route::get('/password/reset/{token}', 'Auth\AdminResetPasswordController@showResetForm')->name('admin.password.reset');
 });
 
-Route::resource('home', 'HomeController')->middleware('auth');
+Route::get('/user/places/', 'UserareaController@places')->name('user.places');
+Route::resource('user', 'UserareaController')->middleware('auth');
 
-Route::resource('news', 'NewsController', array("as" => "web"));
+Route::resource('news', 'NewsController');
 
-
-Route::get('/place/index/', 'PlaceController@main')->name('place.main');
 Route::resource('place', 'PlaceController');
 Route::post('/place/rate','PlaceController@rate')->name('place.rate');
 

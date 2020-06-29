@@ -33,14 +33,17 @@
         if (window.innerHeight > window.innerWidth) {
             backgrounds.forEach(element => {
                 const img = element.style.backgroundImage;
-                const extension = img.search('.jpg');
-                const prepare = img.split('.');
+                let prepare = img.split('.pt');
+                prepare = prepare[1].split('.');
+                
                 if (element.style.backgroundImage.includes('-mobile') === false) {
-                    element.style.backgroundImage = prepare[0] + '-mobile.' + prepare[1];
+                    console.log('url("{{URL::to('/')}}' + prepare[0] + '-mobile.' + prepare[1]);
+                    element.style.backgroundImage = 'url("{{URL::to('/')}}' + prepare[0] + '-mobile.' + prepare[1];
                 }
             });
         } else {
             backgrounds.forEach(element => {
+                console.log(element.style.backgroundImage.replace('-mobile', ''));
                 element.style.backgroundImage = element.style.backgroundImage.replace('-mobile', '');
             });
         }
