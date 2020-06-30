@@ -22,7 +22,7 @@ $factory->define(Place::class, function (Faker $faker) {
     $body .= $faker->realText(1000);
    
     return [
-        'id' => $place_id,
+        'uuid' => $place_id,
         'user_id' => $user_id,
         'name' => $faker->streetName,
         'description' => $body,
@@ -39,6 +39,6 @@ $factory->define(Place::class, function (Faker $faker) {
 
 $factory->afterCreating(Place::class, function ($place, Faker $faker) {
     $place->images()->createMany(
-        factory(Images::class, 3)->make(['place_id' => $place->id, 'user_id' => $place->user_id])->toArray()
+        factory(Images::class, 3)->make(['place_id' => $place->uuid, 'user_id' => $place->user_id])->toArray()
     );
 });

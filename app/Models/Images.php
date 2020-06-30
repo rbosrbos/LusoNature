@@ -6,10 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Images extends Model
 {
-    
-    protected $keyType = 'string';
     protected $fillable = [
-        'id', 'place_id', 'user_id'
+        'uuid','place_id', 'user_id'
     ];
-    public $incrementing = false;
 }

@@ -22,7 +22,7 @@ $factory->define(Images::class, function (Faker $faker, array $place) {
     rename('public/storage/places/' . $place['place_id'] . '/' . $img, 'public/storage/places/' . $place['place_id'] . '/' . $id . '.jpg');
 
     return [
-        'id' => $id,
+        'uuid' => $id,
         'place_id' => $place['place_id'],
         'user_id' => $place['user_id'],
         'status' => 1

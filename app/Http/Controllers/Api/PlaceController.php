@@ -7,13 +7,15 @@ use App\Models\Place;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 
+/**
+ * @group Places
+ * 
+ * Places API
+ */
 class PlaceController extends Controller
 {
-    public function __construct()
-    {
-    }
     /**
-     * Display a listing of the resource.
+     * Display a list of all places
      *
      * @return \Illuminate\Http\Response
      */
@@ -35,48 +37,14 @@ class PlaceController extends Controller
     }
 
     /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //Place::create($request->all());
-    }
-
-    /**
-     * Display the specified resource.
+     * Display the specified place.
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
+     * @urlParam  id required The ID of the place.
      */
     public function show($id)
     {
         return Place::findOrFail($id);
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        // $new = Place::findOrFail($id);
-        // $new->update($request->all());
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
     }
 }

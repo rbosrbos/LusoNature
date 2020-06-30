@@ -24,7 +24,7 @@
           </div>
           @foreach ($news as $new)
           <div onclick="window.location.href='{{route('news.show', $new->id)}}'"
-          class="cursor-pointer news flex items-end text-white mt-10 mx-5 sm:mx-10" style="background-image: url('{{ Storage::url('news/'.$new->id.'/'.$new->id.'-card.jpg') }}');">
+          class="cursor-pointer news flex items-end text-white mt-10 mx-5 sm:mx-10" style="background-image: url('{{ Storage::url('news/'.$new->uuid.'/'.$new->uuid.'-card.jpg') }}');">
               <div class="w-full p-5 bg-black bg-opacity-50 font-bold">
                   <p class="text-lg sm:text-2xl">{{ $new->title }}</p>
                   <p class="summary text-xs sm:text-sm overflow-hidden">{{ Str::limit($new->summary, 200) }} </p>

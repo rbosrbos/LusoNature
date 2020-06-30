@@ -23,7 +23,7 @@ $factory->define(News::class, function (Faker $faker) {
     })->orientate()->save('public/storage/news/'.$id.'/'.$id.'-card.jpg');
     rename ('public/storage/news/'.$id.'/'.$new, 'public/storage/news/'.$id.'/'.$id.'.jpg');
     return [
-        'id' => $id,
+        'uuid' => $id,
         'title' => $faker->realText(100),
         'body' => $body,
         'summary' => $faker->realText(500),

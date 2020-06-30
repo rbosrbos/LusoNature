@@ -22,11 +22,11 @@ class CreateImagesTable extends Migration
     {
         Schema::create($this->tableName, function (Blueprint $table) {
             $table->engine = 'InnoDB';
-            $table->uuid('id');
-            $table->primary('id');
-            $table->char('place_id', 36);
+            $table->increments('id');
+            $table->unsignedInteger('place_id');
             $table->char('user_id', 36);
             $table->tinyInteger('status')->default('0');
+            $table->char('uuid', 36)->nullable();
 
             $table->index(["place_id"], 'fk_places_has_users_places3_idx');
 

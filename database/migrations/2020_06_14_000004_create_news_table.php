@@ -22,12 +22,12 @@ class CreateNewsTable extends Migration
     {
         Schema::create($this->tableName, function (Blueprint $table) {
             $table->engine = 'InnoDB';
-            $table->uuid('id');
-            $table->primary('id');
+            $table->increments('id');
             $table->char('user_id', 36);
             $table->string('title');
             $table->longText('body');
             $table->text('summary');
+            $table->char('uuid', 36)->nullable();
 
             $table->index(["user_id"], 'fk_news_users1_idx');
             $table->timestamps();

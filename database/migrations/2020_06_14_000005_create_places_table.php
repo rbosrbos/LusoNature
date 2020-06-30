@@ -22,8 +22,7 @@ class CreatePlacesTable extends Migration
     {
         Schema::create($this->tableName, function (Blueprint $table) {
             $table->engine = 'InnoDB';
-            $table->uuid('id');
-            $table->primary('id');
+            $table->increments('id');
             $table->unsignedInteger('categories_id');
             $table->unsignedInteger('cities_id');
             $table->char('user_id', 36);
@@ -35,6 +34,7 @@ class CreatePlacesTable extends Migration
             $table->string('latitude', 45)->nullable();
             $table->string('longitude', 45)->nullable();
             $table->tinyInteger('status')->default('0');
+            $table->char('uuid', 36);
 
             $table->index(["categories_id"], 'fk_places_categories1_idx');
 

@@ -23,7 +23,7 @@ class CreateRatingsTable extends Migration
         Schema::create($this->tableName, function (Blueprint $table) {
             $table->engine = 'InnoDB';
             $table->increments('id');
-            $table->char('place_id', 36);
+            $table->unsignedInteger('place_id');
             $table->char('user_id', 36);
             $table->integer('access')->nullable();
             $table->integer('giftshops')->nullable();

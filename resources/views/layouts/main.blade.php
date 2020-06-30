@@ -4,7 +4,7 @@
     @foreach ($latest as $item)
     <div class="main_slide w-full absolute @if ($loop->first) active @endif overflow-hidden">
         <div class="main_slide_bg w-full absolute z-0"
-            style="background-image: url('{{ Storage::url('places/'.$item->id.'/'.$item->images->random(1)[0]->id.'.jpg') }}');">
+            style="background-image: url('{{ Storage::url('places/'.$item->uuid.'/'.$item->images->random(1)[0]->uuid.'.jpg') }}');">
         </div>
         <div
             class="overlay bg-black bg-opacity-50 w-full h-full z-10 relative flex flex-col justify-center items-center px-10 sm:px-20 text-white">

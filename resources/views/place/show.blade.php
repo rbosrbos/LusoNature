@@ -21,7 +21,7 @@
             <div class="main_slide w-full absolute overflow-hidden">
                 @endif
                 <div class="main_slide_bg w-full bg-no-repeat bg-center absolute z-0"
-                    style="background-image: url('{{ Storage::url("places/$img->place_id/$img->id.jpg") }}');"></div>
+                    style="background-image: url('{{ Storage::url("places/$img->place_id/$img->uuid.jpg") }}');"></div>
             </div>
             @endforeach
             <div id="main_slider_pager" class="absolute w-full flex items-end z-10 justify-center pb-5">

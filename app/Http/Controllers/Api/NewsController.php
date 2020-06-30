@@ -7,15 +7,19 @@ use App\Models\News;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 
+/**
+ * @group News
+ * 
+ * News API
+ */
 class NewsController extends Controller
 {
-    public function __construct()
-    {
-    }
     /**
-     * Display a listing of the resource.
+     * Display a list of all news
      *
      * @return \Illuminate\Http\Response
+     * @queryParam num int Number of results (limit). Example: 100
+     * @queryParam latest_month boolean Limit results to latest month only. Example: false
      */
     public function index(Request $request)
     {
@@ -32,48 +36,14 @@ class NewsController extends Controller
     }
 
     /**
-     * Store a newly created resource in storage.
+     * Display the specified new.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  string  $id
      * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //News::create($request->all());
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @urlParam  id required The UUID of the post.
      */
     public function show($id)
     {
         return News::findOrFail($id);
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        // $new = News::findOrFail($id);
-        // $new->update($request->all());
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
     }
 }

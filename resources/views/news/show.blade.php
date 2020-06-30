@@ -10,7 +10,7 @@
         <a class="mr-3 text-green-500" href="{{ route('mainpage') }}">Home</a>/<a class="mx-3 text-green-500" href="{{ route('news.index') }}">News</a>/<span class="ml-3">{{ $new->title }}</span>
       </div>
       <div class="w-full lg:w-2/3 my-10">
-          <img src="{{ Storage::url('news/'.$new->id.'/'.$new->id.'.jpg') }}" alt="">
+          <img src="{{ Storage::url('news/'.$new->uuid.'/'.$new->uuid.'.jpg') }}" alt="">
           <h1 class="px-3 sm:px-5 lg:px-0 w-full">{{ $new->title }}</h1>
           <h3 class="px-3 sm:px-5 lg:px-0 mb-5 text-md w-full">{{ $new->summary }}</h3>
           <div class="px-3 sm:px-5 text-lg lg:px-0">{!! $new->body !!}</div>
