@@ -1,0 +1,26 @@
+.admin-menu {
+  cursor: pointer;
+  transition: all 0.1s;
+  transition-delay: 0.5s;
+}
+
+.admin-menu:hover {
+  transition: none;
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
+}
+
+.admin-menu:hover .admin-submenu {
+  max-height: 1200px;
+}
+
+.admin-menu .admin-submenu {
+  top: 37px;
+  transition: max-height 0.5s linear;
+  max-height: 0;
+  border-bottom-right-radius: 0.5rem;
+  border-bottom-left-radius: 0.5rem;
+  --bg-opacity: 1;
+  background-color: #2f855a;
+  background-color: rgba(47, 133, 90, var(--bg-opacity));
+}

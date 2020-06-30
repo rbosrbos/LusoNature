@@ -1,0 +1,22 @@
+.admin-menu {
+    cursor: pointer;
+    transition: all 0.1s;
+    transition-delay: 0.5s;
+
+    &:hover {
+        transition: none;
+        @apply rounded-b-none;
+
+        .admin-submenu {
+            max-height: 1200px;
+        }
+    }
+
+    .admin-submenu {
+        top: 37px;
+        transition: max-height 0.5s linear;
+        max-height: 0;
+        @apply rounded-b-lg;
+        @apply bg-green-700;
+    }
+}

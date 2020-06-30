@@ -117,9 +117,7 @@
             <div class="flex flex-wrap justify-around">
                 <div class="text-center sm:text-left sm:mr-10 mb-10 md:mb-0 md:w-1/5">
                     <p class="font-bold text-3xl">LusoNature</p>
-                    <span class="text-white">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quaerat totam,
-                        officiis cupiditate cum nobis tenetur illo consequatur veritatis corrupti maxime minima id. Ut,
-                        autem consequuntur magnam minus ab vitae facilis.</span>
+                    <span class="text-white">Why stay at home? Find the best spots in our beautiful country and plan your free time.</span>
                 </div>
                 <div class="text-center sm:text-left sm:mr-10 mb-10 md:mb-0 md:w-1/5">
                     <p class="text-center sm:text-left font-bold mb-5 text-3xl">Social Links</p>
@@ -157,14 +155,13 @@
                 </div>
                 <div class="text-center sm:text-left sm:mr-10 mb-10 md:mb-0 md:w-1/5">
                     <p class="font-bold text-3xl">About</p>
-                    <span class="text-white">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quaerat totam,
-                        officiis cupiditate cum nobis tenetur illo consequatur veritatis corrupti maxime minima id. Ut,
-                        autem consequuntur magnam minus ab vitae facilis.</span>
+                    <p class="text-white">LusoNature - 2020</p>
+                    <p class="text-white">All rights reserved.<br>Customer service:<br><a class="text-green-500 hover:text-green-400" href="mailto:info@lusonature.pt">info@lusonature.pt</a></p>
                 </div>
                 <div class="text-center sm:text-left md:w-1/5">
                     <p class="font-bold text-3xl">NewsLetter</p>
-                    <span class="block text-white">Lorem, ipsum dolor sit amet consectetur adipisicing elit.</span>
-                    <input class="block mx-auto mt-5 sm:mx-0" type="text">
+                    <span class="block text-white">Soon</span>
+                    <input class="block mx-auto mt-5 sm:mx-0" disabled type="text">
                     <button
                         class="bg-transparent mt-5 hover:bg-green-300 text-green-500 font-semibold hover:text-white py-2 px-4 border border-green-300 hover:border-transparent rounded">
                         Subscribe
