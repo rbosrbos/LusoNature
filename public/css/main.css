@@ -1288,14 +1288,6 @@ html body #top_ranked .top div:after {
   border: 3px solid #fff;
 }
 
-html body #top_ranked .text-center:nth-child(2) .top {
-  background-image: url("https://picsum.photos/1920/780?random=2");
-}
-
-html body #top_ranked .text-center:nth-child(3) .top {
-  background-image: url("https://picsum.photos/1920/780?random=3");
-}
-
 html body #top_ranked .top:after {
   position: relative;
   text-align: center;

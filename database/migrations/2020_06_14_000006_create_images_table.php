@@ -26,11 +26,13 @@ class CreateImagesTable extends Migration
             $table->unsignedInteger('place_id');
             $table->char('user_id', 36);
             $table->tinyInteger('status')->default('0');
-            $table->char('uuid', 36)->nullable();
+            $table->char('uuid', 36);
 
             $table->index(["place_id"], 'fk_places_has_users_places3_idx');
 
             $table->index(["user_id"], 'fk_places_has_users_users3_idx');
+
+            $table->unique(["uuid"], 'uuid_UNIQUE');
             $table->nullableTimestamps();
 
 

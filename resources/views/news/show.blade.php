@@ -13,7 +13,7 @@
           <img src="{{ Storage::url('news/'.$new->uuid.'/'.$new->uuid.'.jpg') }}" alt="">
           <h1 class="px-3 sm:px-5 lg:px-0 w-full">{{ $new->title }}</h1>
           <h3 class="px-3 sm:px-5 lg:px-0 mb-5 text-md w-full">{{ $new->summary }}</h3>
-          <div class="px-3 sm:px-5 text-lg lg:px-0">{!! $new->body !!}</div>
+          <div class="px-3 sm:px-5 lg:px-0">{!! $new->body !!}</div>
           <p class="px-3 sm:px-5 lg:px-0 text-green-300 text-right">
               <ion-icon style="transform:translateY(4px)" class="text-xl" name="person-circle-outline"></ion-icon> <a
                   class="mr-5" href="mailto:{{ $new->user->email }}">{{ $new->user->name }}</a>

@@ -2176,7 +2176,7 @@ __webpack_require__.r(__webpack_exports__);
       animDiv.classList.remove('h-full');
     },
     "goto": function goto(e) {
-      window.location.href = 'place/' + e.target.closest('.parent').id;
+      window.location.href = 'place/' + this.place.uuid;
     }
   }
 });
@@ -55746,13 +55746,13 @@ var render = function() {
     _vm._g(
       {
         staticClass:
-          "parent cursor-pointer shadow-md transition duration-500 transform hover:scale-110 flex items-end bg-cover justify-center m-5 bg-pink-500",
+          "parent cursor-pointer shadow-md transition duration-500 transform hover:scale-110 flex items-end bg-cover justify-center m-5",
         style: {
           backgroundImage:
             "url(../storage/places/" +
-            this.place.id +
+            this.place.uuid +
             "/" +
-            this.place.images[0].id +
+            this.place.images[0].uuid +
             ".jpg)",
           height: "500px",
           width: "400px"

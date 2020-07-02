@@ -23,7 +23,7 @@
               </div>
           </div>
           @foreach ($news as $new)
-          <div onclick="window.location.href='{{route('news.show', $new->id)}}'"
+          <div onclick="window.location.href='{{route('news.show', $new->uuid)}}'"
           class="cursor-pointer news flex items-end text-white mt-10 mx-5 sm:mx-10" style="background-image: url('{{ Storage::url('news/'.$new->uuid.'/'.$new->uuid.'-card.jpg') }}');">
               <div class="w-full p-5 bg-black bg-opacity-50 font-bold">
                   <p class="text-lg sm:text-2xl">{{ $new->title }}</p>

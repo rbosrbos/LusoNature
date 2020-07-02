@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\News;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use Ramsey\Uuid\Rfc4122\UuidV4;
+use Ramsey\Uuid\Uuid;
 
 class NewsController extends Controller
 {
@@ -53,8 +55,10 @@ class NewsController extends Controller
      * @param  \App\Models\News  $news
      * @return \Illuminate\Contracts\Support\Renderable
      */
-    public function show(News $news)
+    public function show(string $newsuuid)
     {
+        $news = News::where('uuid',$newsuuid)->first();
+        
         $news->load('user');
         return view('news.show', [
             'new' => $news->load('user'),

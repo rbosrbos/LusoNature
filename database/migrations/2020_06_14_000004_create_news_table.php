@@ -27,9 +27,11 @@ class CreateNewsTable extends Migration
             $table->string('title');
             $table->longText('body');
             $table->text('summary');
-            $table->char('uuid', 36)->nullable();
+            $table->char('uuid', 36);
 
             $table->index(["user_id"], 'fk_news_users1_idx');
+
+            $table->unique(["uuid"], 'uuid_UNIQUE');
             $table->timestamps();
 
 

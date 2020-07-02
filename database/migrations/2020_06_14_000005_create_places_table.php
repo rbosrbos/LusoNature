@@ -41,6 +41,8 @@ class CreatePlacesTable extends Migration
             $table->index(["cities_id"], 'fk_places_cities1_idx');
 
             $table->index(["user_id"], 'fk_places_users1_idx');
+
+            $table->unique(["uuid"], 'uuid_UNIQUE');
             $table->timestamps();
 
 

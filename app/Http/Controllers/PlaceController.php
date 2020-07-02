@@ -144,8 +144,9 @@ class PlaceController extends Controller
      * @param  \App\Models\Place  $place
      * @return \Illuminate\Http\Response
      */
-    public function show(Place $place)
+    public function show(string $placeuuid)
     {
+        $place = Place::where('uuid',$placeuuid)->first();
         $ratings = Rating::where([
             'user_id' => Auth::id(),
             'place_id' => $place->id
@@ -165,6 +166,7 @@ class PlaceController extends Controller
         $colors = [
             'blue', 'orange', 'red', 'green'
         ];
+        // dd($place->images()->get());
         return view('place.show', [
             'place' => $place,
             'images' => $place->images()->get(),

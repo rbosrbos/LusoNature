@@ -289,16 +289,6 @@ html {
                 }
             }
 
-            .text-center:nth-child(2) .top {
-                background-image: url('https://picsum.photos/1920/780?random=2');
-
-            }
-
-            .text-center:nth-child(3) .top {
-                background-image: url('https://picsum.photos/1920/780?random=3');
-
-            }
-
             .top:after {
                 position: relative;
                 text-align: center;
@@ -308,7 +298,6 @@ html {
                 align-items: center;
                 color: white;
                 padding: 3em 1em;
-                //content: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Totam laborum vero facilis explicabo nesciunt laboriosam fuga aut, nemo beatae nostrum optio quidem, nisi ex perferendis blanditiis iure rerum a enim!";
                 content: attr(data-description);
                 position: absolute;
                 top: 0;

@@ -1,7 +1,7 @@
 <template>
     <div :id="place.id" v-on="{mouseover: over, mouseleave: leave, click: goto}"
-        class="parent cursor-pointer shadow-md transition duration-500 transform hover:scale-110 flex items-end bg-cover justify-center m-5 bg-pink-500"
-        v-bind:style="{ backgroundImage: 'url(../storage/places/'+this.place.id + '/' + this.place.images[0].id + '.jpg)', height: '500px', width: '400px' }">
+        class="parent cursor-pointer shadow-md transition duration-500 transform hover:scale-110 flex items-end bg-cover justify-center m-5"
+        v-bind:style="{ backgroundImage: 'url(../storage/places/'+this.place.uuid + '/' + this.place.images[0].uuid + '.jpg)', height: '500px', width: '400px' }">
         <div
             class="bg-white bg-opacity-75 w-full font-bold h-40 text-green-500 flex items-center flex-col justify-center">
             <p class="text-lg">{{place.categories.name}}</p>
@@ -73,7 +73,7 @@
                 animDiv.classList.remove('h-full')
             },
             goto: function (e) {
-                window.location.href = 'place/' + e.target.closest('.parent').id;
+                window.location.href = 'place/' + this.place.uuid;
             }
         }
     }

@@ -29,7 +29,7 @@ class AvatarProvider extends ServiceProvider
     {
         view()->composer('*', function ($view) {
             if (Auth::check()) {
-                $avatar = preg_grep("/" . Auth::user()->id . "/", Storage::files('avatars'));
+                $avatar = preg_grep("/" . Auth::user()->uuid . "/", Storage::files('avatars'));
                 $avatarUrl = '';
                 if (count($avatar) > 0) {
                     $avatarUrl = Storage::url(array_values($avatar)[0]);
