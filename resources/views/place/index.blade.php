@@ -1,13 +1,6 @@
 @extends('layouts.section')
-@push('styles')
-<link rel="stylesheet" href="{{ asset('css/datatable.css') }}">
-@endpush
 @section('title')
 Where do you wish to go today?
-@endsection
-@section('scripts')
-{{-- <script src="{{ asset('js/user.js') }}"></script> --}}
-<script src="{{ asset('js/datatable.js') }}"></script>
 @endsection
 @section('content')
 <filters :categories='@json($categories)' :cities='@json($cities)'></filters>

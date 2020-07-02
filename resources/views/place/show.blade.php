@@ -269,9 +269,19 @@
     @endif
 </div>
 <div class="flex flex-wrap bg-green-600 justify-center">
-    <h2 class="text-white text-center">Comments</h2>
+    <h2 class="text-white w-full text-center">Comments</h2>
 </div>
 <div>
+    <form action="" class="transition duration-500 w-full sm:w-1/2 m-auto pt-5 overflow-hidden"
+        style="max-height:0;transition: max-height 2s ease-in">
+        <textarea id="comment" name="description" type="text" placeholder="Write your comment here"
+            class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500 h-24"></textarea>
+            <p id="response" class="text-green-500"></p>
+    </form>
+    <button type="button" id="addComment"
+        class="m-auto block bg-transparent my-5 hover:bg-green-300 text-green-500 font-semibold hover:text-white py-2 px-4 border border-green-300 hover:border-transparent rounded">
+        Add New
+    </button>
     @if($comments)
     <div class="w-full flex items-center overflow-x-scroll py-12" id="comments">
         @foreach ($comments as $c)
@@ -309,6 +319,33 @@
     defer>
 </script>
 <script>
+    $('#addComment').click(function () {
+        if ($(this).hasClass('submitComment')) {
+
+            $.ajax({
+                type: 'POST',
+                url: '/comment/',
+                headers: {
+                    'X-CSRF-TOKEN': '{{ csrf_token() }}'
+                },
+                data: {
+                    place_id: '{{$place->uuid ?? ''}}',
+                    comment: $('#comment').val()
+                },
+                success: function (data) {
+                    $('textarea').prop('disabled', true);
+                    $('#response').text(data);
+                },
+                error: function (data) {
+                    console.log(data);
+                }
+            });
+        } else {
+            $('form').css('max-height', '9999px');
+            $(this).text('Submit');
+            $(this).addClass('submitComment');
+        }
+    });
     $('.custom-cb').click(function () {
         $(this).addClass("checke");
         $(this).prop("checked", true);

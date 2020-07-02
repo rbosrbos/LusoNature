@@ -3,30 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\Models\Comment;
+use App\Models\Place;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class CommentController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        //
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
     /**
      * Store a newly created resource in storage.
      *
@@ -35,7 +17,14 @@ class CommentController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $place = Place::where('uuid',$request->place_id)->first();
+        Comment::create([
+            'user_id' => Auth::id(),
+            'place_id' => $place->id,
+            'comment' => $request->comment,
+            'status' => 0
+        ]);
+        return response('Thank you for your comment. It will soon be reviewed and available.');
     }
 
     /**

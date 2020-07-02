@@ -14,6 +14,7 @@ class UsersTableSeeder extends Seeder
      */
     public function run()
     {
+        Storage::deleteDirectory('avatars');
         Storage::makeDirectory('avatars');
         DB::table('users')->insert([
             'id' => Str::uuid(),

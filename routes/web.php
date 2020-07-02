@@ -20,6 +20,7 @@ Route::get('/', 'MainpageController@index')->name('mainpage');
 Route::post('/user/logout', 'Auth\LoginController@userLogout')->name('user.logout');
 
 Route::prefix('admin')->group(function(){
+  // Login and logout routes
   Route::get('/', 'AdminController@index')->name('admin.mainpage');
   Route::get('/login', 'Auth\AdminLoginController@showLoginForm')->name('admin.login');
   Route::post('/logout', 'Auth\AdminLoginController@logout')->name('admin.logout');
@@ -30,6 +31,9 @@ Route::prefix('admin')->group(function(){
   Route::get('/password/reset', 'Auth\AdminForgotPasswordController@showLinkRequestForm')->name('admin.password.request');
   Route::post('/password/reset', 'Auth\AdminResetPasswordController@reset');
   Route::get('/password/reset/{token}', 'Auth\AdminResetPasswordController@showResetForm')->name('admin.password.reset');
+
+  // Admin area routes
+  Route::get('/news','AdminController@news')->name('admin.news.index');
 });
 
 Route::get('/user/places/', 'UserareaController@places')->name('user.places');
@@ -40,7 +44,7 @@ Route::resource('news', 'NewsController');
 Route::resource('place', 'PlaceController');
 Route::post('/place/rate','PlaceController@rate')->name('place.rate');
 
-
+Route::resource('comment', 'CommentController');
 
 Route::get('/contact', 'ContactController@index')->name('contact.index');
 Route::post('/contact', 'ContactController@create')->middleware('throttle:1,1')->name('contact.create');

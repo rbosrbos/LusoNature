@@ -155,7 +155,7 @@ class PlaceController extends Controller
         $comments = Comment::where([
             'place_id' => $place->id,
             'status' => 1
-        ])->with('user')->get();
+        ])->orderBy('id','desc')->with('user')->get();
         $average = [];
         if (count($votes) > 0) {
             $average['access'] = $votes->sum('access') / count($votes);

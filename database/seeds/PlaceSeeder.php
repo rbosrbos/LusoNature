@@ -3,8 +3,8 @@
 use Illuminate\Database\Seeder;
 use App\Models\Place;
 use App\Models\Images;
-use Illuminate\Support\Facades\File;
 use Faker\Generator as Faker;
+use Illuminate\Support\Facades\Storage;
 
 class PlaceSeeder extends Seeder
 {
@@ -15,7 +15,8 @@ class PlaceSeeder extends Seeder
      */
     public function run()
     {
-        File::deleteDirectory(public_path('storage/places'));
+        Storage::deleteDirectory('places');
+        Storage::makeDirectory('places');
         factory(Place::class, 10)
             ->create();
     }

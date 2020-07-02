@@ -55753,7 +55753,7 @@ var render = function() {
             this.place.uuid +
             "/" +
             this.place.images[0].uuid +
-            ".jpg)",
+            "-mobile.jpg)",
           height: "500px",
           width: "400px"
         },

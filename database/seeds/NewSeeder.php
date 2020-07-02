@@ -2,7 +2,7 @@
 
 use App\Models\News;
 use Illuminate\Database\Seeder;
-use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Storage;
 
 class NewsSeeder extends Seeder
 {
@@ -13,7 +13,8 @@ class NewsSeeder extends Seeder
      */
     public function run()
     {
-        File::deleteDirectory(public_path('storage/news'));
+        Storage::deleteDirectory('news');
+        Storage::makeDirectory('news');
         factory(News::class, 30)->create();
     }
 }

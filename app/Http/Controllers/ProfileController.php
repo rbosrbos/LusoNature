@@ -45,9 +45,8 @@ class ProfileController extends Controller
           Storage::delete($file);
         }
       }
-      dd('fuck');
       Storage::makeDirectory('avatars');
-      Image::make($request->file('avatar')->getRealPath())->resize(70, null, function ($constraint) {
+      Image::make($request->file('avatar')->getRealPath())->fit(70, 70, function ($constraint) {
         $constraint->aspectRatio();
       })->orientate()->save('storage/avatars/' . Auth::user()->id . '.jpg');
       Auth::user()->avatar = 1;
