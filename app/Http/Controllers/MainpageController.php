@@ -29,7 +29,7 @@ class MainpageController extends Controller
         $fun = Category::where('name', 'Fun')->first()->id;
         $latest = Place::with('images')->orderBy('id', 'desc')->take(3)->get();
         $top = Rating::selectRaw('SUM(access + giftshops + location + restaurants) as total, place_id')
-            ->with('place')
+            ->with('place','place.images')
             ->groupBy('place_id')
             ->limit(3)
             ->orderBy('total', 'desc')

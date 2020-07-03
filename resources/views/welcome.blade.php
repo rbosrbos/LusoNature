@@ -165,13 +165,13 @@
         @foreach ($top as $item)
         <div data-aos="flip-up" class="text-center mb-10">
             <div data-description="{{Str::limit($item->place->description,250)}}"
-                class="top relative rounded-full sm:mr-10 bg-black shadow-2xl">
+                class="top relative rounded-full sm:mr-10 bg-black shadow-2xl" style="background-image: url('{{ Storage::url('places/'.$item->place->uuid.'/'.$item->place->images->random(1)[0]->uuid.'.jpg') }}')">
                 <div
                     class="rounded-full absolute top-0 right-0 bg-green-500 text-white text-bold flex justify-center items-center z-10 text-xl">
                     {{ $item->total }} pts</div>
             </div>
             <div class="text-2xl sm:text-3xl sm:-ml-10">
-                {{ $item->place->name }}
+            <a href="{{ route('place.show',$item->place->uuid) }}">{{ $item->place->name }}</a>
             </div>
         </div>
         @endforeach
@@ -187,7 +187,7 @@
                 @foreach ($comments as $item)
                 <div class="text-xs sm:text-base fb-item float-left text-center @if($loop->iteration > 2) hidden @endif">
                     <p>{{$item->comment}}</p>
-                <p class="text-green-200"><a href="mailto:{{$item->user->email}}">{{$item->user->name}}</a> <span class="text-white">- about <a href="{{ route('place.show',$item->place->id) }}">{{$item->place->name}}</a></span></p>
+                <p class="text-green-200"><a href="mailto:{{$item->user->email}}">{{$item->user->name}}</a> <span class="text-white">- about <a href="{{ route('place.show',$item->place->uuid) }}">{{$item->place->name}}</a></span></p>
                 </div>
                 @endforeach
             </div>
