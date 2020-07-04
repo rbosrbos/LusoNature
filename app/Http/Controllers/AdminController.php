@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\News;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class AdminController extends Controller
@@ -28,15 +29,26 @@ class AdminController extends Controller
     }
 
     /**
-     * Show the news administration dashboard.
-     *
+     * Lists all users
+     * 
      * @return \Illuminate\Contracts\Support\Renderable
      */
-    public function news()
-    {
-        $news = News::with('user')->orderBy('id','desc')->get();
-        return view('admin.news.index', [
-            'news' => $news
+    public function users() {
+        return view('admin.users.index', [
+            'users' => User::all()
+        ]);
+    }
+
+    /**
+     * User edit form
+     * 
+     * @param string $id
+     * @return \Illuminate\Contracts\Support\Renderable
+     */
+    public function userEdit(string $id) {
+        $user = User::find($id);
+        return view('admin.users.edit',[
+            'user' => $user
         ]);
     }
 }

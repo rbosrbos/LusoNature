@@ -8,6 +8,7 @@
 </style>
 @endpush
 <div class="flex flex-col sm:flex-row">
+    @if(Auth::guard('web')->check())
     <div class="text-green-400 px-5 sm:py-5 inline-block">
         @if ($errors->avatar->any())
         @foreach ($errors->avatar->all() as $error)
@@ -24,7 +25,7 @@
             <div class="text-2xl">
                 @if(!empty($avatar))
                 <a href="{{ route('user.index') }}">
-                    <img class="block m-auto" width="70" src="{{ $avatar }}" alt="">
+                    <img class="block m-auto rounded-full" width="70" src="{{ $avatar }}" alt="">
                 </a>
                 @else
                 <ion-icon class="text-green-400" size="large" name="person-circle-outline"></ion-icon>
@@ -70,6 +71,7 @@
             </ul>
         </div>
     </div>
+    @endif
     <div class="w-full">
         @yield('usercontent')
     </div>

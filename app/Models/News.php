@@ -3,15 +3,15 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
-use App\Models\User;
+use App\Models\Admin;
 
 class News extends Model
 {
   protected $fillable = [
-    'uuid','user_id','title','body','summary'
+    'uuid','admin_id','title','body','summary'
   ];
 
-    public function user() {
-      return $this->belongsTo(User::class);
+    public function admin() {
+      return $this->belongsTo(Admin::class);
     }
 }

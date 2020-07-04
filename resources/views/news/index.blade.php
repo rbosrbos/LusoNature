@@ -30,7 +30,7 @@
                   <p class="summary text-xs sm:text-sm overflow-hidden">{{ Str::limit($new->summary, 200) }} </p>
                   <p class="text-green-300 text-right">
                       <ion-icon style="transform:translateY(4px)" class="text-xl" name="person-circle-outline">
-                      </ion-icon> <a class="mr-5" href="mailto:{{ $new->user->email }}">{{ $new->user->name }}</a>
+                      </ion-icon> <a class="mr-5" href="mailto:{{ $new->admin->email }}">{{ $new->admin->name }}</a>
                       <ion-icon style="transform:translateY(4px)" class="text-xl" name="calendar-outline"></ion-icon>
                       {{ $new->created_at->format('d/m/y') }}
                   </p>

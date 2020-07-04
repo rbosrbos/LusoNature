@@ -55831,7 +55831,7 @@ var render = function() {
           _c("img", {
             staticClass: "w-20",
             attrs: {
-              src: _vm.storelink + "/" + image.id + ".jpg",
+              src: _vm.storelink + "/" + image.uuid + ".jpg",
               alt: "Images"
             }
           }),

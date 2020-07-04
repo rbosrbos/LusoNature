@@ -8,13 +8,13 @@
 <script>
     $('.delete').click(function (e) {
         e.preventDefault();
-        let answer = confirm('Do you really mean it? This action is irreversible: DELETE NEW NR ' + e.target
-        .id);
+        let answer = confirm('Do you really mean it? This action is irreversible: DELETE PLACE NR ' + e.target
+            .dataset.id);
         if (answer === true) {
 
             $.ajax({
                 type: 'POST',
-                url: '/news/' + e.target.id,
+                url: '/admin/users/' + e.target.dataset.id,
                 headers: {
                     'X-CSRF-TOKEN': '{{ csrf_token() }}'
                 },
@@ -43,31 +43,32 @@
 
 @section('content')
 <input type="hidden" id="order" value=0></input>
+<input type="hidden" id="way" value='asc'></input>
 <section id="sections" class="py-16 relative bg-green-100">
-    <h1 class="text-center">News Section</h1>
+    <h1 class="text-center">Places: New Submissions Section</h1>
     <div class="w-11/12 mx-auto">
-        <div id='recipients' class="p-8 mt-6 lg:mt-0 rounded shadow bg-white">
+        <div id='recipients' class="p-8 mt-6 lg:mt-0 rounded shadow bg-white m-auto w-full xl:w-8/12">
             <table id="datatable" class="dt-body-center stripe hover"
                 style="width:100%; padding-top: 1em;  padding-bottom: 1em;">
                 <thead>
                     <tr>
                         <th data-priority="1">ID</th>
-                        <th data-priority="4">Title</th>
-                        <th data-priority="5">Summary</th>
-                        <th class="no-sort" data-priority="9"></th>
-                        <th class="no-sort" data-priority="10"></th>
+                        <th data-priority="2">Name</th>
+                        <th data-priority="3">Email</th>
+                        <th class="no-sort" data-priority="5"></th>
+                        <th class="no-sort" data-priority="6"></th>
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach ($news as $new)
+                    @foreach ($users as $user)
                     <tr>
-                        <td class="dt-center">{{ $new->id ?? '' }}</td>
-                        <td class="dt-center font-bold">{{ Str::limit($new->title,40) ?? '' }}</td>
-                        <td class="dt-center">{{ Str::limit($new->summary,150) ?? '' }}</td>
-                        <td class="dt-center"><a class="text-blue-500 font-bold"
-                                href="{{ route('news.edit',$new->uuid) }}">Edit</a></td>
-                        <td class="dt-center"><a id="{{$new->id}}" class="delete text-blue-500 font-bold"
-                                href="{{ route('news.edit',$new->uuid) }}">Delete</a></td>
+                        <td class="dt-center">{{ $user->id ?? '' }}</td>
+                        <td class="dt-center">{{ $user->name }}</td>
+                        <td class="dt-center">{{ $user->email }}</td>
+                        <td class="dt-center"><a class="edit text-blue-500 font-bold"
+                        href="{{route('admin.users.edit',$user->id)}}">Edit/View</a></td>
+                        <td class="dt-center"><a data-id="{{$user->id}}" class="delete text-blue-500 font-bold"
+                                href="#">Delete</a></td>
                     </tr>
                     @endforeach
                 </tbody>

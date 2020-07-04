@@ -12,6 +12,10 @@ class Place extends Model
         'uuid','categories_id', 'user_id', 'name', 'description', 'latitude', 'longitude', 'parking', 'wc', 'restaurants', 'cities_id'
     ];
 
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
     public function categories()
     {
         return $this->belongsTo(Category::class);
@@ -27,10 +31,16 @@ class Place extends Model
         return $this->hasMany(Images::class);
     }
 
+    public function comments()
+    {
+        return $this->hasMany(Comment::class);
+    }
+
     public function ratings()
     {
         return $this->hasMany(Rating::class);
     }
+
 
     public function scopeWC($query,$wc) {
         if(!Empty($wc)){

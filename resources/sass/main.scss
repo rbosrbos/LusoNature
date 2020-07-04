@@ -81,6 +81,9 @@ html {
 
             main {
                 min-height: 57vh;
+                @media(min-width: 3000px) {
+                    min-height: 82vh;
+                }
             }
             .h-screen-55 {
                 height: 55vh;
@@ -270,7 +273,6 @@ html {
                 width: 300px;
                 height: 300px;
                 background-size: cover;
-//                background-image: url('https://picsum.photos/1920/780?random=1');
 
                 div {
                     height: 100px;

@@ -3,7 +3,7 @@
 /** @var \Illuminate\Database\Eloquent\Factory $factory */
 
 use App\Models\News;
-use App\Models\User;
+use App\Models\Admin;
 use Faker\Generator as Faker;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
@@ -28,6 +28,6 @@ $factory->define(News::class, function (Faker $faker) {
         'body' => $body,
         'summary' => $faker->realText(500),
         'created_at' => $faker->dateTime(),
-        'user_id' => User::all()->random()->id
+        'admin_id' => Admin::all()->random()->id
     ];
 });

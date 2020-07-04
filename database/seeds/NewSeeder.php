@@ -13,8 +13,7 @@ class NewsSeeder extends Seeder
      */
     public function run()
     {
-        Storage::deleteDirectory('news');
         Storage::makeDirectory('news');
-        factory(News::class, 30)->create();
+        factory(News::class, 5)->create();
     }
 }

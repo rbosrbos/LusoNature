@@ -94,9 +94,15 @@
 /***/ (function(module, exports) {
 
 $(document).ready(function () {
+  var way = '';
+  $('#way').val() ? way = $('#way').val() : way = 'desc';
   var table = $('#datatable').DataTable({
+    columnDefs: [{
+      targets: 'no-sort',
+      orderable: false
+    }],
     responsive: true,
-    "order": [[7, "asc"]]
+    "order": [[$('#order').val(), way]]
   });
   table.columns.adjust();
   table.responsive.recalc();

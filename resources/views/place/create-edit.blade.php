@@ -53,7 +53,7 @@ Place - {{ $place->name }}
                         Description
                     </label>
                     <textarea
-                        class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500 h-24"
+                        class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500 h-64"
                         id="description" name="description" type="text"
                         placeholder="Ribeira dos Caldeirões Natural Park is an Azorean protected area, located along part of the Ribeira dos Caldeirões watercourse, in the parish of Achada, municipality of Nordeste, on the island of São Miguel. This natural park is located on the slopes of Serra da Tronqueira and occupies part of the Ribeira do Guilherme course, where the Ribeira do Guilherme Botanical Garden is also located.">{{ old('description',$place->description) }}</textarea>
                     @error('description')
@@ -154,12 +154,14 @@ Place - {{ $place->name }}
                 @if(count($place->images) > 0)
                 <div class="w-full flex flex-wrap justify-center text-center">
                     <h3 class="text-center w-full mt-10">Current pictures:</h3>
-                    <place-images-edit :storelink='@json(asset('storage/places/' . $place->id))'
+                    <place-images-edit :storelink='@json(asset('storage/places/' . $place->uuid))'
                         :images='@json($place->images)'></place-images-edit>
                 </div>
                 @endif
                 <div class="w-full text-center">
-                    <h3 class="text-center mt-10">Give us some nice pictures!</h3>
+                    <h3 class="text-center mt-10">
+                        Add pictures
+                    </h3>
                     <input type="file" class="hidden" name="pictures[]" accept="image/*" multiple id="pictures">
                     <label
                         class="m-auto cursor-pointer w-40 block bg-transparent my-5 hover:bg-green-300 text-green-500 font-semibold hover:text-white py-2 px-4 border border-green-300 hover:border-transparent rounded"

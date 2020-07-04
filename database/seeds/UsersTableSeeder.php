@@ -15,13 +15,13 @@ class UsersTableSeeder extends Seeder
     public function run()
     {
         Storage::deleteDirectory('avatars');
-        Storage::makeDirectory('avatars');
         DB::table('users')->insert([
             'id' => Str::uuid(),
             'name' => 'Rui Silva',
             'email' => 'ruibatisilva@sapo.pt',
             'password' => bcrypt('123456'),
         ]);
+        Storage::makeDirectory('avatars');
         factory(User::class, 10)->create();
     }
 }

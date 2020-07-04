@@ -22,7 +22,8 @@ class PlaceController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('auth')->except('index', 'show', 'main');
+        $this->middleware('auth')->except('index', 'show', 'main', 'adminEdit', 'destroy', 'adminAprove', 'edit');
+        $this->middleware('auth:admin')->only('adminEdit', 'destroy', 'adminAprove');
     }
     /**
      * Validates the request. Type 1 for update (new pictures can be null)
@@ -73,7 +74,7 @@ class PlaceController extends Controller
             ->parking($request->parking)
             ->category($request->category)
             ->city($request->city)
-            ->paginate(10);
+            ->paginate(12);
         return view('place.index', [
             'places' => $places,
             'categories' => Category::orderBy('name', 'asc')->get(),
@@ -146,7 +147,7 @@ class PlaceController extends Controller
      */
     public function show(string $placeuuid)
     {
-        $place = Place::where('uuid',$placeuuid)->first();
+        $place = Place::where('uuid', $placeuuid)->first();
         $ratings = Rating::where([
             'user_id' => Auth::id(),
             'place_id' => $place->id
@@ -155,7 +156,7 @@ class PlaceController extends Controller
         $comments = Comment::where([
             'place_id' => $place->id,
             'status' => 1
-        ])->orderBy('id','desc')->with('user')->get();
+        ])->orderBy('id', 'desc')->with('user')->get();
         $average = [];
         if (count($votes) > 0) {
             $average['access'] = $votes->sum('access') / count($votes);
@@ -184,20 +185,27 @@ class PlaceController extends Controller
      * @param  \App\Models\Place  $place
      * @return \Illuminate\Http\Response
      */
-    public function edit(Place $place)
+    public function edit(string $placeuuid)
     {
-        if ($place->user_id != Auth::user()->id) {
-            abort(403, 'Can\'t touch this');
+        $place = Place::where('uuid', $placeuuid)->first();
+        if (Auth::guard('web')->check()) {
+            if ($place->user_id != Auth::user()->id && !Auth::guard('admin')->check()) {
+                abort(403, 'Can\'t touch this');
+            }
         } else {
-            $place->load('images');
-            $cities = City::orderBy('name', 'asc')->get();
-            $categories = Category::orderBy('name', 'asc')->get();
-            return view('place.create-edit', [
-                'place' => $place,
-                'cities' => $cities,
-                'categories' => $categories
-            ]);
+            if (!Auth::guard('admin')->check()) {
+                abort(403, 'Can\'t touch this');
+            }
         }
+
+        $place->load('images');
+        $cities = City::orderBy('name', 'asc')->get();
+        $categories = Category::orderBy('name', 'asc')->get();
+        return view('place.create-edit', [
+            'place' => $place,
+            'cities' => $cities,
+            'categories' => $categories
+        ]);
     }
 
     /**
@@ -260,8 +268,38 @@ class PlaceController extends Controller
      * @param  \App\Models\Place  $place
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Place $place)
+    public function destroy(int $id)
     {
-        //
+        $uuid = Place::where('id', $id)->first()->uuid;
+        Place::destroy($id);
+        Storage::deleteDirectory('places/' . $uuid);
+        return 'Place ' . $id . ' deleted!';
+    }
+
+    /**
+     * Show the places administration dashboard.
+     *
+     * @return \Illuminate\Contracts\Support\Renderable
+     */
+    public function adminEdit()
+    {
+        $places = Place::with('user')->where('status', '0')->orderBy('id', 'asc')->get();
+        return view('admin.places.index', [
+            'places' => $places
+        ]);
+    }
+
+    /**
+     * Aprove place submission
+     * 
+     * @param int $id
+     * @return string
+     */
+    public function adminAprove(int $id)
+    {
+        Place::where('id', $id)->update([
+            'status' => 1
+        ]);
+        return 'Place `' . $id . '` aproved';
     }
 }

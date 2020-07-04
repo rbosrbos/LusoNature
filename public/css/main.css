@@ -1092,6 +1092,12 @@ html body #app main {
   min-height: 57vh;
 }
 
+@media (min-width: 3000px) {
+  html body #app main {
+    min-height: 82vh;
+  }
+}
+
 html body #app .h-screen-55 {
   height: 55vh;
 }

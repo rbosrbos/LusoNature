@@ -7,6 +7,7 @@ use App\Models\City;
 use App\Models\Images;
 use App\Models\Place;
 use App\Models\User;
+use App\Models\Comment;
 use Faker\Generator as Faker;
 use Illuminate\Support\Facades\Storage;
 use Intervention\Image\Facades\Image;
@@ -40,5 +41,8 @@ $factory->define(Place::class, function (Faker $faker) {
 $factory->afterCreating(Place::class, function ($place, Faker $faker) {
     $place->images()->createMany(
         factory(Images::class, 3)->make(['place_id' => $place->uuid, 'user_id' => $place->user_id])->toArray()
+    );
+    $place->comments()->createMany(
+        factory(Comment::class, 20)->make(['place_id' => $place->id])->toArray()
     );
 });

@@ -33,7 +33,14 @@ Route::prefix('admin')->group(function(){
   Route::get('/password/reset/{token}', 'Auth\AdminResetPasswordController@showResetForm')->name('admin.password.reset');
 
   // Admin area routes
-  Route::get('/news','AdminController@news')->name('admin.news.index');
+  Route::get('/news','NewsController@adminEdit')->name('admin.news.edit');
+  Route::get('/news/create','NewsController@create')->name('admin.news.create');
+  Route::get('/places','PlaceController@adminEdit')->name('admin.places.edit');
+  Route::post('/places/{id}','PlaceController@adminAprove')->name('admin.places.aprove');
+  Route::delete('/places/{id}','PlaceController@destroy')->name('admin.places.destroy');
+  Route::get('/users','AdminController@users')->name('admin.users');
+  Route::get('/users/{id}/edit','AdminController@userEdit')->name('admin.users.edit');
+  Route::put('/users/{id}','AdminController@userUpdate')->name('admin.users.update');
 });
 
 Route::get('/user/places/', 'UserareaController@places')->name('user.places');

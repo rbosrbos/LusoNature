@@ -23,20 +23,20 @@ class CreateNewsTable extends Migration
         Schema::create($this->tableName, function (Blueprint $table) {
             $table->engine = 'InnoDB';
             $table->increments('id');
-            $table->char('user_id', 36);
+            $table->char('admin_id', 36);
             $table->string('title');
             $table->longText('body');
             $table->text('summary');
             $table->char('uuid', 36);
 
-            $table->index(["user_id"], 'fk_news_users1_idx');
+            $table->index(["admin_id"], 'fk_news_admins1_idx');
 
             $table->unique(["uuid"], 'uuid_UNIQUE');
             $table->timestamps();
 
 
-            $table->foreign('user_id', 'fk_news_users1_idx')
-                ->references('id')->on('users')
+            $table->foreign('admin_id', 'fk_news_admins1_idx')
+                ->references('id')->on('admins')
                 ->onDelete('cascade')
                 ->onUpdate('cascade');
         });

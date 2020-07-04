@@ -4,15 +4,16 @@ namespace App\Http\Controllers;
 
 use App\Models\News;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
-use Ramsey\Uuid\Rfc4122\UuidV4;
-use Ramsey\Uuid\Uuid;
+use Illuminate\Support\Facades\Storage;
+use Intervention\Image\Facades\Image;
 
 class NewsController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('auth')->except('index', 'show');
+        $this->middleware('auth:admin')->except('index', 'show');
     }
     /**
      * Display all news
@@ -21,8 +22,7 @@ class NewsController extends Controller
      */
     public function index()
     {
-        $news = News::orderBy('id', 'desc')->paginate(10);
-
+        $news = News::with('admin')->orderBy('id', 'desc')->paginate(10);
         return view('news.index', [
             'news' => $news
         ]);
@@ -35,7 +35,7 @@ class NewsController extends Controller
      */
     public function create()
     {
-        return view('new.create');
+        return view('admin.news.create');
     }
 
     /**
@@ -46,6 +46,18 @@ class NewsController extends Controller
      */
     public function store(Request $request)
     {
+        $request->validate([
+            'title' => 'required|min:20',
+            'summary' => 'required|min:50',
+            'body' => 'required|min:200',
+            'picture' => 'required|image'
+        ]);
+        News::create([
+            'admin_id' => Auth::guard('admin')->id(),
+            'title' => $request->title,
+            'summary' => $request->summary,
+            'body' => $request->body,
+        ]);
     }
 
     /**
@@ -58,9 +70,9 @@ class NewsController extends Controller
     {
         $news = News::where('uuid', $newsuuid)->first();
 
-        $news->load('user');
+        $news->load('admin');
         return view('news.show', [
-            'new' => $news->load('user'),
+            'new' => $news->load('admin'),
             'route' => Route::currentRouteName()
         ]);
     }
@@ -71,9 +83,10 @@ class NewsController extends Controller
      * @param  \App\News  $news
      * @return \Illuminate\Http\Response
      */
-    public function edit(News $news)
+    public function edit(string $newuuid)
     {
-        //
+        $new = News::where('uuid', $newuuid)->first();
+        return view('admin.news.edit', ['new' => $new]);
     }
 
     /**
@@ -83,9 +96,34 @@ class NewsController extends Controller
      * @param  \App\News  $news
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, News $news)
+    public function update(Request $request, int $id)
     {
-        //
+        $new = News::find($id);
+        if (!empty($request->picture)) {
+            $request->validate([
+                'picture' => 'required|image'
+            ]);
+
+            $files = Storage::allFiles('news/' . $new->uuid);
+            Storage::delete($files);
+            Image::make($request->file('picture')->getRealPath())->fit(665, 300, function ($constraint) {
+                $constraint->aspectRatio();
+            })->orientate()->save('storage/news/' . $new->uuid . '/' . $new->uuid . '-card.jpg');
+            Image::make($request->file('picture')->getRealPath())->fit(1920, 866, function ($constraint) {
+                $constraint->aspectRatio();
+            })->orientate()->save('storage/news/' . $new->uuid . '/' . $new->uuid . '.jpg');
+        } else {
+            $request->validate([
+                'title' => 'required|min:20',
+                'summary' => 'required|min:50',
+                'body' => 'required|min:200'
+            ]);
+            $new->title = $request->title;
+            $new->summary = $request->summary;
+            $new->body = $request->body;
+            $new->save();
+            return back()->with(['message' => 'Data saved']);
+        }
     }
 
     /**
@@ -94,8 +132,24 @@ class NewsController extends Controller
      * @param  \App\News  $news
      * @return \Illuminate\Http\Response
      */
-    public function destroy(News $news)
+    public function destroy(int $new)
     {
-        //
+        $uuid = News::where('id', $new)->first()->uuid;
+        News::destroy($new);
+        Storage::deleteDirectory('news/' . $uuid);
+        return 'New ' . $new . ' deleted!';
+    }
+
+    /**
+     * Show the news administration dashboard.
+     *
+     * @return \Illuminate\Contracts\Support\Renderable
+     */
+    public function adminEdit()
+    {
+        $news = News::with('admin')->orderBy('id', 'desc')->get();
+        return view('admin.news.index', [
+            'news' => $news
+        ]);
     }
 }
