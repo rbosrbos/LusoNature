@@ -22,6 +22,7 @@ API [documentation](http://rbos.pt/docs/)
 - Install composer dependencies: composer install
 - Install node dependencies: npm install
 - Create a .env file. See .env.example for reference. Maintain: FILESYSTEM_DRIVER=public
+- Generate an app key: php artisan key:generate
 - Create a storage link: php artisan storage:link
 - Run seeds to create db schema and populate it with examples: php artisan migrate --seed
 - Wait several minutes (multiple images download), go grab a coffeee :)
