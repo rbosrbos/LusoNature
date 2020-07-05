@@ -18,12 +18,12 @@ API [documentation](http://rbos.pt/docs/)
 
 ## Install Instructions
 
-1 - Clone the repository: git clone https://github.com/rbosrbos/LusoNature.git
-2 - Install composer dependencies: composer install
-3 - Install node dependencies: npm install
-4 - Create a .env file. See .env.example for reference.
-5 - Run seeds to create db schema and populate it with examples: php artisan migrate --seed
-6 - Run: php artisan serve
+- Clone the repository: git clone https://github.com/rbosrbos/LusoNature.git
+- Install composer dependencies: composer install
+- Install node dependencies: npm install
+- Create a .env file. See .env.example for reference.
+- Run seeds to create db schema and populate it with examples: php artisan migrate --seed
+- Run: php artisan serve
 
 IMPORTANT NOTE:
 
