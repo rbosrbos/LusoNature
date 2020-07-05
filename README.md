@@ -27,6 +27,15 @@ API [documentation](http://rbos.pt/docs/)
 - Wait several minutes (multiple images download), go grab a coffeee :)
 - Run: php artisan serve
 
+- Default User
+Email: user@test.pt
+Password: 123456
+- Default Admin
+Email: admin@test.pt
+Password: 123456
+
+Admin area: yourUrl/admin
+
 IMPORTANT NOTE:
 
 LusoNature is relying on [Faker](https://github.com/fzaninotto/Faker) to get random pictures and bring them to it's filesystem.
