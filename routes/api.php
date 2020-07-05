@@ -18,7 +18,7 @@ use Illuminate\Support\Facades\Route;
 //     return $request->user();
 // });
 
-Route::apiResource('news','Api\NewsController');
+Route::apiResource('news','Api\NewsController', array('as'=>'api'));
 Route::apiResource('places','Api\PlaceController');
 Route::get('/cities','Api\CityController@index');
 Route::get('/categories','Api\CategoryController@index');
