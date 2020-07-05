@@ -22,9 +22,8 @@ $factory->define(User::class, function (Faker $faker) {
     $avatar = $faker->boolean(95);
     $id = $faker->uuid;
     if ($avatar) {
-        Storage::makeDirectory('avatars');
-        $new = $faker->image(storage_path('avatars'), 70, 70, null, false);
-        rename (storage_path('avatars').$new, storage_path('avatars').$id.'.jpg');
+        $new = $faker->image('public/storage/avatars/', 70, 70, null, false);
+        rename ('public/storage/avatars/'.$new, 'public/storage/avatars/'.$id.'.jpg');
     }
     return [
         'id' => $id,

@@ -21,9 +21,10 @@ API [documentation](http://rbos.pt/docs/)
 - Clone the repository: git clone https://github.com/rbosrbos/LusoNature.git
 - Install composer dependencies: composer install
 - Install node dependencies: npm install
-- Create a .env file. See .env.example for reference.
+- Create a .env file. See .env.example for reference. Maintain: FILESYSTEM_DRIVER=public
 - Create a storage link: php artisan storage:link
 - Run seeds to create db schema and populate it with examples: php artisan migrate --seed
+- Wait several minutes (multiple images download), go grab a coffeee :)
 - Run: php artisan serve
 
 IMPORTANT NOTE:
