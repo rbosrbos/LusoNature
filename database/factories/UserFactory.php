@@ -4,6 +4,7 @@
 
 use App\Models\User;
 use Faker\Generator as Faker;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 
 /*
@@ -21,8 +22,9 @@ $factory->define(User::class, function (Faker $faker) {
     $avatar = $faker->boolean(95);
     $id = $faker->uuid;
     if ($avatar) {
-        $new = $faker->image('public/storage/avatars/', 70, 70, null, false);
-        rename ('public/storage/avatars/'.$new, 'public/storage/avatars/'.$id.'.jpg');
+        Storage::makeDirectory('avatars');
+        $new = $faker->image(storage_path('avatars'), 70, 70, null, false);
+        rename (storage_path('avatars').$new, storage_path('avatars').$id.'.jpg');
     }
     return [
         'id' => $id,

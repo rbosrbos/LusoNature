@@ -17,11 +17,11 @@ $factory->define(News::class, function (Faker $faker) {
     $body .= $faker->realText(2000);
     $body .= '<p>&nbsp;</p>';
     $body .= $faker->realText(1000);
-    $new = $faker->image('public/storage/news/' . $id . '/', 1920, 866, null, false);
-    Image::make('public/storage/news/'.$id.'/'.$new)->resize(665, null, function($constraint){
+    $new = $faker->image(storage_path('news') . $id . '/', 1920, 866, null, false);
+    Image::make(storage_path('news').$id.'/'.$new)->resize(665, null, function($constraint){
         $constraint->aspectRatio();
-    })->orientate()->save('public/storage/news/'.$id.'/'.$id.'-card.jpg');
-    rename ('public/storage/news/'.$id.'/'.$new, 'public/storage/news/'.$id.'/'.$id.'.jpg');
+    })->orientate()->save(storage_path('news').$id.'/'.$id.'-card.jpg');
+    rename (storage_path('news').$id.'/'.$new, storage_path('news').$id.'/'.$id.'.jpg');
     return [
         'uuid' => $id,
         'title' => $faker->realText(100),

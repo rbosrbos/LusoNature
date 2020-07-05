@@ -10,13 +10,13 @@ use Intervention\Image\Facades\Image;
 $factory->define(Images::class, function (Faker $faker, array $place) {
     
     $id = $faker->uuid;
-    $img = $faker->image('public/storage/places/' . $place['place_id'] . '/', 1920, 866, null, false);
+    $img = $faker->image(storage_path('places') . $place['place_id'] . '/', 1920, 866, null, false);
     $id = $faker->uuid;
-    Image::make('public/storage/places/' . $place['place_id'] . '/' . $img)->fit(640, 853, function ($constraint) {
+    Image::make(storage_path('places') . $place['place_id'] . '/' . $img)->fit(640, 853, function ($constraint) {
         $constraint->aspectRatio();
-    })->orientate()->save('public/storage/places/' . $place['place_id'] . '/' . $id . '-mobile.jpg');
+    })->orientate()->save(storage_path('places') . $place['place_id'] . '/' . $id . '-mobile.jpg');
     
-    rename('public/storage/places/' . $place['place_id'] . '/' . $img, 'public/storage/places/' . $place['place_id'] . '/' . $id . '.jpg');
+    rename(storage_path('places') . $place['place_id'] . '/' . $img, storage_path('places') . $place['place_id'] . '/' . $id . '.jpg');
 
     return [
         'uuid' => $id,

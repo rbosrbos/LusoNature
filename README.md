@@ -22,13 +22,14 @@ API [documentation](http://rbos.pt/docs/)
 - Install composer dependencies: composer install
 - Install node dependencies: npm install
 - Create a .env file. See .env.example for reference.
+- Create a storage link: php artisan storage:link
 - Run seeds to create db schema and populate it with examples: php artisan migrate --seed
 - Run: php artisan serve
 
 IMPORTANT NOTE:
 
 LusoNature is relying on [Faker](https://github.com/fzaninotto/Faker) to get random pictures and bring them to it's filesystem.
-This engine relies by default on [LoremPixel](https://lorempixel.com).
+This engine relies by default on [LoremPixel](https://lorempixel.com) that often gets overloaded.
 If you are experiencing image errors uppon database seed, please try this fix:
 - Go to vendor/fzaninotto/src/Faker/Provider/
 - Open file 'Image.php' for edition. Comment the lorem pixel lines and add new ones like the example. You can choose whatever image api you want:

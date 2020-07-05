@@ -14,6 +14,6 @@ class NewsSeeder extends Seeder
     public function run()
     {
         Storage::makeDirectory('news');
-        factory(News::class, 5)->create();
+        factory(News::class, 40)->create();
     }
 }
