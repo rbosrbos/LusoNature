@@ -93,7 +93,7 @@
                         @if($status === 0) <td class="dt-center"><a data-id="{{$place->id}}" class="aprove text-blue-500 font-bold"
                                 href="#">Aprove</a></td> @endif
                         <td class="dt-center"><a class="text-blue-500 font-bold"
-                                href="#">Edit/View</a></td>
+                        href="{{route('place.edit',$place->uuid)}}">Edit/View</a></td>
                         <td class="dt-center"><a data-id="{{$place->id}}" class="delete text-blue-500 font-bold"
                                 href="#">Delete</a></td>
                     </tr>
