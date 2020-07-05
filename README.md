@@ -1,4 +1,4 @@
-<p align="center"><img src="http://rbos.pt/images/logo.svg" width="400"></p>
+<p align="center"><img src="http://rbos.pt/images/logo.svg" width="200"></p>
 
 ## About Lusonature
 
@@ -19,3 +19,25 @@ API [documentation](http://rbos.pt/docs/)
 ## Install Instructions
 
 1 - Clone the repository: git clone https://github.com/rbosrbos/LusoNature.git
+2 - Install composer dependencies: composer install
+3 - Install node dependencies: npm install
+4 - Create a .env file. See .env.example for reference.
+5 - Run seeds to create db schema and populate it with examples: php artisan migrate --seed
+6 - Run: php artisan serve
+
+IMPORTANT NOTE:
+
+LusoNature is relying on [Faker](https://github.com/fzaninotto/Faker) to get random pictures and bring them to it's filesystem.
+This engine relies by default on [LoremPixel](https://lorempixel.com).
+If you are experiencing image errors uppon database seed, please try this fix (between steps 4 and 5):
+- Go to vendor/fzaninotto/src/Faker/Provider/
+- Open file 'Image.php' for edition. Comment the lorem pixel lines and add new ones like the example:
+
+        //$baseUrl = "https://lorempixel.com/";
+        //$url = "{$width}/{$height}/";
+        $baseUrl = "http://placeimg.com/";
+        $url = "{$width}/{$height}/any";
+
+- You can choose whatever image api you want.
+
+ENJOY
