@@ -8,8 +8,8 @@
 <script>
     $('.delete').click(function (e) {
         e.preventDefault();
-        let answer = confirm('Do you really mean it? This action is irreversible: DELETE PLACE NR ' + e.target
-            .dataset.id);
+        let answer = confirm('Do you really mean it? This action is irreversible: DELETE USER ' + e.target
+            .dataset.email);
         if (answer === true) {
 
             $.ajax({
@@ -45,7 +45,7 @@
 <input type="hidden" id="order" value=0></input>
 <input type="hidden" id="way" value='asc'></input>
 <section id="sections" class="py-16 relative bg-green-100">
-    <h1 class="text-center">Places: New Submissions Section</h1>
+    <h1 class="text-center">Users list</h1>
     <div class="w-11/12 mx-auto">
         <div id='recipients' class="p-8 mt-6 lg:mt-0 rounded shadow bg-white m-auto w-full xl:w-8/12">
             <table id="datatable" class="dt-body-center stripe hover"
@@ -67,7 +67,7 @@
                         <td class="dt-center">{{ $user->email }}</td>
                         <td class="dt-center"><a class="edit text-blue-500 font-bold"
                         href="{{route('admin.users.edit',$user->id)}}">Edit/View</a></td>
-                        <td class="dt-center"><a data-id="{{$user->id}}" class="delete text-blue-500 font-bold"
+                        <td class="dt-center"><a data-email="{{$user->email}}" data-id="{{$user->id}}" class="delete text-blue-500 font-bold"
                                 href="#">Delete</a></td>
                     </tr>
                     @endforeach

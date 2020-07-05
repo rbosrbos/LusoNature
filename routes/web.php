@@ -41,6 +41,7 @@ Route::prefix('admin')->group(function(){
   Route::get('/users','AdminController@users')->name('admin.users');
   Route::get('/users/{id}/edit','AdminController@userEdit')->name('admin.users.edit');
   Route::put('/users/{id}','AdminController@userUpdate')->name('admin.users.update');
+  Route::delete('/users/{id}','AdminController@userDestroy')->name('admin.users.destroy');
 });
 
 Route::get('/user/places/', 'UserareaController@places')->name('user.places');

@@ -33,7 +33,8 @@ class AdminController extends Controller
      * 
      * @return \Illuminate\Contracts\Support\Renderable
      */
-    public function users() {
+    public function users()
+    {
         return view('admin.users.index', [
             'users' => User::all()
         ]);
@@ -45,10 +46,37 @@ class AdminController extends Controller
      * @param string $id
      * @return \Illuminate\Contracts\Support\Renderable
      */
-    public function userEdit(string $id) {
+    public function userEdit(string $id)
+    {
         $user = User::find($id);
-        return view('admin.users.edit',[
+        return view('admin.users.edit', [
             'user' => $user
         ]);
+    }
+
+    /**
+     * User Store procedures
+     * 
+     * @param  \Illuminate\Http\Request  $request
+     */
+    public function storeUser(Request $request) {
+        $request->validate([
+            'email' => 'required|email|unique:users',
+            
+        ]);
+    }
+
+    /**
+     * Destroy user procedure
+     * 
+     * @param string $id
+     * @return string
+     */
+
+    public function userDestroy(string $id)
+    {
+        $email = User::find($id)->email;
+        User::destroy($id);
+        return 'User ' . $email . ' deleted';
     }
 }
