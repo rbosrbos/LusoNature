@@ -16,6 +16,7 @@
 
 .admin-menu .admin-submenu {
   top: 37px;
+  font-size: 0.5rem;
   transition: max-height 0.5s linear;
   max-height: 0;
   border-bottom-right-radius: 0.5rem;
@@ -23,4 +24,10 @@
   --bg-opacity: 1;
   background-color: #2f855a;
   background-color: rgba(47, 133, 90, var(--bg-opacity));
+}
+
+@media (min-width: 1024px) {
+  .admin-menu .admin-submenu {
+    font-size: 1rem;
+  }
 }

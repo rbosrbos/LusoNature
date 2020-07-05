@@ -1,6 +1,6 @@
 <div class="flex m-0 flex-wrap justify-center">
     <div
-        class="admin-menu relative z-10 bg-green-700 px-12 hover:bg-green-500 shadow-inner transition duration-100 py-2 text-white rounded-bl-lg">
+        class="admin-menu relative z-10 bg-green-700 px-2 sm:px-6 lg:px-12 hover:bg-green-500 shadow-inner transition duration-100 py-2 text-white rounded-bl-lg">
         News
         <div class="admin-submenu absolute left-0 w-full flex items-center overflow-hidden flex-col">
             <a href="{{ route('admin.news.create') }}"
@@ -10,7 +10,7 @@
         </div>
     </div>
     <div
-        class="admin-menu relative z-10 bg-green-700 px-12 hover:bg-green-500 shadow-inner transition duration-100 py-2 text-white">
+        class="admin-menu relative z-10 bg-green-700 px-2 sm:px-6 lg:px-12 hover:bg-green-500 shadow-inner transition duration-100 py-2 text-white">
         Places
         <div class="admin-submenu absolute left-0 w-full flex items-center overflow-hidden flex-col">
             <a href="{{ route('admin.places.edit',0) }}"
@@ -21,7 +21,7 @@
         </div>
     </div>
     <div
-        class="admin-menu relative z-10 bg-green-700 px-12 hover:bg-green-500 shadow-inner transition duration-100 py-2 text-white">
+        class="admin-menu relative z-10 bg-green-700 px-2 sm:px-6 lg:px-12 hover:bg-green-500 shadow-inner transition duration-100 py-2 text-white">
         Users
         <div class="admin-submenu absolute left-0 w-full flex items-center overflow-hidden flex-col">
             <a href="{{route('admin.users')}}"
@@ -29,7 +29,7 @@
         </div>
     </div>
     <div
-        class="admin-menu relative z-10 bg-green-700 px-12 hover:bg-green-500 shadow-inner transition duration-100 py-2 text-white">
+        class="admin-menu relative z-10 bg-green-700 px-2 sm:px-6 lg:px-12 hover:bg-green-500 shadow-inner transition duration-100 py-2 text-white">
         Comments
         <div class="admin-submenu absolute left-0 w-full flex items-center overflow-hidden flex-col">
             <a href="{{route('comment.index.filtered','pending')}}"
@@ -39,7 +39,7 @@
         </div>
     </div>
     <div
-        class="admin-menu relative z-10 bg-green-700 px-12 hover:bg-green-500 shadow-inner transition duration-100 py-2 text-white rounded-br-lg">
+        class="admin-menu relative z-10 bg-green-700 px-2 sm:px-6 lg:px-12 hover:bg-green-500 shadow-inner transition duration-100 py-2 text-white rounded-br-lg">
         <form id="logout" action="{{ route('admin.logout') }}" method="POST">
             @csrf
             <a onclick="$('#logout').submit();">Logout</a>
