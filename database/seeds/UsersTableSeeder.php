@@ -17,8 +17,8 @@ class UsersTableSeeder extends Seeder
         Storage::deleteDirectory('avatars');
         DB::table('users')->insert([
             'id' => Str::uuid(),
-            'name' => 'Rui Silva',
-            'email' => 'ruibatisilva@sapo.pt',
+            'name' => 'Default User',
+            'email' => 'user@test.pt',
             'password' => bcrypt('123456'),
         ]);
         Storage::makeDirectory('avatars');
