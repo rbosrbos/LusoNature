@@ -29,15 +29,15 @@ IMPORTANT NOTE:
 
 LusoNature is relying on [Faker](https://github.com/fzaninotto/Faker) to get random pictures and bring them to it's filesystem.
 This engine relies by default on [LoremPixel](https://lorempixel.com).
-If you are experiencing image errors uppon database seed, please try this fix (between steps 4 and 5):
+If you are experiencing image errors uppon database seed, please try this fix:
 - Go to vendor/fzaninotto/src/Faker/Provider/
-- Open file 'Image.php' for edition. Comment the lorem pixel lines and add new ones like the example:
+- Open file 'Image.php' for edition. Comment the lorem pixel lines and add new ones like the example. You can choose whatever image api you want:
 
         //$baseUrl = "https://lorempixel.com/";
         //$url = "{$width}/{$height}/";
         $baseUrl = "http://placeimg.com/";
         $url = "{$width}/{$height}/any";
 
-- You can choose whatever image api you want.
+- Re-run migrations/seed by running: php artisan migrate:fresh --seed
 
 ENJOY
