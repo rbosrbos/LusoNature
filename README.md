@@ -7,9 +7,9 @@ Lusonature is a CMS built in laravel for my second course project, backend direc
 - [Portugal district's wheather forecast](http://rbos.pt/forecast).
 - [Beautiful green spots](http://rbos.pt/place).
 - User commentaries and ratings.
-- Choose your destination by category (beaches, camping, etc...).
+- Your destination by category (beaches, camping, etc...).
 - [News regarding our country and portal](http://rbos.pt/news).
-- Complete consulting API for developers
+- A complete consulting API for developers
 
 
 ## API REST
