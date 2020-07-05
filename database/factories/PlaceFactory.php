@@ -34,7 +34,7 @@ $factory->define(Place::class, function (Faker $faker) {
         'longitude' => $faker->longitude,
         'categories_id' => Category::all()->random()->id,
         'cities_id' => City::all()->random()->id,
-        'status' => $faker->boolean(95)
+        'status' => $faker->boolean(90)
     ];
 });
 

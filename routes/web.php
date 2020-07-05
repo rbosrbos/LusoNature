@@ -35,13 +35,14 @@ Route::prefix('admin')->group(function(){
   // Admin area routes
   Route::get('/news','NewsController@adminEdit')->name('admin.news.edit');
   Route::get('/news/create','NewsController@create')->name('admin.news.create');
-  Route::get('/places','PlaceController@adminEdit')->name('admin.places.edit');
+  Route::get('/places/{status}','PlaceController@adminEdit')->name('admin.places.edit');
   Route::post('/places/{id}','PlaceController@adminAprove')->name('admin.places.aprove');
   Route::delete('/places/{id}','PlaceController@destroy')->name('admin.places.destroy');
   Route::get('/users','AdminController@users')->name('admin.users');
   Route::get('/users/{id}/edit','AdminController@userEdit')->name('admin.users.edit');
   Route::put('/users/{id}','AdminController@userUpdate')->name('admin.users.update');
   Route::delete('/users/{id}','AdminController@userDestroy')->name('admin.users.destroy');
+  Route::delete('/users/{id}/avatar','AdminController@userDeleteAvatar')->name('admin.users.delete_avatar');
 });
 
 Route::get('/user/places/', 'UserareaController@places')->name('user.places');
@@ -52,6 +53,7 @@ Route::resource('news', 'NewsController');
 Route::resource('place', 'PlaceController');
 Route::post('/place/rate','PlaceController@rate')->name('place.rate');
 
+Route::get('/comment/{status}','CommentController@indexFiltered')->name('comment.index.filtered');
 Route::resource('comment', 'CommentController');
 
 Route::get('/contact', 'ContactController@index')->name('contact.index');

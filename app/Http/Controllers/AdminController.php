@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\News;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Storage;
 
 class AdminController extends Controller
 {
@@ -55,15 +57,40 @@ class AdminController extends Controller
     }
 
     /**
-     * User Store procedures
+     * User update procedures
      * 
      * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Contracts\Support\Renderable
      */
-    public function storeUser(Request $request) {
-        $request->validate([
-            'email' => 'required|email|unique:users',
+    public function userUpdate(Request $request)
+    {
+        $user = User::find($request->id);
+        $fields = ['name'];
+        $password_change = false;
+        $rules = [
             'name' => 'required|min:5'
-        ]);
+        ];
+        
+        if (strtolower($user->email) != strtolower($request->email)) {
+            array_push($fields, 'email');
+            $rules = array_merge($rules, [
+                'email' => 'required|email|unique:users'
+            ]);
+        }
+        if (!empty($request->password)) {
+            $password_change = true;
+            $rules = array_merge($rules, [
+                'password' => 'min:8',
+                'password_confirmation' => 'same:password'
+            ]);
+        }
+        $request->validate($rules);
+        if ($password_change) {
+            $user->password = Hash::make($request->password);
+            $user->save();
+        }
+        $user->update($request->only($fields));
+        return back()->with(['message' => 'User ' . $request->email . ' updated']);
     }
 
     /**
@@ -78,5 +105,21 @@ class AdminController extends Controller
         $email = User::find($id)->email;
         User::destroy($id);
         return 'User ' . $email . ' deleted';
+    }
+
+    /**
+     * Delete user's avatar
+     * 
+     * @param string $id
+     * @return string
+     */
+
+    public function userDeleteAvatar(string $id)
+    {
+        Storage::delete('avatars/' . $id . '.jpg');
+        $user = User::find($id);
+        $user->avatar = null;
+        $user->save();
+        return $user->email . '\'s avatar deleted';
     }
 }

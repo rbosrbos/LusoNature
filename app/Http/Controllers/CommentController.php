@@ -9,6 +9,29 @@ use Illuminate\Support\Facades\Auth;
 
 class CommentController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth:admin')->only(['index', 'update', 'destroy']);
+    }
+    /**
+     * Display comments
+     * 
+     * @return \Illuminate\Contracts\Support\Renderable
+     */
+    public function indexFiltered(string $status)
+    {
+
+        if ($status == "pending") {
+            $method = 0;
+        } else {
+            $method = 1;
+        }
+        $comments = Comment::with(['user', 'place'])->where('status', $method)->orderBy('id', 'desc')->get();
+        return view('admin.comments.index', [
+            'comments' => $comments
+        ]);
+    }
+
     /**
      * Store a newly created resource in storage.
      *
@@ -17,7 +40,7 @@ class CommentController extends Controller
      */
     public function store(Request $request)
     {
-        $place = Place::where('uuid',$request->place_id)->first();
+        $place = Place::where('uuid', $request->place_id)->first();
         Comment::create([
             'user_id' => Auth::id(),
             'place_id' => $place->id,
@@ -27,16 +50,6 @@ class CommentController extends Controller
         return response('Thank you for your comment. It will soon be reviewed and available.');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Comment  $comment
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Comment $comment)
-    {
-        //
-    }
 
     /**
      * Show the form for editing the specified resource.
@@ -44,9 +57,16 @@ class CommentController extends Controller
      * @param  \App\Models\Comment  $comment
      * @return \Illuminate\Http\Response
      */
-    public function edit(Comment $comment)
+    public function edit(int $id)
     {
-        //
+        $colors = [
+            'blue', 'orange', 'red', 'green'
+        ];
+        $comment = Comment::find($id);
+        return view('admin.comments.edit', [
+            'comment' => $comment,
+            'colors' => $colors
+        ]);
     }
 
     /**
@@ -56,9 +76,21 @@ class CommentController extends Controller
      * @param  \App\Models\Comment  $comment
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Comment $comment)
+    public function update(Request $request, int $id)
     {
-        //
+        $comment = Comment::find($id);
+        if ($request->type === "1") {
+            $comment->update(['status' => 1]);
+            return 'Comment ' . $id . ' aproved!';
+        } else {
+            $comment->update([
+                'comment' => $request->comment,
+                'status' => 1
+            ]);
+            return back()->with([
+                'message' => 'Comment ' . $id . ' updated!'
+            ]);
+        }
     }
 
     /**

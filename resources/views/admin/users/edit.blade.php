@@ -29,7 +29,7 @@
                 success: function (data) {
                     pic.type = 'text';
                     pic.type = 'file';
-                    var d = user Date();
+                    var d = new Date();
                     $("#image").attr("src",
                         "{{Storage::url('users/'.$user->uuid.'/'.$user->uuid.'-card.jpg')}}?" +
                         d.getTime());
@@ -44,6 +44,27 @@
             });
         }, 100);
     }
+    $('#deleteAvatar').click(function () {
+        if (confirm('Are you sure?')) {
+            $.ajax({
+            type: 'POST',
+            url: "{{ route('admin.users.delete_avatar', $user->id) }}",
+            headers: {
+                'X-CSRF-TOKEN': '{{ csrf_token() }}'
+            },
+            data: {
+                '_method': 'DELETE'
+            },
+            success: function (data) {
+                alert(data);
+                location.reload();
+            },
+            error: function (data) {
+                console.log(data);
+            }
+        });
+        }
+    });
 
 </script>
 @endsection
@@ -65,9 +86,10 @@
         class="w-11/12 max-w-6xl">
         @csrf
         @method('PUT')
+        <input type="hidden" name="id" value="{{$user->id}}">
         <div class="flex justify-center flex-wrap mx-0 mb-6">
             <div class="w-full">
-            <img class="m-auto rounded-full my-10" src="{{Storage::url('avatars/'.$user->id.'.jpg')}}" alt="">
+                <img class="m-auto rounded-full my-10" src="{{Storage::url('avatars/'.$user->id.'.jpg')}}" alt="">
             </div>
             <div class="w-1/2 sm:w-1/4 px-5">
                 <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="name">
@@ -75,9 +97,8 @@
                 </label>
                 <input
                     class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
-                    id="name" type="text" name="name" placeholder="Parque Natural da Ribeira dos Caldeirões"
-                    value="{{ old('name',$user->name)}}">
-                @error('title')
+                    id="name" type="text" name="name" placeholder="Moe Lester" value="{{ old('name',$user->name)}}">
+                @error('name')
                 <div class="text-red-500 italic font-bold">{{ $message }}</div>
                 @enderror
             </div>
@@ -87,43 +108,53 @@
                 </label>
                 <input
                     class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
-                    id="email" type="text" name="email" placeholder="Parque Natural da Ribeira dos Caldeirões"
+                    id="email" type="text" name="email" placeholder="moe@lester.pt"
                     value="{{ old('email',$user->email)}}">
-                @error('title')
+                @error('email')
+                <div class="text-red-500 italic font-bold">{{ $message }}</div>
+                @enderror
+            </div>
+            <div class="w-full my-2"></div>
+            <div class="w-1/2 sm:w-1/4 px-5 mb-2">
+                <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="password">
+                    Password
+                </label>
+                <input
+                    class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                    id="password" type="password" name="password" placeholder="********">
+                @error('password')
+                <div class="text-red-500 italic font-bold">{{ $message }}</div>
+                @enderror
+            </div>
+            <div class="w-1/2 sm:w-1/4 px-5 mb-2">
+                <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
+                    for="password_confirmation">
+                    Password Confirmation
+                </label>
+                <input
+                    class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                    id="password_confirmation" type="password" name="password_confirmation" placeholder="********">
+                @error('password_confirmation')
                 <div class="text-red-500 italic font-bold">{{ $message }}</div>
                 @enderror
             </div>
             <div class="w-full text-center">
                 <button type="submit" id="formSubmit"
-                class="m-auto block bg-transparent my-5 hover:bg-green-300 text-green-500 font-semibold hover:text-white py-2 px-4 border border-green-300 hover:border-transparent rounded">
-                Save Changes
-            </button>
+                    class="m-auto block bg-transparent my-5 hover:bg-green-300 text-green-500 font-semibold hover:text-white py-2 px-4 border border-green-300 hover:border-transparent rounded">
+                    Save Changes
+                </button>
             </div>
+            @if(isset($user->avatar) && $user->avatar == 1)
             <div class="w-full">
                 <div class="m-auto text-center">
-                    <button type="button" id="changePassword"
+                    <button type="button" id="deleteAvatar"
                         class="bg-transparent my-5 hover:bg-green-300 text-green-500 font-semibold hover:text-white py-2 px-4 border border-green-300 hover:border-transparent rounded">
-                        Change Password
-                    </button>
-                    <button type="button" id="changeAvatar"
-                        class="bg-transparent my-5 hover:bg-green-300 text-green-500 font-semibold hover:text-white py-2 px-4 border border-green-300 hover:border-transparent rounded">
-                        Change Avatar
+                        Delete Avatar
                     </button>
                 </div>
             </div>
-           
-            @if(Storage::exists('users/'.$user->uuid.'/'.$user->uuid.'-card.jpg'))
-            <div class="w-full flex flex-wrap justify-center text-center">
-                <h3 class="text-center w-full mt-10">Current picture: (click to change)</h3>
-                <input type="file" class="hidden" name="picture" accept="image/*" id="picture">
-                <label class="cursor-pointer" for="picture">
-                    <img id="image" src="{{Storage::url('users/'.$user->uuid.'/'.$user->uuid.'-card.jpg')}}">
-                </label>
-            </div>
             @endif
         </div>
-
     </form>
-
 </div>
 @endsection

@@ -167,7 +167,6 @@ class PlaceController extends Controller
         $colors = [
             'blue', 'orange', 'red', 'green'
         ];
-        // dd($place->images()->get());
         return view('place.show', [
             'place' => $place,
             'images' => $place->images()->get(),
@@ -281,11 +280,12 @@ class PlaceController extends Controller
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
-    public function adminEdit()
+    public function adminEdit(int $status)
     {
-        $places = Place::with('user')->where('status', '0')->orderBy('id', 'asc')->get();
+        $places = Place::with('user')->where('status', $status)->orderBy('id', 'asc')->get();
         return view('admin.places.index', [
-            'places' => $places
+            'places' => $places,
+            'status' => $status
         ]);
     }
 

@@ -7,7 +7,6 @@
     <title>LusoNature</title>
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link href="{{ asset('css/main.css') }}" rel="stylesheet">
-    {{-- <meta name="csrf-token" content="{{ csrf_token() }}"> --}}
     @stack('styles')
     <script type="module" src="https://unpkg.com/ionicons@5.0.0/dist/ionicons/ionicons.esm.js"></script>
 </head>
