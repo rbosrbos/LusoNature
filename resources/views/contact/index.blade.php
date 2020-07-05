@@ -7,7 +7,7 @@
 Contact
 @endsection
 @section('content')
-<section class="flex flex-wrap h-screen-55">
+<section class="flex flex-wrap">
     <div class="w-full ml-5 my-5">
         <a class="mr-3 text-green-500" href="{{ route('mainpage') }}">Home</a>/<span class="mx-3">Contact</span>
     </div>
