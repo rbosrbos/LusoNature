@@ -11,7 +11,7 @@ Contact
     <div class="w-full ml-5 my-5">
         <a class="mr-3 text-green-500" href="{{ route('mainpage') }}">Home</a>/<span class="mx-3">Contact</span>
     </div>
-    <div class="w-full sm:w-2/3 flex flex-wrap mx-auto">
+    <div class="w-full sm:w-2/3 p-5 sm:p-0 flex flex-wrap mx-auto">
         <form action="{{ route('contact.create') }}" enctype="multipart/form-data" method="POST"
             class="w-full">
             @csrf
