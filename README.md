@@ -1,4 +1,4 @@
-<p align="center"><img src="http://rbos.pt/images/logo.jpg" width="400"></p>
+<p align="center"><img src="http://rbos.pt/images/logo.svg" width="400"></p>
 
 ## About Lusonature
 
@@ -18,4 +18,4 @@ API [documentation](http://rbos.pt/docs/)
 
 ## Install Instructions
 
-Soon
+1 - Clone the repository: git clone https://github.com/rbosrbos/LusoNature.git
