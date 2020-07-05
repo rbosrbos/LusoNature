@@ -62,7 +62,7 @@ class AdminController extends Controller
     public function storeUser(Request $request) {
         $request->validate([
             'email' => 'required|email|unique:users',
-            
+            'name' => 'required|min:5'
         ]);
     }
 
