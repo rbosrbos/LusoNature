@@ -2,7 +2,7 @@
     "variables": [],
     "info": {
         "name": "LusoNature API",
-        "_postman_id": "ad6d93db-97c6-48d4-a42f-cdb95ab1f580",
+        "_postman_id": "2025046d-9e13-4ac5-9f0a-2c55c1d1f6b6",
         "description": "",
         "schema": "https:\/\/schema.getpostman.com\/json\/collection\/v2.0.0\/collection.json"
     },
@@ -273,7 +273,7 @@
                     }
                 },
                 {
-                    "name": "Show the application dashboard.",
+                    "name": "Show the administration dashboard.",
                     "request": {
                         "url": {
                             "protocol": "http",
@@ -493,6 +493,286 @@
                             "raw": "[]"
                         },
                         "description": "If no token is present, display the link request form.",
+                        "response": []
+                    }
+                },
+                {
+                    "name": "Show the news administration dashboard.",
+                    "request": {
+                        "url": {
+                            "protocol": "http",
+                            "host": "localhost:8000",
+                            "path": "admin\/news",
+                            "query": []
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "[]"
+                        },
+                        "description": "",
+                        "response": []
+                    }
+                },
+                {
+                    "name": "Show the form for creating a new resource.",
+                    "request": {
+                        "url": {
+                            "protocol": "http",
+                            "host": "localhost:8000",
+                            "path": "admin\/news\/create",
+                            "query": []
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "[]"
+                        },
+                        "description": "",
+                        "response": []
+                    }
+                },
+                {
+                    "name": "Show the places administration dashboard.",
+                    "request": {
+                        "url": {
+                            "protocol": "http",
+                            "host": "localhost:8000",
+                            "path": "admin\/places\/:status",
+                            "query": []
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "[]"
+                        },
+                        "description": "",
+                        "response": []
+                    }
+                },
+                {
+                    "name": "Aprove place submission",
+                    "request": {
+                        "url": {
+                            "protocol": "http",
+                            "host": "localhost:8000",
+                            "path": "admin\/places\/:id",
+                            "query": []
+                        },
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "[]"
+                        },
+                        "description": "",
+                        "response": []
+                    }
+                },
+                {
+                    "name": "Remove the specified resource from storage.",
+                    "request": {
+                        "url": {
+                            "protocol": "http",
+                            "host": "localhost:8000",
+                            "path": "admin\/places\/:id",
+                            "query": []
+                        },
+                        "method": "DELETE",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "[]"
+                        },
+                        "description": "",
+                        "response": []
+                    }
+                },
+                {
+                    "name": "Lists all users",
+                    "request": {
+                        "url": {
+                            "protocol": "http",
+                            "host": "localhost:8000",
+                            "path": "admin\/users",
+                            "query": []
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "[]"
+                        },
+                        "description": "",
+                        "response": []
+                    }
+                },
+                {
+                    "name": "User edit form",
+                    "request": {
+                        "url": {
+                            "protocol": "http",
+                            "host": "localhost:8000",
+                            "path": "admin\/users\/:id\/edit",
+                            "query": []
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "[]"
+                        },
+                        "description": "",
+                        "response": []
+                    }
+                },
+                {
+                    "name": "User update procedures",
+                    "request": {
+                        "url": {
+                            "protocol": "http",
+                            "host": "localhost:8000",
+                            "path": "admin\/users\/:id",
+                            "query": []
+                        },
+                        "method": "PUT",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "[]"
+                        },
+                        "description": "",
+                        "response": []
+                    }
+                },
+                {
+                    "name": "Destroy user procedure",
+                    "request": {
+                        "url": {
+                            "protocol": "http",
+                            "host": "localhost:8000",
+                            "path": "admin\/users\/:id",
+                            "query": []
+                        },
+                        "method": "DELETE",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "[]"
+                        },
+                        "description": "",
+                        "response": []
+                    }
+                },
+                {
+                    "name": "Delete user's avatar",
+                    "request": {
+                        "url": {
+                            "protocol": "http",
+                            "host": "localhost:8000",
+                            "path": "admin\/users\/:id\/avatar",
+                            "query": []
+                        },
+                        "method": "DELETE",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "[]"
+                        },
+                        "description": "",
                         "response": []
                     }
                 },
@@ -1007,6 +1287,146 @@
                             "protocol": "http",
                             "host": "localhost:8000",
                             "path": "place\/:place",
+                            "query": []
+                        },
+                        "method": "DELETE",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "[]"
+                        },
+                        "description": "",
+                        "response": []
+                    }
+                },
+                {
+                    "name": "Display comments",
+                    "request": {
+                        "url": {
+                            "protocol": "http",
+                            "host": "localhost:8000",
+                            "path": "comment\/:status",
+                            "query": []
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "[]"
+                        },
+                        "description": "",
+                        "response": []
+                    }
+                },
+                {
+                    "name": "Store a newly created resource in storage.",
+                    "request": {
+                        "url": {
+                            "protocol": "http",
+                            "host": "localhost:8000",
+                            "path": "comment",
+                            "query": []
+                        },
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "[]"
+                        },
+                        "description": "",
+                        "response": []
+                    }
+                },
+                {
+                    "name": "Show the form for editing the specified resource.",
+                    "request": {
+                        "url": {
+                            "protocol": "http",
+                            "host": "localhost:8000",
+                            "path": "comment\/:comment\/edit",
+                            "query": []
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "[]"
+                        },
+                        "description": "",
+                        "response": []
+                    }
+                },
+                {
+                    "name": "Update the specified resource in storage.",
+                    "request": {
+                        "url": {
+                            "protocol": "http",
+                            "host": "localhost:8000",
+                            "path": "comment\/:comment",
+                            "query": []
+                        },
+                        "method": "PUT",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "[]"
+                        },
+                        "description": "",
+                        "response": []
+                    }
+                },
+                {
+                    "name": "Remove the specified resource from storage.",
+                    "request": {
+                        "url": {
+                            "protocol": "http",
+                            "host": "localhost:8000",
+                            "path": "comment\/:comment",
                             "query": []
                         },
                         "method": "DELETE",
