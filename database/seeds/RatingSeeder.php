@@ -18,7 +18,7 @@ class RatingSeeder extends Seeder
     public function run()
     {
         $used = [];
-        for ($i = 0; $i < 50; $i++) {
+        for ($i = 0; $i < 150; $i++) {
             $user_id = User::all()->random()->id;
             $place_id = Place::all()->random()->id;
             $new = [

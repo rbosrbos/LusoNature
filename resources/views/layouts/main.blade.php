@@ -9,7 +9,7 @@
         <div
             class="overlay bg-black bg-opacity-50 w-full h-full z-10 relative flex flex-col justify-center items-center px-10 sm:px-20 text-white">
             <h1 class="text-center text-4xl sm:text-6xl">{{$item->name}}</h1>
-            <h3 class="text-center text-lg sm:text-xl">{{Str::limit($item->description, 400)}}</h3>
+            <h3 class="text-center text-xs sm:text-sm lg:text-lg xl:text-xl">{{Str::limit($item->description, 400)}}</h3>
         </div>
     </div>
     @endforeach
@@ -37,13 +37,11 @@
                 prepare = prepare[1].split('.');
                 
                 if (element.style.backgroundImage.includes('-mobile') === false) {
-                    console.log('url("{{URL::to('/')}}' + prepare[0] + '-mobile.' + prepare[1]);
                     element.style.backgroundImage = 'url("{{URL::to('/')}}' + prepare[0] + '-mobile.' + prepare[1];
                 }
             });
         } else {
             backgrounds.forEach(element => {
-                console.log(element.style.backgroundImage.replace('-mobile', ''));
                 element.style.backgroundImage = element.style.backgroundImage.replace('-mobile', '');
             });
         }
