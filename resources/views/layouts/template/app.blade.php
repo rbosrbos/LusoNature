@@ -5,6 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Portugal green spots">
+    <meta name="theme-color" content="#2196f3">
+
     <title>LusoNature</title>
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link href="{{ asset('css/main.css') }}" rel="stylesheet">
@@ -80,7 +82,8 @@
                             <li class="p-5 lg:p-0 lg:inline lg:mr-6"><a href="{{ route('news.index') }}">News</a></li>
                             <li class="p-5 lg:p-0 lg:inline lg:mr-6"><a href="{{ route('place.index') }}">Browse
                                     Places</a></li>
-                            <li class="p-5 lg:p-0 lg:inline lg:mr-6"><a href="{{ route('weatherforecast.index') }}">Weather Forecast</a></li>
+                            <li class="p-5 lg:p-0 lg:inline lg:mr-6"><a
+                                    href="{{ route('weatherforecast.index') }}">Weather Forecast</a></li>
                             <li class="p-5 lg:p-0 lg:inline lg:mr-6"><a href="{{route('contact.index')}}">Contact Us</a>
                             </li>
                             <li class="p-5 lg:p-0 lg:inline">
@@ -103,6 +106,11 @@
                                             d='M256,144c-19.72,0-37.55,7.39-50.22,20.82s-19,32-17.57,51.93C191.11,256,221.52,288,256,288s64.83-32,67.79-71.24c1.48-19.74-4.8-38.14-17.68-51.82C293.39,151.44,275.59,144,256,144Z' />
                                     </svg>
                                 </a>
+                                <form method="post" action="{{route('search.index')}}" class="absolute left-0 lg:left-auto lg:right-0 w-full lg:w-auto">
+                                    @csrf
+                                    <input id="search" name="search"
+                                        class="text-sm inline-block search bg-green-500 text-white rounded-sm overflow-hidden px-2 cursor-text"></input>
+                                </label>
                             </li>
                         </ul>
                     </div>
@@ -117,7 +125,8 @@
             <div class="flex flex-wrap justify-around">
                 <div class="text-center sm:text-left sm:mr-10 mb-10 md:mb-0 md:w-1/5">
                     <p class="font-bold text-3xl">LusoNature</p>
-                    <span class="text-white">Why stay at home? Find the best spots in our beautiful country and plan your free time.</span>
+                    <span class="text-white">Why stay at home? Find the best spots in our beautiful country and plan
+                        your free time.</span>
                 </div>
                 <div class="text-center sm:text-left sm:mr-10 mb-10 md:mb-0 md:w-1/5">
                     <p class="text-center sm:text-left font-bold mb-5 text-3xl">Social Links</p>
@@ -156,7 +165,9 @@
                 <div class="text-center sm:text-left sm:mr-10 mb-10 md:mb-0 md:w-1/5">
                     <p class="font-bold text-3xl">About</p>
                     <p class="text-white">LusoNature - 2020</p>
-                    <p class="text-white">All rights reserved.<br>Customer service:<br><a class="text-green-500 hover:text-green-400" href="mailto:info@lusonature.pt">info@lusonature.pt</a></p>
+                    <p class="text-white">All rights reserved.<br>Customer service:<br><a
+                            class="text-green-500 hover:text-green-400"
+                            href="mailto:info@lusonature.pt">info@lusonature.pt</a></p>
                 </div>
                 <div class="text-center sm:text-left md:w-1/5">
                     <p class="font-bold text-3xl">NewsLetter</p>
@@ -199,7 +210,6 @@
         AOS.init({
             once: true
         });
-
     </script>
     @stack('scripts')
 </body>

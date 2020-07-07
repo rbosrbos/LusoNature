@@ -1088,6 +1088,26 @@ html body #app button:hover {
           animation: anim-button 0.3s forwards;
 }
 
+html body #app .search {
+  margin-left: 2.5%;
+  top: 10px;
+  position: absolute;
+  white-space: nowrap;
+  width: 95%;
+  height: 25px;
+  max-height: 0;
+  transition: max-height 1s ease-in-out;
+}
+
+@media (min-width: 1024px) {
+  html body #app .search {
+    width: 20vw;
+    right: 0;
+    left: auto;
+    margin-right: 0;
+  }
+}
+
 html body #app main {
   min-height: 57vh;
 }

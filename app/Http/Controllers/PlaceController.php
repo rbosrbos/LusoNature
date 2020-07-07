@@ -74,7 +74,8 @@ class PlaceController extends Controller
             ->parking($request->parking)
             ->category($request->category)
             ->city($request->city)
-            ->paginate(12);
+            ->paginate(12)
+            ->appends(request()->query());
         return view('place.index', [
             'places' => $places,
             'categories' => Category::orderBy('name', 'asc')->get(),

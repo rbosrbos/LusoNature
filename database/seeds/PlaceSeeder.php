@@ -16,7 +16,7 @@ class PlaceSeeder extends Seeder
     public function run()
     {
         Storage::makeDirectory('places');
-        factory(Place::class, 100)
+        factory(Place::class, 36)
             ->create();
     }
 }

@@ -78,7 +78,22 @@ html {
             button:hover {
                 animation: anim-button 0.3s forwards;
             }
-
+            .search {
+                margin-left: 2.5%;
+                top: 10px;
+                position: absolute;
+                white-space: nowrap;
+                width: 95%;
+                height: 25px;
+                max-height: 0;
+                transition: max-height 1s ease-in-out;
+                @screen lg {
+                    width: 20vw;
+                    right: 0;
+                    left: auto;
+                    margin-right: 0;
+                }
+            }
             main {
                 min-height: 57vh;
                 @media(min-width: 3000px) {

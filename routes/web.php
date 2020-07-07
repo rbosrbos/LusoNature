@@ -63,4 +63,7 @@ Route::get('/forecast', 'WeatherForecastController@index')->name('weatherforecas
 
 Route::post('/rating/{rate?}', 'ratingController@storeOrUpdate')->name('rating.storeorupdate');
 
+Route::post('/search', 'SearchController@index')->name('search.index');
+Route::get('/search/{page?}', 'SearchController@index')->name('search.paginate');
+
 Auth::routes();

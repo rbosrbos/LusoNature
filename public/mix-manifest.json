@@ -2,7 +2,6 @@
     "/js/app.js": "/js/app.js",
     "/css/admin.css": "/css/admin.css",
     "/css/app.css": "/css/app.css",
-    "/css/main.css": "/css/main.css",
     "/css/news.css": "/css/news.css",
     "/css/place.css": "/css/place.css",
     "/css/datatable.css": "/css/datatable.css",
@@ -11,5 +10,6 @@
     "/js/place.js": "/js/place.js",
     "/js/profile.js": "/js/profile.js",
     "/js/user.js": "/js/user.js",
-    "/js/weatherforecast.js": "/js/weatherforecast.js"
+    "/js/weatherforecast.js": "/js/weatherforecast.js",
+    "/css/main.css": "/css/main.css"
 }

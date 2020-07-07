@@ -361,3 +361,23 @@ if (alerts.length > 0) {
         el.childNodes[2].addEventListener('click', () => el.style.opacity = '0');
     });
 }
+
+
+function noHeight(e) {
+    if (e.target.id != 'search') {
+        $('.search').css('max-height','0');
+        document.removeEventListener('click', noHeight);
+    }
+}
+/**
+ * 
+ * Search
+ * 
+ */
+$('a[aria-label=Search] svg').click(function(){
+    $('.search').css('max-height','999px');
+    $('#search').focus();
+    setTimeout(function(){
+        document.addEventListener('click', noHeight);
+    },50);
+});
