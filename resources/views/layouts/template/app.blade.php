@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Portugal green spots">
-    <meta name="theme-color" content="#2196f3">
+    <meta name="theme-color" content="#48bb78">
 
     <title>LusoNature</title>
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
