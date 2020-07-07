@@ -18,20 +18,23 @@ class PlaceController extends Controller
      * Display a list of all places
      *
      * @return \Illuminate\Http\Response
+     * @queryParam category_id int Category ID. Example: 2
+     * @queryParam city_id boolean City ID. Example: 180
      */
     public function index(Request $request)
     {
-        if ($request->city) {
-            if ($request->category) {
+        if ($request->city_id) {
+            if ($request->category_id) {
+                
                 return Place::where([
-                    'categories_id' => $request->category,
-                    'cities_id' => $request->city,
+                    'categories_id' => $request->category_id,
+                    'cities_id' => $request->city_id,
                     ])->get();
             }
-            return Place::where('cities_id', $request->city)->get();
+            return Place::where('cities_id', $request->city_id)->get();
         }
-        if ($request->category) {
-            return Place::where('categories_id',$request->category)->get();
+        if ($request->category_id) {
+            return Place::where('categories_id',$request->category_id)->get();
         }
         return Place::all();
     }

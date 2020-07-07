@@ -53,7 +53,7 @@ return [
      * The base URL to be used in examples and the Postman collection.
      * By default, this will be the value of config('app.url').
      */
-    'base_url' => null,
+    'base_url' => 'http://rbos.pt/',
 
     /*
      * Generate a Postman collection in addition to HTML docs.
@@ -243,7 +243,7 @@ return [
     /*
      * Name for the group of routes which do not have a @group set.
      */
-    'default_group' => 'general',
+    'default_group' => null,
 
     /*
      * Example requests for each endpoint will be shown in each of these languages.
@@ -282,7 +282,7 @@ return [
      * set this to any number (eg. 1234)
      *
      */
-    'faker_seed' => 1234,
+    'faker_seed' => null,
 
     /*
      * If you would like to customize how routes are matched beyond the route configuration you may
