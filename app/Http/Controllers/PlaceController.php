@@ -22,7 +22,7 @@ class PlaceController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('auth')->except('index', 'show', 'main', 'adminEdit', 'destroy', 'adminAprove', 'edit');
+        $this->middleware('verified')->except('index', 'show', 'main', 'adminEdit', 'destroy', 'adminAprove', 'edit');
         $this->middleware('auth:admin')->only('adminEdit', 'destroy', 'adminAprove');
     }
     /**
