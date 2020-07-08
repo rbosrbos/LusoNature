@@ -1,6 +1,6 @@
 <template>
     <div class="w-full">
-        <div class="w-1/3 mx-auto text-xl text-center mb-20" v-if="joke">
+        <div class="w-11/12 sm:w-1/3 mx-auto mb-10 text-xs sm:text-xl italic text-center" v-if="joke">
             {{ joke }}
         </div>
     </div>

@@ -66,4 +66,4 @@ Route::post('/rating/{rate?}', 'ratingController@storeOrUpdate')->name('rating.s
 Route::post('/search', 'SearchController@index')->name('search.index');
 Route::get('/search/{page?}', 'SearchController@index')->name('search.paginate');
 
-Auth::routes();
+Auth::routes(['verify' => true]);
