@@ -211,6 +211,9 @@
             once: true
         });
     </script>
+    @error('search')
+    <script>alert('3 characters min!');</script>
+    @enderror
     @stack('scripts')
 </body>
 

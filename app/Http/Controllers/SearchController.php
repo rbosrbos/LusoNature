@@ -11,6 +11,9 @@ use Illuminate\Support\Str;
 class SearchController extends Controller
 {
     public function index(Request $request) {
+        $request->validate([
+            'search' => 'required|min:3'
+        ]);
         $search = '%'.htmlspecialchars_decode($request->search).'%';
         $places = Place::where('name','like',$search)
                                     ->orWhere('description','like',$search)
