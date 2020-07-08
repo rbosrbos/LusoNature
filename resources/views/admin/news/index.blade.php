@@ -42,7 +42,7 @@
 @endsection
 
 @section('content')
-<input type="hidden" id="order" value=0></input>
+<input type="hidden" id="order" value=0>
 <section id="sections" class="py-16 relative bg-green-100">
     <h1 class="text-center">News Section</h1>
     <div class="w-11/12 mx-auto">

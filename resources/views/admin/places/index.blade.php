@@ -64,8 +64,8 @@
 @endsection
 
 @section('content')
-<input type="hidden" id="order" value=0></input>
-<input type="hidden" id="way" value='asc'></input>
+<input type="hidden" id="order" value=0>>
+<input type="hidden" id="way" value='asc'>>
 <section id="sections" class="py-16 relative bg-green-100">
     <h1 class="text-center">Places: @if($status === 0) New Submissions @else Permanent @endif Section</h1>
     <div class="w-11/12 mx-auto">

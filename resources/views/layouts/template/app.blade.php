@@ -109,8 +109,8 @@
                                 <form method="post" action="{{route('search.index')}}" class="absolute left-0 lg:left-auto lg:right-0 w-full lg:w-auto">
                                     @csrf
                                     <input id="search" name="search"
-                                        class="text-sm inline-block search bg-green-500 text-white rounded-sm overflow-hidden px-2 cursor-text"></input>
-                                </label>
+                                        class="text-sm inline-block search bg-green-500 text-white rounded-sm overflow-hidden px-2 cursor-text">
+                                </form>
                             </li>
                         </ul>
                     </div>

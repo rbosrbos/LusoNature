@@ -63,8 +63,8 @@
 @endsection
 
 @section('content')
-<input type="hidden" id="order" value=0></input>
-<input type="hidden" id="way" value='desc'></input>
+<input type="hidden" id="order" value=0>
+<input type="hidden" id="way" value='desc'>
 <section id="sections" class="py-16 relative bg-green-100">
     <h1 class="text-center">Comments list</h1>
     <div class="w-11/12 mx-auto">

@@ -9,7 +9,7 @@ Your contributed places
 <script src="{{ asset('js/datatable.js') }}"></script>
 @endsection
 @section('usercontent')
-<input type="hidden" id="order" value=0></input>
+<input type="hidden" id="order" value=0>
 <div class="w-11/12 xl:w-9/12 mx-auto">
     <div id='recipients' class="p-8 mt-6 lg:mt-0 rounded shadow bg-white">
         <table id="datatable" class="stripe hover" style="width:100%; padding-top: 1em;  padding-bottom: 1em;">
