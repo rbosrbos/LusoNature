@@ -1,5 +1,7 @@
 <?php
 
+namespace Database\Seeders;
+
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
@@ -18,7 +20,7 @@ class CitySeeder extends Seeder
         );
         for ($i = 0; $i < count($cities); $i++) {
             DB::table('cities')->insert([
-               // 'id' => Str::uuid(),
+                // 'id' => Str::uuid(),
                 'name' => $cities[$i]
             ]);
         }

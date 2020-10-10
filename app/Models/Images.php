@@ -2,11 +2,14 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class Images extends Model
 {
+    use HasFactory;
+
     protected $fillable = [
-        'uuid','place_id', 'user_id'
+        'uuid', 'place_id', 'user_id'
     ];
 }

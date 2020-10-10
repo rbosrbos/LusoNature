@@ -1,37 +1,45 @@
 <?php
 
-/** @var \Illuminate\Database\Eloquent\Factory $factory */
+namespace Database\Factories;
+
+
+use Illuminate\Database\Eloquent\Factories\Factory;
 
 use App\Models\User;
 use Faker\Generator as Faker;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 
-/*
-|--------------------------------------------------------------------------
-| Model Factories
-|--------------------------------------------------------------------------
-|
-| This directory should contain each of the model factory definitions for
-| your application. Factories provide a convenient way to generate new
-| model instances for testing / seeding your application's database.
-|
-*/
+class UserFactory extends Factory
+{
+    /**
+     * The name of the factory's corresponding model.
+     *
+     * @var string
+     */
+    protected $model = \App\Models\User::class;
 
-$factory->define(User::class, function (Faker $faker) {
-    $avatar = $faker->boolean(95);
-    $id = $faker->uuid;
-    if ($avatar) {
-        $new = $faker->image('public/storage/avatars/', 70, 70, null, false);
-        rename ('public/storage/avatars/'.$new, 'public/storage/avatars/'.$id.'.jpg');
+    /**
+     * Define the model's default state.
+     *
+     * @return array
+     */
+    public function definition()
+    {
+        $avatar = $this->faker->boolean(95);
+        $id = $this->faker->uuid;
+        if ($avatar) {
+            $new = $this->faker->image('public/storage/avatars/', 70, 70, null, false);
+            rename('public/storage/avatars/' . $new, 'public/storage/avatars/' . $id . '.jpg');
+        }
+        return [
+            'id' => $id,
+            'name' => $this->faker->name,
+            'email' => $this->faker->unique()->safeEmail,
+            'email_verified_at' => now(),
+            'password' => bcrypt('123456'), // password
+            'remember_token' => Str::random(10),
+            'avatar' => $avatar
+        ];
     }
-    return [
-        'id' => $id,
-        'name' => $faker->name,
-        'email' => $faker->unique()->safeEmail,
-        'email_verified_at' => now(),
-        'password' => bcrypt('123456'), // password
-        'remember_token' => Str::random(10),
-        'avatar' => $avatar
-    ];
-});
+}

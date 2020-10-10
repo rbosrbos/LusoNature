@@ -1,4 +1,7 @@
 <?php
+
+namespace Database\Seeders;
+
 use App\Models\User;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
@@ -22,6 +25,8 @@ class UsersTableSeeder extends Seeder
             'password' => bcrypt('123456'),
         ]);
         Storage::makeDirectory('avatars');
-        factory(User::class, 10)->create();
+        User::factory()
+            ->times(10)
+            ->create();
     }
 }

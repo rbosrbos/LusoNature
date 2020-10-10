@@ -1,5 +1,7 @@
 <?php
 
+namespace Database\Seeders;
+
 use Illuminate\Database\Seeder;
 use App\Models\Place;
 use App\Models\Images;
@@ -16,7 +18,6 @@ class PlaceSeeder extends Seeder
     public function run()
     {
         Storage::makeDirectory('places');
-        factory(Place::class, 36)
-            ->create();
+        Place::factory()->times(36)->create();
     }
 }

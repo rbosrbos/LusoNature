@@ -1,5 +1,7 @@
 <?php
 
+namespace Database\Seeders;
+
 use App\Models\Place;
 use Illuminate\Database\Seeder;
 use App\Models\Rating;
@@ -33,7 +35,7 @@ class RatingSeeder extends Seeder
                     'place_id' => $place_id
                 ];
             }
-            array_push($used,$new);
+            array_push($used, $new);
             $rating = new Rating;
             //$rating->id = Str::uuid();
             $rating->user_id = $user_id;

@@ -1,5 +1,7 @@
 <?php
 
+namespace Database\Seeders;
+
 use App\Models\News;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Storage;
@@ -14,6 +16,8 @@ class NewsSeeder extends Seeder
     public function run()
     {
         Storage::makeDirectory('news');
-        factory(News::class, 30)->create();
+        News::factory()
+            ->times(30)
+            ->create();
     }
 }
