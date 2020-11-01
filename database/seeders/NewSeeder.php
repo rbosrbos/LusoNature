@@ -6,7 +6,7 @@ use App\Models\News;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Storage;
 
-class NewsSeeder extends Seeder
+class NewSeeder extends Seeder
 {
     /**
      * Run the database seeds.
