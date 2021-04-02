@@ -12,7 +12,7 @@ async function getCity(cityID) {
 
 async function getWeather(cityID) {
     let weather = {};
-    let response = await fetch('http://api.ipma.pt/open-data/forecast/meteorology/cities/daily/' + cityID + '.json');
+    let response = await fetch('https://api.ipma.pt/open-data/forecast/meteorology/cities/daily/' + cityID + '.json');
     let data = await response.json();
     return data.data;
 }
@@ -63,7 +63,7 @@ $('path').click(function (e) {
                     if (i == (data.length - 1)) tr += ' pb-5';
                     tr += '>' + data[i].precipitaProb + '</td><td class="pr-5';
                     if (i == (data.length - 1)) tr += ' pb-5';
-                    tr += '"><img width="50" class="d-inline-block" src="http://www.ipma.pt/bin/icons/svg/weather/w_ic_d_';
+                    tr += '"><img width="50" class="d-inline-block" src="https://www.ipma.pt/bin/icons/svg/weather/w_ic_d_';
                     if (data[i].idWeatherType < 10) {
                         tr += '0' + data[i].idWeatherType;
                     } else {
